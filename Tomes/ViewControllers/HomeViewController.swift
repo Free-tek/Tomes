@@ -306,7 +306,10 @@ extension HomeViewController: UISearchBarDelegate {
         self.activityIndicator.startAnimating()
 
         if searchText == "" {
-
+            revert.alpha = 0
+            noResultIcon.alpha = 0
+            noResultLabel.alpha = 0
+            
             apartmentListViewModelController.fetchApartments(completion: { (success) in
                 if !success {
                     print("error encountered")

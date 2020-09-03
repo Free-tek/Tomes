@@ -309,10 +309,10 @@
                                 </connections>
                             </tableView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="empty" translatesAutoresizingMaskIntoConstraints="NO" id="XAq-Qo-1Jy">
-                                <rect key="frame" x="167" y="388.5" width="80" height="80"/>
+                                <rect key="frame" x="182" y="388.5" width="50" height="60"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="80" id="qUY-Br-bJ8"/>
-                                    <constraint firstAttribute="height" constant="80" id="s36-uW-IlJ"/>
+                                    <constraint firstAttribute="width" constant="50" id="qUY-Br-bJ8"/>
+                                    <constraint firstAttribute="height" constant="60" id="s36-uW-IlJ"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7O5-wy-r58">
@@ -327,7 +327,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="No Records Found" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="S1M-GM-hZb">
-                                <rect key="frame" x="120" y="475" width="174" height="21"/>
+                                <rect key="frame" x="120" y="454" width="174" height="21"/>
                                 <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="18"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -516,7 +516,7 @@
                             <constraint firstItem="i06-93-Hio" firstAttribute="centerX" secondItem="NbD-S3-bjG" secondAttribute="centerX" id="BXk-M8-hmW"/>
                             <constraint firstItem="i06-93-Hio" firstAttribute="centerY" secondItem="NbD-S3-bjG" secondAttribute="centerY" id="D5X-7H-khU"/>
                             <constraint firstItem="7Em-by-3Tn" firstAttribute="top" secondItem="iqV-uO-apm" secondAttribute="bottom" constant="13" id="GMt-AQ-wbl"/>
-                            <constraint firstItem="XAq-Qo-1Jy" firstAttribute="centerY" secondItem="NbD-S3-bjG" secondAttribute="centerY" id="J7P-UB-0D1"/>
+                            <constraint firstItem="XAq-Qo-1Jy" firstAttribute="centerY" secondItem="NbD-S3-bjG" secondAttribute="centerY" constant="-10" id="J7P-UB-0D1"/>
                             <constraint firstItem="yhp-v1-SjS" firstAttribute="top" secondItem="hHT-yS-HMb" secondAttribute="bottom" constant="-264" id="KpN-5K-3X1"/>
                             <constraint firstItem="7O5-wy-r58" firstAttribute="top" secondItem="7Em-by-3Tn" secondAttribute="bottom" constant="19" id="MHa-kH-dXy"/>
                             <constraint firstItem="iqV-uO-apm" firstAttribute="top" secondItem="gPz-5f-5Hq" secondAttribute="bottom" constant="7" id="NAp-2w-2mt"/>
@@ -530,7 +530,7 @@
                             <constraint firstItem="NbD-S3-bjG" firstAttribute="trailing" secondItem="yhp-v1-SjS" secondAttribute="trailing" constant="20" id="lM4-qb-xiw"/>
                             <constraint firstItem="yhp-v1-SjS" firstAttribute="top" secondItem="7Em-by-3Tn" secondAttribute="bottom" constant="19" id="mbC-5k-cum"/>
                             <constraint firstItem="yhp-v1-SjS" firstAttribute="bottom" secondItem="NbD-S3-bjG" secondAttribute="bottom" id="tBp-2a-JGn"/>
-                            <constraint firstItem="S1M-GM-hZb" firstAttribute="top" secondItem="XAq-Qo-1Jy" secondAttribute="bottom" constant="6.5" id="u13-gS-7Ph"/>
+                            <constraint firstItem="S1M-GM-hZb" firstAttribute="top" secondItem="XAq-Qo-1Jy" secondAttribute="bottom" constant="5.5" id="u13-gS-7Ph"/>
                             <constraint firstItem="XAq-Qo-1Jy" firstAttribute="centerX" secondItem="NbD-S3-bjG" secondAttribute="centerX" id="wI6-BB-EkS"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="NbD-S3-bjG"/>
