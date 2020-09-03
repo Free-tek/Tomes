@@ -28,6 +28,11 @@
 		B8CCB6AF24F7EF990034C878 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6AE24F7EF990034C878 /* ForgotPasswordViewController.swift */; };
 		B8CCB6B124F802D70034C878 /* loadingTomes.json in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6B024F802D70034C878 /* loadingTomes.json */; };
 		B8CCB6B324F80D1A0034C878 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6B224F80D1A0034C878 /* HomeViewController.swift */; };
+		B8D380A325005BEA00A97474 /* ApartmentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D380A125005BEA00A97474 /* ApartmentListTableViewCell.swift */; };
+		B8D380A425005BEA00A97474 /* ApartmentListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D380A225005BEA00A97474 /* ApartmentListTableViewCell.xib */; };
+		B8D380A725005FAA00A97474 /* ApartmentListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D380A625005FAA00A97474 /* ApartmentListModel.swift */; };
+		B8D380AB25005FE900A97474 /* ApartmentListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D380AA25005FE900A97474 /* ApartmentListViewModel.swift */; };
+		B8D380AD2500603800A97474 /* ApartmentListViewModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D380AC2500603800A97474 /* ApartmentListViewModelController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +60,11 @@
 		B8CCB6AE24F7EF990034C878 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		B8CCB6B024F802D70034C878 /* loadingTomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loadingTomes.json; path = ../../loadingTomes.json; sourceTree = "<group>"; };
 		B8CCB6B224F80D1A0034C878 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		B8D380A125005BEA00A97474 /* ApartmentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListTableViewCell.swift; sourceTree = "<group>"; };
+		B8D380A225005BEA00A97474 /* ApartmentListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentListTableViewCell.xib; sourceTree = "<group>"; };
+		B8D380A625005FAA00A97474 /* ApartmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListModel.swift; sourceTree = "<group>"; };
+		B8D380AA25005FE900A97474 /* ApartmentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListViewModel.swift; sourceTree = "<group>"; };
+		B8D380AC2500603800A97474 /* ApartmentListViewModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListViewModelController.swift; sourceTree = "<group>"; };
 		FB591B4B845AD2F7AFCC706F /* Pods-Tomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomes.release.xcconfig"; path = "Target Support Files/Pods-Tomes/Pods-Tomes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -99,6 +109,10 @@
 		B834CE9F24F7BB10001AA809 /* Tomes */ = {
 			isa = PBXGroup;
 			children = (
+				B8D380A925005FC900A97474 /* ViewModelController */,
+				B8D380A825005FB900A97474 /* ViewModel */,
+				B8D380A525005F9200A97474 /* Model */,
+				B8D380A025005BC400A97474 /* View */,
 				B8CCB69F24F7E0A90034C878 /* Helper */,
 				B8C8EED324F7D573002DDE20 /* Font */,
 				B8C8EEBD24F7C76A002DDE20 /* ViewControllers */,
@@ -146,6 +160,39 @@
 				B8CCB6A024F7E0D40034C878 /* Utilities.swift */,
 			);
 			path = Helper;
+			sourceTree = "<group>";
+		};
+		B8D380A025005BC400A97474 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B8D380A125005BEA00A97474 /* ApartmentListTableViewCell.swift */,
+				B8D380A225005BEA00A97474 /* ApartmentListTableViewCell.xib */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		B8D380A525005F9200A97474 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				B8D380A625005FAA00A97474 /* ApartmentListModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		B8D380A825005FB900A97474 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				B8D380AA25005FE900A97474 /* ApartmentListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		B8D380A925005FC900A97474 /* ViewModelController */ = {
+			isa = PBXGroup;
+			children = (
+				B8D380AC2500603800A97474 /* ApartmentListViewModelController.swift */,
+			);
+			path = ViewModelController;
 			sourceTree = "<group>";
 		};
 		D167229A94B5C70A322D4F88 /* Pods */ = {
@@ -227,6 +274,7 @@
 				B8CCB6A524F7E4470034C878 /* Comfortaa-Light.ttf in Resources */,
 				B834CEA824F7BB11001AA809 /* Main.storyboard in Resources */,
 				B8CCB6B124F802D70034C878 /* loadingTomes.json in Resources */,
+				B8D380A425005BEA00A97474 /* ApartmentListTableViewCell.xib in Resources */,
 				B8CCB6A624F7E4470034C878 /* Comfortaa-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -282,9 +330,13 @@
 			files = (
 				B8CCB6AF24F7EF990034C878 /* ForgotPasswordViewController.swift in Sources */,
 				B8CCB6A124F7E0D40034C878 /* Utilities.swift in Sources */,
+				B8D380AD2500603800A97474 /* ApartmentListViewModelController.swift in Sources */,
 				B8CCB6AD24F7EADB0034C878 /* SignUpViewController.swift in Sources */,
+				B8D380AB25005FE900A97474 /* ApartmentListViewModel.swift in Sources */,
 				B834CEA524F7BB10001AA809 /* ViewController.swift in Sources */,
+				B8D380A325005BEA00A97474 /* ApartmentListTableViewCell.swift in Sources */,
 				B834CEA124F7BB10001AA809 /* AppDelegate.swift in Sources */,
+				B8D380A725005FAA00A97474 /* ApartmentListModel.swift in Sources */,
 				B8CCB6B324F80D1A0034C878 /* HomeViewController.swift in Sources */,
 				B8C8EEBF24F7C78B002DDE20 /* SplashScreenViewController.swift in Sources */,
 				B8C8EEC124F7CA35002DDE20 /* LoginViewController.swift in Sources */,

@@ -112,6 +112,8 @@ PODS:
   - PaddingLabel (1.2)
   - PromisesObjC (1.2.9)
   - Protobuf (3.12.0)
+  - RAMAnimatedTabBarController (5.2.0)
+  - RangeSeekSlider (1.8.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
@@ -127,6 +129,8 @@ DEPENDENCIES:
   - Kingfisher
   - lottie-ios
   - PaddingLabel (= 1.2)
+  - RAMAnimatedTabBarController
+  - RangeSeekSlider
   - SwiftyJSON
 
 SPEC REPOS:
@@ -156,6 +160,8 @@ SPEC REPOS:
     - PaddingLabel
     - PromisesObjC
     - Protobuf
+    - RAMAnimatedTabBarController
+    - RangeSeekSlider
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -184,8 +190,10 @@ SPEC CHECKSUMS:
   PaddingLabel: 21ab5282c780366018b04c30e3920c2f55a2fd14
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Protobuf: 2793fcd0622a00b546c60e7cbbcc493e043e9bb9
+  RAMAnimatedTabBarController: 6863a386e7ae2ab227cd60aa73ab8ff56cdacfdd
+  RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: e1562147612c4f1b61ea16cbd8284f7f9f9f0ed0
+PODFILE CHECKSUM: 17b8bf1141b6b226de780a7e203b489f27797b5b
 
 COCOAPODS: 1.9.3

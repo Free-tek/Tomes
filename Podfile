@@ -41,4 +41,10 @@ target 'Tomes' do
   #load json
   pod 'SwiftyJSON'
 
+  #Home nav bar
+  pod 'RAMAnimatedTabBarController'
+
+  #Range Slider
+  pod 'RangeSeekSlider'
+
 end
