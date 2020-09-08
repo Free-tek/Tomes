@@ -2,7 +2,7 @@
 //  SplashScreenViewController.swift
 //  Tomes
 //
-//  Created by Botosoft Technologies on 27/08/2020.
+//  Created by Botosoft Technologies on 08/09/2020.
 //  Copyright © 2020 Tomes. All rights reserved.
 //
 

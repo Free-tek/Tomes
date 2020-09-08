@@ -183,6 +183,23 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         150
     }
 
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //handle  clicks
+        let model = apartmentListViewModelController.viewModel(at: indexPath.item)
+
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "apartmentDetailsPage") as! ApartmentDetailsViewController
+
+        viewController.key = String(indexPath.item + 1)
+
+        viewController.view.window?.rootViewController = viewController
+        viewController.view.window?.makeKeyAndVisible()
+
+        self.present(viewController, animated: false, completion: nil)
+
+    }
+
+
     private func registerCellForTableView() {
 
         let apartmentCellNib = UINib(nibName: "ApartmentListTableViewCell", bundle: nil)
@@ -309,7 +326,7 @@ extension HomeViewController: UISearchBarDelegate {
             revert.alpha = 0
             noResultIcon.alpha = 0
             noResultLabel.alpha = 0
-            
+
             apartmentListViewModelController.fetchApartments(completion: { (success) in
                 if !success {
                     print("error encountered")

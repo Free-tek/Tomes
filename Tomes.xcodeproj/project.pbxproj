@@ -15,8 +15,14 @@
 		B834CEAA24F7BB16001AA809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B834CEA924F7BB16001AA809 /* Assets.xcassets */; };
 		B834CEAD24F7BB16001AA809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B834CEAB24F7BB16001AA809 /* LaunchScreen.storyboard */; };
 		B834CEB724F7BBEA001AA809 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B834CEB624F7BBEA001AA809 /* GoogleService-Info.plist */; };
+		B876279E2507C05700D0EE92 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */; };
+		B8B408F62507CD9E00B46A7C /* ApartmentDetailsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B408F52507CD9E00B46A7C /* ApartmentDetailsModel.swift */; };
+		B8B408F82507CDD400B46A7C /* ApartmentDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B408F72507CDD400B46A7C /* ApartmentDetailsViewModel.swift */; };
+		B8B408FD2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B408FB2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.swift */; };
+		B8B408FE2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B408FC2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib */; };
+		B8B409002507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B408FF2507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift */; };
+		B8B409022507DFDD00B46A7C /* ApartmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */; };
 		B8C8EEBB24F7C758002DDE20 /* tomes.json in Resources */ = {isa = PBXBuildFile; fileRef = B8C8EEBA24F7C758002DDE20 /* tomes.json */; };
-		B8C8EEBF24F7C78B002DDE20 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8EEBE24F7C78B002DDE20 /* SplashScreenViewController.swift */; };
 		B8C8EEC124F7CA35002DDE20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8EEC024F7CA35002DDE20 /* LoginViewController.swift */; };
 		B8CCB6A124F7E0D40034C878 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6A024F7E0D40034C878 /* Utilities.swift */; };
 		B8CCB6A524F7E4470034C878 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6A224F7E4470034C878 /* Comfortaa-Light.ttf */; };
@@ -47,8 +53,14 @@
 		B834CEAC24F7BB16001AA809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B834CEAE24F7BB16001AA809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B834CEB624F7BBEA001AA809 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
+		B8B408F52507CD9E00B46A7C /* ApartmentDetailsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsModel.swift; sourceTree = "<group>"; };
+		B8B408F72507CDD400B46A7C /* ApartmentDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewModel.swift; sourceTree = "<group>"; };
+		B8B408FB2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailCollectionViewCell.swift; sourceTree = "<group>"; };
+		B8B408FC2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentDetailCollectionViewCell.xib; sourceTree = "<group>"; };
+		B8B408FF2507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewModelController.swift; sourceTree = "<group>"; };
+		B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewController.swift; sourceTree = "<group>"; };
 		B8C8EEBA24F7C758002DDE20 /* tomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tomes.json; path = ../../tomes.json; sourceTree = "<group>"; };
-		B8C8EEBE24F7C78B002DDE20 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		B8C8EEC024F7CA35002DDE20 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8CCB6A024F7E0D40034C878 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = SOURCE_ROOT; };
 		B8CCB6A224F7E4470034C878 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Light.ttf"; path = "../../../comfortaa/Comfortaa-Light.ttf"; sourceTree = "<group>"; };
@@ -133,11 +145,12 @@
 		B8C8EEBD24F7C76A002DDE20 /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				B8C8EEBE24F7C78B002DDE20 /* SplashScreenViewController.swift */,
 				B8C8EEC024F7CA35002DDE20 /* LoginViewController.swift */,
 				B8CCB6AC24F7EADB0034C878 /* SignUpViewController.swift */,
 				B8CCB6AE24F7EF990034C878 /* ForgotPasswordViewController.swift */,
 				B8CCB6B224F80D1A0034C878 /* HomeViewController.swift */,
+				B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */,
+				B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -167,6 +180,8 @@
 			children = (
 				B8D380A125005BEA00A97474 /* ApartmentListTableViewCell.swift */,
 				B8D380A225005BEA00A97474 /* ApartmentListTableViewCell.xib */,
+				B8B408FB2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.swift */,
+				B8B408FC2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -175,6 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				B8D380A625005FAA00A97474 /* ApartmentListModel.swift */,
+				B8B408F52507CD9E00B46A7C /* ApartmentDetailsModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				B8D380AA25005FE900A97474 /* ApartmentListViewModel.swift */,
+				B8B408F72507CDD400B46A7C /* ApartmentDetailsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -191,6 +208,7 @@
 			isa = PBXGroup;
 			children = (
 				B8D380AC2500603800A97474 /* ApartmentListViewModelController.swift */,
+				B8B408FF2507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift */,
 			);
 			path = ViewModelController;
 			sourceTree = "<group>";
@@ -272,6 +290,7 @@
 				B8CCB6A724F7E4470034C878 /* Comfortaa-Regular.ttf in Resources */,
 				B8CCB6A924F7E45D0034C878 /* IndigoRegular.ttf in Resources */,
 				B8CCB6A524F7E4470034C878 /* Comfortaa-Light.ttf in Resources */,
+				B8B408FE2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib in Resources */,
 				B834CEA824F7BB11001AA809 /* Main.storyboard in Resources */,
 				B8CCB6B124F802D70034C878 /* loadingTomes.json in Resources */,
 				B8D380A425005BEA00A97474 /* ApartmentListTableViewCell.xib in Resources */,
@@ -328,19 +347,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8B409002507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift in Sources */,
 				B8CCB6AF24F7EF990034C878 /* ForgotPasswordViewController.swift in Sources */,
 				B8CCB6A124F7E0D40034C878 /* Utilities.swift in Sources */,
 				B8D380AD2500603800A97474 /* ApartmentListViewModelController.swift in Sources */,
+				B876279E2507C05700D0EE92 /* SplashScreenViewController.swift in Sources */,
 				B8CCB6AD24F7EADB0034C878 /* SignUpViewController.swift in Sources */,
 				B8D380AB25005FE900A97474 /* ApartmentListViewModel.swift in Sources */,
 				B834CEA524F7BB10001AA809 /* ViewController.swift in Sources */,
 				B8D380A325005BEA00A97474 /* ApartmentListTableViewCell.swift in Sources */,
 				B834CEA124F7BB10001AA809 /* AppDelegate.swift in Sources */,
+				B8B409022507DFDD00B46A7C /* ApartmentDetailsViewController.swift in Sources */,
+				B8B408FD2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.swift in Sources */,
 				B8D380A725005FAA00A97474 /* ApartmentListModel.swift in Sources */,
 				B8CCB6B324F80D1A0034C878 /* HomeViewController.swift in Sources */,
-				B8C8EEBF24F7C78B002DDE20 /* SplashScreenViewController.swift in Sources */,
 				B8C8EEC124F7CA35002DDE20 /* LoginViewController.swift in Sources */,
 				B834CEA324F7BB10001AA809 /* SceneDelegate.swift in Sources */,
+				B8B408F82507CDD400B46A7C /* ApartmentDetailsViewModel.swift in Sources */,
+				B8B408F62507CD9E00B46A7C /* ApartmentDetailsModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

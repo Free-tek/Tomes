@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="ApartmentDetailCollectionViewCell" customModule="Tomes" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="VwR-qI-Y1y">
+                        <rect key="frame" x="0.0" y="0.0" width="300" height="600"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="300" id="6ee-qG-4Cq"/>
+                            <constraint firstAttribute="height" constant="600" id="gZX-lj-nr1"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstItem="VwR-qI-Y1y" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="0mh-Fe-M6l"/>
+                <constraint firstAttribute="bottom" secondItem="VwR-qI-Y1y" secondAttribute="bottom" id="fOI-v4-GK1"/>
+                <constraint firstItem="VwR-qI-Y1y" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="kEe-LM-xsa"/>
+                <constraint firstAttribute="trailing" secondItem="VwR-qI-Y1y" secondAttribute="trailing" id="mGR-P2-a1j"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <connections>
+                <outlet property="apartmentImage" destination="VwR-qI-Y1y" id="94B-bc-TVt"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="144.30803571428569"/>
+        </collectionViewCell>
+    </objects>
+</document>
