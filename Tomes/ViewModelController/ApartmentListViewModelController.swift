@@ -35,7 +35,7 @@ class ApartmentListViewModelController {
 
                         print("success line \(json["success"][0]["success"])")
                         if json["success"][0]["success"].string == "success" {
-                            for i in 1...json["result"].count-1 {
+                            for i in 0...json["result"].count-1 {
                                 print("at stage \(i)")
 
                                 let itemImage = json["result"][i]["image"].string
@@ -45,7 +45,7 @@ class ApartmentListViewModelController {
                                 let itemAvailability = json["result"][i]["Availability"].string
                                 let itemKey = "\(i)"
 
-
+                                
                                 let itemGotten = ApartmentListModel(itemImage: itemImage!, itemPrice: itemPrice!, itemTitle: itemTitle!, itemLocation: itemLocation!, itemAvailability: itemAvailability!, itemKey: itemKey)
 
                                 apartmentListModel.append(itemGotten)

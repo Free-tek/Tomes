@@ -22,6 +22,8 @@
 		B8B408FE2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8B408FC2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib */; };
 		B8B409002507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B408FF2507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift */; };
 		B8B409022507DFDD00B46A7C /* ApartmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */; };
+		B8B40904250831DE00B46A7C /* BookApartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B40903250831DE00B46A7C /* BookApartmentViewController.swift */; };
+		B8B409062508373200B46A7C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B409052508373200B46A7C /* PaymentViewController.swift */; };
 		B8C8EEBB24F7C758002DDE20 /* tomes.json in Resources */ = {isa = PBXBuildFile; fileRef = B8C8EEBA24F7C758002DDE20 /* tomes.json */; };
 		B8C8EEC124F7CA35002DDE20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8EEC024F7CA35002DDE20 /* LoginViewController.swift */; };
 		B8CCB6A124F7E0D40034C878 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6A024F7E0D40034C878 /* Utilities.swift */; };
@@ -60,6 +62,8 @@
 		B8B408FC2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentDetailCollectionViewCell.xib; sourceTree = "<group>"; };
 		B8B408FF2507D0DD00B46A7C /* ApartmentDetailsViewModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewModelController.swift; sourceTree = "<group>"; };
 		B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewController.swift; sourceTree = "<group>"; };
+		B8B40903250831DE00B46A7C /* BookApartmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookApartmentViewController.swift; sourceTree = "<group>"; };
+		B8B409052508373200B46A7C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
 		B8C8EEBA24F7C758002DDE20 /* tomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tomes.json; path = ../../tomes.json; sourceTree = "<group>"; };
 		B8C8EEC024F7CA35002DDE20 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8CCB6A024F7E0D40034C878 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = SOURCE_ROOT; };
@@ -151,6 +155,8 @@
 				B8CCB6B224F80D1A0034C878 /* HomeViewController.swift */,
 				B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */,
 				B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */,
+				B8B40903250831DE00B46A7C /* BookApartmentViewController.swift */,
+				B8B409052508373200B46A7C /* PaymentViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -354,6 +360,8 @@
 				B876279E2507C05700D0EE92 /* SplashScreenViewController.swift in Sources */,
 				B8CCB6AD24F7EADB0034C878 /* SignUpViewController.swift in Sources */,
 				B8D380AB25005FE900A97474 /* ApartmentListViewModel.swift in Sources */,
+				B8B409062508373200B46A7C /* PaymentViewController.swift in Sources */,
+				B8B40904250831DE00B46A7C /* BookApartmentViewController.swift in Sources */,
 				B834CEA524F7BB10001AA809 /* ViewController.swift in Sources */,
 				B8D380A325005BEA00A97474 /* ApartmentListTableViewCell.swift in Sources */,
 				B834CEA124F7BB10001AA809 /* AppDelegate.swift in Sources */,

@@ -25,6 +25,10 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var feature7: UIImageView!
     @IBOutlet weak var feature8: UIImageView!
     @IBOutlet weak var feature9: UIImageView!
+    @IBOutlet weak var backMore: UIButton!
+    @IBOutlet weak var moreView: UIView!
+    @IBOutlet weak var viewAllFeatures: UIButton!
+    @IBOutlet weak var topFeatureView: UIView!
 
     @IBOutlet weak var bookView: UIView!
     @IBOutlet weak var orderPrice: UILabel!
@@ -33,6 +37,8 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
 
     var key = ""
     var imagePosition = 0
+    var _price = 0
+    var _title = ""
 
     let apartmentDetailsViewModelController: ApartmentDetailsViewModelController = ApartmentDetailsViewModelController()
 
@@ -57,6 +63,30 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     }
 
     func setUpElements() {
+        
+        bookView.alpha = 0
+        
+        viewAllFeatures.alpha = 0
+        viewAllFeatures.layer.cornerRadius = 5
+        viewAllFeatures.layer.masksToBounds = true
+        
+       
+        
+        //set round corner and shadow
+        moreView.alpha = 0
+        moreView.layer.cornerRadius = 10.0
+        moreView.clipsToBounds = true
+
+        moreView.layer.borderColor = UIColor.clear.cgColor
+        moreView.layer.masksToBounds = true
+
+        moreView.layer.shadowColor = UIColor.gray.cgColor
+        moreView.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+        moreView.layer.shadowRadius = 2.0
+        moreView.layer.shadowOpacity = 1.0
+        moreView.layer.masksToBounds = false
+        moreView.layer.shadowPath = UIBezierPath(roundedRect: moreView.bounds, cornerRadius: moreView.layer.cornerRadius).cgPath
+
         bookView.layer.cornerRadius = 10
         bookView.layer.masksToBounds = true
 
@@ -69,14 +99,14 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         apartmentImageCollectionView.dataSource = self
 
         apartmentImageCollectionView.backgroundColor = UIColor(white: 1, alpha: 0.5)
-        
+
         let screenRect = UIScreen.main.bounds
         let screenWidth = screenRect.size.width
         let screenHeight = screenRect.size.height
 
-        
+
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: screenWidth-5, height: screenHeight)
+        flowLayout.itemSize = CGSize(width: screenWidth - 5, height: screenHeight)
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 0.0
@@ -115,9 +145,14 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             let facility_manager = json["result"][0]["facility_manager"].string
                             let cook = json["result"][0]["cook"].string
                             let laundry = json["result"][0]["laundry"].string
-                            let price = json["result"][0]["price"].int
+                            self._title = json["result"][0]["title"].string!
+                            self._price = json["result"][0]["price"].int!
+                           
+                            
 
-                            self.orderPrice.text = ("₦\(price!)")
+                            self.orderPrice.text = ("₦\(self._price)")
+                            
+                            self.bookView.alpha = 1
 
                             self.feature1.alpha = 1
                             self.feature2.alpha = 1
@@ -161,6 +196,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             }
 
                             if facility_manager! == "true" {
+                                self.viewAllFeatures.alpha = 1
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "facility")
                             }
@@ -174,7 +210,8 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "laundry")
                             }
-
+                            
+                            
 
 
 
@@ -198,9 +235,38 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         }
 
     }
+    @IBAction func viewAllFeaturesFunc(_ sender: Any) {
+        moreView.alpha = 1
+        apartmentImageCollectionView.alpha = 0
+        bookView.alpha = 0
+        topFeatureView.alpha = 0
+        viewAllFeatures.alpha = 0
 
+
+    }
+
+    @IBAction func backMoreFunc(_ sender: Any) {
+        moreView.alpha = 0
+        apartmentImageCollectionView.alpha = 1
+        bookView.alpha = 1
+        topFeatureView.alpha = 1
+        viewAllFeatures.alpha = 1
+
+    }
 
     @IBAction func bookNowFunc(_ sender: Any) {
+       
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "bookApartmentNow") as! BookApartmentViewController
+
+        viewController.key = key
+        viewController.price = _price
+        viewController.apartmentName = _title
+
+        viewController.view.window?.rootViewController = viewController
+        viewController.view.window?.makeKeyAndVisible()
+
+        self.present(viewController, animated: false, completion: nil)
     }
 
     func setImage(_ imagePosition: Int, _ imageName: String) {
@@ -218,13 +284,10 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         case 6:
             feature6.image = UIImage(named: imageName)
         case 7:
-            feature7.alpha = 0
             feature7.image = UIImage(named: imageName)
         case 8:
-            feature8.alpha = 0
             feature8.image = UIImage(named: imageName)
         case 9:
-            feature9.alpha = 0
             feature9.image = UIImage(named: imageName)
         default:
             print("Out of bounds")
@@ -238,10 +301,10 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     @objc(collectionView: cellForItemAtIndexPath:) func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
         let cell = apartmentImageCollectionView.dequeueReusableCell(withReuseIdentifier: "ApartmentDetailCollectionViewCell", for: indexPath) as! ApartmentDetailCollectionViewCell
-        
+
         if let viewModel = apartmentDetailsViewModelController.viewModel(at: indexPath.row) {
-                cell.configure(with: viewModel)
-            }
+            cell.configure(with: viewModel)
+        }
 
         return cell
     }

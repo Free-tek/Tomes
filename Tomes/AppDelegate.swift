@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import Paystack
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
         FirebaseApp.configure()
+        Paystack.setDefaultPublicKey("pk_test_4630d972a60683fef74c82acb4e8dace692ff638")
         return true
     }
 

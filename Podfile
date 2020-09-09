@@ -46,5 +46,8 @@ target 'Tomes' do
 
   #Range Slider
   pod 'RangeSeekSlider'
+ 
+  #Pay Stack
+  pod 'Paystack'
 
 end
