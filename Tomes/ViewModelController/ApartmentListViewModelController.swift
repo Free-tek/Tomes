@@ -10,6 +10,7 @@ import Foundation
 import Firebase
 import Alamofire
 import SwiftyJSON
+import FirebaseAuth
 
 class ApartmentListViewModelController {
 

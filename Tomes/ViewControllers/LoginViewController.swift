@@ -10,6 +10,7 @@ import UIKit
 import SystemConfiguration
 import Lottie
 import  Firebase
+import FirebaseAuth
 
 class LoginViewController: UIViewController {
 
@@ -39,6 +40,7 @@ class LoginViewController: UIViewController {
         Utilities.styleFilledButton(login)
         Utilities.styleFilledButton(signUp)
         self.hideKeyboardWhenTappedAround()
+        
     }
 
     @IBAction func loginFunc(_ sender: Any) {

@@ -33,6 +33,8 @@ class BookApartmentViewController: UIViewController {
     var _companyAddress = ""
     var _refereeName = ""
     var _refereePhoneNo = ""
+    var  apartmentLocation = ""
+    var apartmentAvailability = ""
     
     
     var refList: DatabaseReference!
@@ -84,6 +86,9 @@ class BookApartmentViewController: UIViewController {
     }
     
     @IBAction func backFunc(_ sender: Any) {
+        
+        
+        
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(withIdentifier: "apartmentDetailsPage") as! ApartmentDetailsViewController
 
@@ -111,6 +116,7 @@ class BookApartmentViewController: UIViewController {
             viewController.companyAddress = companyAddress.text!
             viewController.refereeName = refereeName.text!
             viewController.refereePhoneNo = refereePhoneNo.text!
+            viewController.apartmentLocation = apartmentLocation
             
             viewController.view.window?.rootViewController = viewController
             viewController.view.window?.makeKeyAndVisible()

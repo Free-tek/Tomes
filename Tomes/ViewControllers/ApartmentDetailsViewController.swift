@@ -11,6 +11,7 @@ import AutoScrollCollectionView
 import FirebaseAuth
 import Alamofire
 import SwiftyJSON
+import Lottie
 
 class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
 
@@ -39,7 +40,11 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     var imagePosition = 0
     var _price = 0
     var _title = ""
+    var _apartmentLocation = ""
+    var _apartmentAvailability = ""
 
+    let animationView = AnimationView();
+    
     let apartmentDetailsViewModelController: ApartmentDetailsViewModelController = ApartmentDetailsViewModelController()
 
     override func viewDidLoad() {
@@ -53,6 +58,9 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                 print("error encountered")
             } else {
                 DispatchQueue.main.async {
+                    
+                    self.animationView.alpha = 1
+                    self.animationView.stop()
                     self.apartmentImageCollectionView.alpha = 1
                     self.apartmentImageCollectionView.reloadData()
                     self.apartmentImageCollectionView.startAutoScrolling(withTimeInterval: TimeInterval(exactly: 3.0)!)
@@ -64,6 +72,16 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
 
     func setUpElements() {
         
+        self.animationView.alpha = 1
+        self.animationView.animation = Animation.named("loadingTomes")
+        self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        self.animationView.center = self.view.center
+        self.animationView.contentMode = .scaleAspectFit
+        self.animationView.loopMode = .loop
+        self.animationView.play()
+        self.view.addSubview(self.animationView)
+
+            
         bookView.alpha = 0
         
         viewAllFeatures.alpha = 0
@@ -147,6 +165,8 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             let laundry = json["result"][0]["laundry"].string
                             self._title = json["result"][0]["title"].string!
                             self._price = json["result"][0]["price"].int!
+                            self._apartmentLocation = json["result"][0]["location"].string!
+                            self._apartmentAvailability = json["result"][0]["Availability"].string!
                            
                             
 
@@ -213,10 +233,6 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             
                             
 
-
-
-
-
                         } else {
                             //TODO: error
                         }
@@ -255,18 +271,29 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     }
 
     @IBAction func bookNowFunc(_ sender: Any) {
+        
+        if _apartmentAvailability == "false"{
+            showToast(message: "Ooops... this apartment is no longer available", seconds: 1.3)
+        
+        }else{
+            
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let viewController = storyboard.instantiateViewController(withIdentifier: "bookApartmentNow") as! BookApartmentViewController
+
+            viewController.key = key
+            viewController.price = _price
+            viewController.apartmentName = _title
+            viewController.apartmentLocation = _apartmentLocation
+            viewController.apartmentAvailability = _apartmentAvailability
+
+            viewController.view.window?.rootViewController = viewController
+            viewController.view.window?.makeKeyAndVisible()
+
+            self.present(viewController, animated: false, completion: nil)
+        }
+        
        
-        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
-        let viewController = storyboard.instantiateViewController(withIdentifier: "bookApartmentNow") as! BookApartmentViewController
-
-        viewController.key = key
-        viewController.price = _price
-        viewController.apartmentName = _title
-
-        viewController.view.window?.rootViewController = viewController
-        viewController.view.window?.makeKeyAndVisible()
-
-        self.present(viewController, animated: false, completion: nil)
+        
     }
 
     func setImage(_ imagePosition: Int, _ imageName: String) {

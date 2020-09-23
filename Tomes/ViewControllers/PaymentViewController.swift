@@ -8,6 +8,10 @@
 
 import UIKit
 import Paystack
+import Firebase
+import FirebaseAuth
+import FirebaseDatabase
+import Lottie
 
 class PaymentViewController: UIViewController {
 
@@ -17,6 +21,8 @@ class PaymentViewController: UIViewController {
     let backendURLString = "https://calm-scrubland-33409.herokuapp.com"
     let card: PSTCKCard = PSTCKCard()
 
+    let animationView = AnimationView();
+
     // MARK: Properties
 
     @IBOutlet weak var cardNumber: UITextField!
@@ -24,6 +30,15 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var expiryYear: UITextField!
     @IBOutlet weak var expiryMonth: UITextField!
     @IBOutlet weak var payNow: UIButton!
+
+    @IBOutlet weak var paymentHeader: UILabel!
+    @IBOutlet weak var cardNoHeader: UILabel!
+    @IBOutlet weak var cvvHeader: UILabel!
+    @IBOutlet weak var expiryYearHeader: UILabel!
+    @IBOutlet weak var expiryMonthHeader: UILabel!
+
+
+
 
     var price = 0
     var key = ""
@@ -34,6 +49,7 @@ class PaymentViewController: UIViewController {
     var emailAddress = ""
     var refereeName = ""
     var refereePhoneNo = ""
+    var apartmentLocation = ""
 
     let cardParams = PSTCKCardParams.init();
 
@@ -49,9 +65,32 @@ class PaymentViewController: UIViewController {
     func setUpElement() {
         payNow.layer.cornerRadius = 10
 
+
     }
 
     @IBAction func payNowFunc(_ sender: Any) {
+
+        self.animationView.alpha = 1
+        self.animationView.animation = Animation.named("loadingTomes")
+        self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        self.animationView.center = self.view.center
+        self.animationView.contentMode = .scaleAspectFit
+        self.animationView.loopMode = .loop
+        self.animationView.play()
+        self.view.addSubview(self.animationView)
+
+        cardNumber.alpha = 0
+        cvv.alpha = 0
+        expiryYear.alpha = 0
+        expiryMonth.alpha = 0
+        payNow.alpha = 0
+
+        paymentHeader.alpha = 0
+        cardNoHeader.alpha = 0
+        cvvHeader.alpha = 0
+        expiryYearHeader.alpha = 0
+        expiryMonthHeader.alpha = 0
+
 
         // cardParams already fetched from our view or assembled by you
         let transactionParams = PSTCKTransactionParams.init();
@@ -69,9 +108,9 @@ class PaymentViewController: UIViewController {
             transactionParams.additionalAPIParameters = ["enforce_otp": "true"];
             transactionParams.email = emailAddress;
             transactionParams.amount = UInt("\(price)00")!;
-            
-            
-            
+
+
+
             let dictParams: NSMutableDictionary = [
                 "recurring": false
             ];
@@ -91,6 +130,22 @@ class PaymentViewController: UIViewController {
                 try transactionParams.setMetadataValueArray(arrParams, forKey: "custom_array");
             } catch {
                 print(error)
+
+                cardNumber.alpha = 1
+                cvv.alpha = 1
+                expiryYear.alpha = 1
+                expiryMonth.alpha = 1
+                payNow.alpha = 1
+
+                paymentHeader.alpha = 1
+                cardNoHeader.alpha = 1
+                cvvHeader.alpha = 1
+                expiryYearHeader.alpha = 1
+                expiryMonthHeader.alpha = 1
+
+                self.animationView.stop()
+                self.animationView.alpha = 0
+                showToast(message: "Ooops... We couldnt process your payment", seconds: 1.2)
             }
 
 
@@ -102,21 +157,164 @@ class PaymentViewController: UIViewController {
                 try transactionParams.setMetadataValueArray(items, forKey: "items");
             } catch {
                 print(error);
+
+                cardNumber.alpha = 1
+                cvv.alpha = 1
+                expiryYear.alpha = 1
+                expiryMonth.alpha = 1
+                payNow.alpha = 1
+
+                paymentHeader.alpha = 1
+                cardNoHeader.alpha = 1
+                cvvHeader.alpha = 1
+                expiryYearHeader.alpha = 1
+                expiryMonthHeader.alpha = 1
+
+                self.animationView.stop()
+                self.animationView.alpha = 0
+                showToast(message: "Ooops... We couldnt process your payment", seconds: 1.2)
+
             }
             transactionParams.email = emailAddress;
 
             PSTCKAPIClient.shared().chargeCard(cardParams, forTransaction: transactionParams, on: self,
                 didEndWithError: { (error, reference) -> Void in
                     print("error payment: \(error)")
+
+                    self.cardNumber.alpha = 1
+                    self.cvv.alpha = 1
+                    self.expiryYear.alpha = 1
+                    self.expiryMonth.alpha = 1
+                    self.payNow.alpha = 1
+
+                    self.paymentHeader.alpha = 1
+                    self.cardNoHeader.alpha = 1
+                    self.cvvHeader.alpha = 1
+                    self.expiryYearHeader.alpha = 1
+                    self.expiryMonthHeader.alpha = 1
+
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
                     self.showToast(message: "Ooops... we couldnt make this payment", seconds: 1.2)
                 }, didRequestValidation: { (reference) -> Void in
                     // an OTP was requested, transaction has not yet succeeded
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
                     self.showToast(message: "Ooops... please genetrate  on the doc ", seconds: 1.2)
                 }, didTransactionSuccess: { (reference) -> Void in
                     // transaction may have succeeded, please verify on backend
-                    self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
+
+
+                    let date = Date()
+                    let calendar = Calendar.current
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "LLLL"
+                    let month = dateFormatter.string(from: date)
                     
-                    //TODO: Confirm payment and save package to DB
+                    
+                    var dateComponent = DateComponents()
+                    dateComponent.day = 30
+                    let futureDate = Calendar.current.date(byAdding: dateComponent, to: date)
+                    
+                    let dateformat = DateFormatter()
+                    dateformat.dateFormat = "MM/dd/yy"
+                    let paidUpTo = dateformat.string(from: futureDate!)
+                    
+                    let df = DateFormatter()
+                    df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                    let now = df.string(from: Date())
+                    
+                    
+                    //Confirm payment and save package to DB
+                    let post: [String: Any] = ["apartment_name": self.apartmentName,
+                        "fullName": self.fullName,
+                        "phoneNo": self.phoneNo,
+                        "companyAddress": self.companyAddress,
+                        "emailAddress": self.emailAddress,
+                        "refereeName": self.refereeName,
+                        "refereePhoneNo": self.refereePhoneNo,
+                        "price": self.price,
+                        "apartment_location": self.apartmentLocation,
+                        "apartment_name": self.apartmentName,
+                        "date": now,
+                        "month": month,
+                        "paidUpTo": paidUpTo
+                    ]
+                    
+                    
+                   
+                    let availability: [String: Any] = ["Availability:": "false"]
+
+                    let userId = Auth.auth().currentUser?.uid
+                    let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
+
+                    let refApartment = Database.database().reference().child("apartments").child(self.key)
+
+                    
+                    let refUser = Database.database().reference().child("users").child(userId!)
+                    refUser.child("payment_date").setValue(now)
+                    
+                    
+                    //save user's data
+                    ref.setValue(post) { (err, resp) in
+                        guard err == nil else {
+                            print("Posting failed : ")
+
+                            self.animationView.stop()
+                            self.animationView.alpha = 0
+
+                            self.cardNumber.alpha = 1
+                            self.cvv.alpha = 1
+                            self.expiryYear.alpha = 1
+                            self.expiryMonth.alpha = 1
+                            self.payNow.alpha = 1
+
+                            self.paymentHeader.alpha = 1
+                            self.cardNoHeader.alpha = 1
+                            self.cvvHeader.alpha = 1
+                            self.expiryYearHeader.alpha = 1
+                            self.expiryMonthHeader.alpha = 1
+
+                            return
+                        }
+                        print("No errors while posting, :")
+                        //go to home page
+
+
+
+
+                        refApartment.setValue(availability) { (err, resp) in
+                            guard err == nil else {
+                                print("Posting failed : ")
+
+                                return
+                            }
+
+                            self.animationView.stop()
+                            self.animationView.alpha = 0
+
+                            self.cardNumber.alpha = 1
+                            self.cvv.alpha = 1
+                            self.expiryYear.alpha = 1
+                            self.expiryMonth.alpha = 1
+                            self.payNow.alpha = 1
+
+                            self.paymentHeader.alpha = 1
+                            self.cardNoHeader.alpha = 1
+                            self.cvvHeader.alpha = 1
+                            self.expiryYearHeader.alpha = 1
+                            self.expiryMonthHeader.alpha = 1
+
+
+                            self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
+
+
+                        }
+
+
+                    }
+
+
                     //transition home
                     DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                             self.performSegue(withIdentifier: "backHome_payment", sender: nil)
@@ -126,6 +324,22 @@ class PaymentViewController: UIViewController {
 
         } else {
             //TODO: take them pack to product details page
+            self.animationView.stop()
+            self.animationView.alpha = 0
+
+            cardNumber.alpha = 1
+            cvv.alpha = 1
+            expiryYear.alpha = 1
+            expiryMonth.alpha = 1
+            payNow.alpha = 1
+
+            paymentHeader.alpha = 1
+            cardNoHeader.alpha = 1
+            cvvHeader.alpha = 1
+            expiryYearHeader.alpha = 1
+            expiryMonthHeader.alpha = 1
+
+
             showToast(message: "error making payment", seconds: 1.2)
         }
 

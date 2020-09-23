@@ -9,6 +9,7 @@
 import UIKit
 import Lottie
 import Firebase
+import FirebaseAuth
 
 class SignUpViewController: UIViewController {
 

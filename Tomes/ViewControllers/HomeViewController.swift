@@ -10,6 +10,7 @@ import UIKit
 import RangeSeekSlider
 import Firebase
 import FirebaseDatabase
+import Lottie
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, RangeSeekSliderDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -41,6 +42,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     var minimumPrice = 120000
     var maximumPrice = 500000
 
+    let animationView = AnimationView();
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -51,7 +54,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("error encountered")
             } else {
                 DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
                     self.ApartmentListTableView.alpha = 1
                     self.ApartmentListTableView.reloadData()
                 }
@@ -61,6 +65,17 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func setUpElements() {
+
+        self.animationView.alpha = 1
+        self.animationView.animation = Animation.named("loadingTomes")
+        self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        self.animationView.center = self.view.center
+        self.animationView.contentMode = .scaleAspectFit
+        self.animationView.loopMode = .loop
+        self.animationView.play()
+        self.view.addSubview(self.animationView)
+
+
         revert.alpha = 0
         noResultIcon.alpha = 0
         noResultLabel.alpha = 0
@@ -124,11 +139,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         filterView.layer.masksToBounds = false
         filterView.layer.shadowPath = UIBezierPath(roundedRect: filterView.bounds, cornerRadius: filterView.layer.cornerRadius).cgPath
 
-
-        self.activityIndicator.hidesWhenStopped = true
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
-
+        self.activityIndicator.alpha = 0
+        
         filterButton.layer.cornerRadius = 20.0
 
         hideKeyboardWhenTappedAround()
@@ -246,8 +258,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     @IBAction func goFilter(_ sender: Any) {
 
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        self.animationView.play()
+        self.animationView.alpha = 1
 
         filterView.alpha = 0
         searchBar.alpha = 1
@@ -264,7 +276,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 print("error encountered")
             } else {
                 DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
                     self.ApartmentListTableView.alpha = 1
                     self.ApartmentListTableView.reloadData()
 
@@ -289,14 +302,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         noResultLabel.alpha = 0
         revert.alpha = 0
 
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        self.animationView.play()
+        self.animationView.alpha = 1
         apartmentListViewModelController.fetchApartments(completion: { (success) in
             if !success {
                 print("error encountered")
             } else {
                 DispatchQueue.main.async {
-                    self.activityIndicator.stopAnimating()
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
                     self.ApartmentListTableView.alpha = 1
                     self.ApartmentListTableView.reloadData()
 
@@ -319,8 +333,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 extension HomeViewController: UISearchBarDelegate {
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
 
-        self.activityIndicator.isHidden = false
-        self.activityIndicator.startAnimating()
+        self.animationView.play()
+        self.animationView.alpha = 1
 
         if searchText == "" {
             revert.alpha = 0
@@ -332,7 +346,8 @@ extension HomeViewController: UISearchBarDelegate {
                     print("error encountered")
                 } else {
                     DispatchQueue.main.async {
-                        self.activityIndicator.stopAnimating()
+                        self.animationView.stop()
+                        self.animationView.alpha = 0
                         self.ApartmentListTableView.alpha = 1
                         self.ApartmentListTableView.reloadData()
 
@@ -356,7 +371,8 @@ extension HomeViewController: UISearchBarDelegate {
                         print("error encountered")
                     } else {
                         DispatchQueue.main.async {
-                            self.activityIndicator.stopAnimating()
+                            self.animationView.stop()
+                            self.animationView.alpha = 0
                             self.ApartmentListTableView.alpha = 1
                             self.ApartmentListTableView.reloadData()
 
