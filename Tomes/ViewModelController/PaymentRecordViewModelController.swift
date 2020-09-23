@@ -56,7 +56,7 @@ class PaymentRecordViewModelController {
                                     let price = json["suggestion"][0]["price"].int
                                     let apartmentName = json["suggestion"][0]["title"].string
                                     let apartmentLocation = json["suggestion"][0]["location"].string
-                                    let count = 1
+                                    let count = 0
                                     
                                     
                                     let itemGotten = PaymentRecordModel(month: month, paidUpTo: paidUpTo, price: price!, apartmentName: apartmentName!, apartmentLocation: apartmentLocation!, count: count)
@@ -83,18 +83,25 @@ class PaymentRecordViewModelController {
                                 
                             }else if json["result"].count >= 1{
                                 
-                                for i in 0...json["result"].count - 1 {
+                                print("this is the history count \(json["result"][0][1])")
+                                for i in 1...json["result"][0].count - 1 {
                                     
                                     
-                                    let month = json["result"][i]["month"].string
-                                    let paidUpTo = json["result"][i]["paidUpTo"].string
-                                    let price = json["result"][i]["price"].int
-                                    let apartmentName = json["result"][i]["apartment_name"].string
-                                    let apartmentLocation = json["result"][i]["apartment_location"].string
-                                    let count = i+1
+                                    let month = json["result"][0][i]["month"].string
+                                    let paidUpTo = json["result"][0][i]["paidUpTo"].string
+                                    let price = json["result"][0][i]["price"].int
+                                    let apartmentName = json["result"][0][i]["apartment_name"].string
+                                    let apartmentLocation = json["result"][0][i]["apartment_location"].string
+                                    let count = i
 
+                                   
+                                    
                                     let itemGotten = PaymentRecordModel(month: month!, paidUpTo: paidUpTo!, price: price!, apartmentName: apartmentName!,apartmentLocation: apartmentLocation!, count: count)
 
+                                    if i == 1{
+                                        let itemGotten = PaymentRecordModel(month: month!, paidUpTo: paidUpTo!, price: price!, apartmentName: apartmentName!,apartmentLocation: apartmentLocation!, count: 0)
+                                        paymentRecordModel.append(itemGotten)
+                                    }
                                     paymentRecordModel.append(itemGotten)
                                 }
                                 

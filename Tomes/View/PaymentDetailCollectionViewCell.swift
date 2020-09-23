@@ -55,13 +55,15 @@ class PaymentDetailCollectionViewCell: UICollectionViewCell {
             nameOfApartment.text = viewModel.apartmentName!
             locationOfApartment.text = viewModel.apartmentLocation!
             
-            if viewModel.count == 1{
+            if viewModel.count == 0{
                 paidUpTo.isHidden = true
                 paidUpToLabel.isHidden = true
-                background.backgroundColor = UIColor.init(red: 144/255, green: 164/255, blue: 184/255, alpha: 1)
-            }else{
-                payNow.isHidden = false
+                month.text = "Book Now"
                 background.backgroundColor = UIColor.init(red: 255/255, green: 77/255, blue: 17/255, alpha: 1)
+                
+            }else{
+                payNow.isHidden = true
+                background.backgroundColor = UIColor.init(red: 144/255, green: 164/255, blue: 184/255, alpha: 1)
             }
             
         }

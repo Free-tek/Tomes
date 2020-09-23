@@ -23,7 +23,8 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var daysLeft: UILabel!
     @IBOutlet weak var paymentHistoryView: UIView!
     @IBOutlet weak var paymentCollectionView: UICollectionView!
-
+    @IBOutlet weak var historyLabel: UILabel!
+    
     let animationView = AnimationView();
 
     let paymentRecordViewModelController: PaymentRecordViewModelController = PaymentRecordViewModelController()
@@ -144,6 +145,11 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
 
     @objc public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        
+        if paymentRecordViewModelController.viewModelsCount <= 1{
+            historyLabel.isHidden = false
+        }
+        
         return paymentRecordViewModelController.viewModelsCount
     }
 

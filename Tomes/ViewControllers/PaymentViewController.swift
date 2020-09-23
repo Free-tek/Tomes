@@ -36,7 +36,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var cvvHeader: UILabel!
     @IBOutlet weak var expiryYearHeader: UILabel!
     @IBOutlet weak var expiryMonthHeader: UILabel!
-
+    @IBOutlet weak var backButton: UIButton!
+    
 
 
 
@@ -90,6 +91,8 @@ class PaymentViewController: UIViewController {
         cvvHeader.alpha = 0
         expiryYearHeader.alpha = 0
         expiryMonthHeader.alpha = 0
+        
+        backButton.alpha = 0
 
 
         // cardParams already fetched from our view or assembled by you
@@ -142,6 +145,7 @@ class PaymentViewController: UIViewController {
                 cvvHeader.alpha = 1
                 expiryYearHeader.alpha = 1
                 expiryMonthHeader.alpha = 1
+                backButton.alpha = 1
 
                 self.animationView.stop()
                 self.animationView.alpha = 0
@@ -169,6 +173,7 @@ class PaymentViewController: UIViewController {
                 cvvHeader.alpha = 1
                 expiryYearHeader.alpha = 1
                 expiryMonthHeader.alpha = 1
+                backButton.alpha = 1
 
                 self.animationView.stop()
                 self.animationView.alpha = 0
@@ -192,6 +197,7 @@ class PaymentViewController: UIViewController {
                     self.cvvHeader.alpha = 1
                     self.expiryYearHeader.alpha = 1
                     self.expiryMonthHeader.alpha = 1
+                    self.backButton.alpha = 1
 
                     self.animationView.stop()
                     self.animationView.alpha = 0
@@ -226,7 +232,7 @@ class PaymentViewController: UIViewController {
                     
                     
                     //Confirm payment and save package to DB
-                    let post: [String: Any] = ["apartment_name": self.apartmentName,
+                    let post: [String: Any] = [
                         "fullName": self.fullName,
                         "phoneNo": self.phoneNo,
                         "companyAddress": self.companyAddress,
@@ -241,86 +247,88 @@ class PaymentViewController: UIViewController {
                         "paidUpTo": paidUpTo
                     ]
                     
-                    
-                   
-                    let availability: [String: Any] = ["Availability:": "false"]
 
                     let userId = Auth.auth().currentUser?.uid
+                    
                     let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
-
-                    let refApartment = Database.database().reference().child("apartments").child(self.key)
-
                     
-                    let refUser = Database.database().reference().child("users").child(userId!)
-                    refUser.child("payment_date").setValue(now)
-                    
-                    
-                    //save user's data
-                    ref.setValue(post) { (err, resp) in
-                        guard err == nil else {
-                            print("Posting failed : ")
+                    ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                      print(snapshot.childrenCount)
+                        
+                        
+                        let refApartment = Database.database().reference().child("apartments").child(self.key)
+                            
+                            refApartment.child("Availability").setValue("false")
 
-                            self.animationView.stop()
-                            self.animationView.alpha = 0
+                            
+                            let refUser = Database.database().reference().child("users").child(userId!)
+                            refUser.child("payment_date").setValue(now)
+                            
+                            
+                            //save user's data
+                        ref.child("\(snapshot.childrenCount + 1)").setValue(post) { (err, resp) in
+                                guard err == nil else {
+                                    print("Posting failed : ")
 
-                            self.cardNumber.alpha = 1
-                            self.cvv.alpha = 1
-                            self.expiryYear.alpha = 1
-                            self.expiryMonth.alpha = 1
-                            self.payNow.alpha = 1
+                                    self.animationView.stop()
+                                    self.animationView.alpha = 0
 
-                            self.paymentHeader.alpha = 1
-                            self.cardNoHeader.alpha = 1
-                            self.cvvHeader.alpha = 1
-                            self.expiryYearHeader.alpha = 1
-                            self.expiryMonthHeader.alpha = 1
+                                    self.cardNumber.alpha = 1
+                                    self.cvv.alpha = 1
+                                    self.expiryYear.alpha = 1
+                                    self.expiryMonth.alpha = 1
+                                    self.payNow.alpha = 1
 
-                            return
-                        }
-                        print("No errors while posting, :")
-                        //go to home page
+                                    self.paymentHeader.alpha = 1
+                                    self.cardNoHeader.alpha = 1
+                                    self.cvvHeader.alpha = 1
+                                    self.expiryYearHeader.alpha = 1
+                                    self.expiryMonthHeader.alpha = 1
+                                    self.backButton.alpha = 1
+
+                                    return
+                                }
+                                print("No errors while posting, :")
+                                //go to home page
 
 
 
+                                self.animationView.stop()
+                                self.animationView.alpha = 0
 
-                        refApartment.setValue(availability) { (err, resp) in
-                            guard err == nil else {
-                                print("Posting failed : ")
+                                self.cardNumber.alpha = 1
+                                self.cvv.alpha = 1
+                                self.expiryYear.alpha = 1
+                                self.expiryMonth.alpha = 1
+                                self.payNow.alpha = 1
 
-                                return
+                                self.paymentHeader.alpha = 1
+                                self.cardNoHeader.alpha = 1
+                                self.cvvHeader.alpha = 1
+                                self.expiryYearHeader.alpha = 1
+                                self.expiryMonthHeader.alpha = 1
+                                self.backButton.alpha = 1
+
+
+                                self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
+                                
+                                
+                                //transition account
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                        self.performSegue(withIdentifier: "toAccount", sender: nil)
+                                    })
+
+
                             }
 
-                            self.animationView.stop()
-                            self.animationView.alpha = 0
 
-                            self.cardNumber.alpha = 1
-                            self.cvv.alpha = 1
-                            self.expiryYear.alpha = 1
-                            self.expiryMonth.alpha = 1
-                            self.payNow.alpha = 1
-
-                            self.paymentHeader.alpha = 1
-                            self.cardNoHeader.alpha = 1
-                            self.cvvHeader.alpha = 1
-                            self.expiryYearHeader.alpha = 1
-                            self.expiryMonthHeader.alpha = 1
-
-
-                            self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
-
-
-                        }
-
-
-                    }
-
-
-                    //transition home
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                            self.performSegue(withIdentifier: "backHome_payment", sender: nil)
+                            
                         })
+                    
+                    
+                    })
 
-                })
+                    
 
         } else {
             //TODO: take them pack to product details page
@@ -338,6 +346,7 @@ class PaymentViewController: UIViewController {
             cvvHeader.alpha = 1
             expiryYearHeader.alpha = 1
             expiryMonthHeader.alpha = 1
+            backButton.alpha = 1
 
 
             showToast(message: "error making payment", seconds: 1.2)

@@ -46,6 +46,7 @@ class ApartmentListViewModelController {
                                 let itemAvailability = json["result"][i]["Availability"].string
                                 let itemKey = "\(i)"
 
+                                print(itemImage!, itemPrice!, itemTitle!, itemLocation!, itemAvailability!, itemKey)
                                 
                                 let itemGotten = ApartmentListModel(itemImage: itemImage!, itemPrice: itemPrice!, itemTitle: itemTitle!, itemLocation: itemLocation!, itemAvailability: itemAvailability!, itemKey: itemKey)
 
