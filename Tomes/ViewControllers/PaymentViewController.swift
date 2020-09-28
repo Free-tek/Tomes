@@ -37,8 +37,8 @@ class PaymentViewController: UIViewController {
     @IBOutlet weak var expiryYearHeader: UILabel!
     @IBOutlet weak var expiryMonthHeader: UILabel!
     @IBOutlet weak var backButton: UIButton!
-    
 
+    
 
 
     var price = 0
@@ -51,6 +51,9 @@ class PaymentViewController: UIViewController {
     var refereeName = ""
     var refereePhoneNo = ""
     var apartmentLocation = ""
+    var apartmentPrices = ""
+    var duration = ""
+    var _apartmentPrices = ""
 
     let cardParams = PSTCKCardParams.init();
 
@@ -91,7 +94,7 @@ class PaymentViewController: UIViewController {
         cvvHeader.alpha = 0
         expiryYearHeader.alpha = 0
         expiryMonthHeader.alpha = 0
-        
+
         backButton.alpha = 0
 
 
@@ -104,8 +107,26 @@ class PaymentViewController: UIViewController {
         cardParams.expYear = UInt(expiryYear.text!)!
         cardParams.expMonth = UInt(expiryMonth.text!)!
 
+        //check if card is valid
+        
         // building new Paystack Transaction
-        if price != 0 {
+        if validate() != false && price != 0 {
+
+            print("this is apartment price \(apartmentPrices)")
+            if apartmentPrices != "" && apartmentPrices.lowercased().contains("weekly") {
+                price = Int (apartmentPrices.lowercased().replacingOccurrences(of: "weekly - ₦", with: ""))!
+                duration = "weekly"
+                print("entered price 1 \(price)")
+
+            } else if apartmentPrices != "" && apartmentPrices.lowercased().contains("monthly") {
+                price = Int (apartmentPrices.lowercased().replacingOccurrences(of: "monthly - ₦", with: ""))!
+                duration = "monthly"
+
+            } else if apartmentPrices != "" && apartmentPrices.lowercased().contains("daily") {
+                price = Int (apartmentPrices.lowercased().replacingOccurrences(of: "daily - ₦", with: ""))!
+                duration = "daily"
+
+            }
 
             //transactionParams.access_code = newCode as String;
             transactionParams.additionalAPIParameters = ["enforce_otp": "true"];
@@ -216,21 +237,21 @@ class PaymentViewController: UIViewController {
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "LLLL"
                     let month = dateFormatter.string(from: date)
-                    
-                    
+
+
                     var dateComponent = DateComponents()
                     dateComponent.day = 30
                     let futureDate = Calendar.current.date(byAdding: dateComponent, to: date)
-                    
+
                     let dateformat = DateFormatter()
                     dateformat.dateFormat = "MM/dd/yy"
                     let paidUpTo = dateformat.string(from: futureDate!)
-                    
+
                     let df = DateFormatter()
                     df.dateFormat = "yyyy-MM-dd hh:mm:ss"
                     let now = df.string(from: Date())
-                    
-                    
+
+
                     //Confirm payment and save package to DB
                     let post: [String: Any] = [
                         "fullName": self.fullName,
@@ -244,54 +265,32 @@ class PaymentViewController: UIViewController {
                         "apartment_name": self.apartmentName,
                         "date": now,
                         "month": month,
-                        "paidUpTo": paidUpTo
+                        "paidUpTo": paidUpTo,
+                        "duration": self.duration
                     ]
-                    
+
 
                     let userId = Auth.auth().currentUser?.uid
-                    
+
                     let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
-                    
+
                     ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                      print(snapshot.childrenCount)
-                        
-                        
+                        print(snapshot.childrenCount)
+
+
                         let refApartment = Database.database().reference().child("apartments").child(self.key)
-                            
-                            refApartment.child("Availability").setValue("false")
 
-                            
-                            let refUser = Database.database().reference().child("users").child(userId!)
-                            refUser.child("payment_date").setValue(now)
-                            
-                            
-                            //save user's data
+                        refApartment.child("Availability").setValue("false")
+
+
+                        let refUser = Database.database().reference().child("users").child(userId!)
+                        refUser.child("payment_date").setValue(now)
+
+
+                        //save user's data
                         ref.child("\(snapshot.childrenCount + 1)").setValue(post) { (err, resp) in
-                                guard err == nil else {
-                                    print("Posting failed : ")
-
-                                    self.animationView.stop()
-                                    self.animationView.alpha = 0
-
-                                    self.cardNumber.alpha = 1
-                                    self.cvv.alpha = 1
-                                    self.expiryYear.alpha = 1
-                                    self.expiryMonth.alpha = 1
-                                    self.payNow.alpha = 1
-
-                                    self.paymentHeader.alpha = 1
-                                    self.cardNoHeader.alpha = 1
-                                    self.cvvHeader.alpha = 1
-                                    self.expiryYearHeader.alpha = 1
-                                    self.expiryMonthHeader.alpha = 1
-                                    self.backButton.alpha = 1
-
-                                    return
-                                }
-                                print("No errors while posting, :")
-                                //go to home page
-
-
+                            guard err == nil else {
+                                print("Posting failed : ")
 
                                 self.animationView.stop()
                                 self.animationView.alpha = 0
@@ -309,26 +308,49 @@ class PaymentViewController: UIViewController {
                                 self.expiryMonthHeader.alpha = 1
                                 self.backButton.alpha = 1
 
-
-                                self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
-                                
-                                
-                                //transition account
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                                        self.performSegue(withIdentifier: "toAccount", sender: nil)
-                                    })
-
-
+                                return
                             }
+                            print("No errors while posting, :")
+                            //go to home page
 
 
-                            
-                        })
-                    
-                    
+
+                            self.animationView.stop()
+                            self.animationView.alpha = 0
+
+                            self.cardNumber.alpha = 1
+                            self.cvv.alpha = 1
+                            self.expiryYear.alpha = 1
+                            self.expiryMonth.alpha = 1
+                            self.payNow.alpha = 1
+
+                            self.paymentHeader.alpha = 1
+                            self.cardNoHeader.alpha = 1
+                            self.cvvHeader.alpha = 1
+                            self.expiryYearHeader.alpha = 1
+                            self.expiryMonthHeader.alpha = 1
+                            self.backButton.alpha = 1
+
+
+                            self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
+
+
+                            //transition account
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                    self.performSegue(withIdentifier: "toAccount", sender: nil)
+                                })
+
+
+                        }
+
+
+
                     })
 
-                    
+
+                })
+
+
 
         } else {
             //TODO: take them pack to product details page
@@ -369,7 +391,9 @@ class PaymentViewController: UIViewController {
         viewController._companyAddress = companyAddress
         viewController._refereeName = refereeName
         viewController._refereePhoneNo = refereePhoneNo
-
+        viewController._apartmentPrices = apartmentPrices
+        viewController.apartmentPrices = _apartmentPrices
+        
         viewController.view.window?.rootViewController = viewController
         viewController.view.window?.makeKeyAndVisible()
 
@@ -379,18 +403,17 @@ class PaymentViewController: UIViewController {
 
     func validate() -> Bool {
 
-        if self.cardNumber.text?.count != 13 {
-            showToast(message: "Please enter a valid card number", seconds: 1.2)
-            return false
-        }
-        else if self.cvv.text?.count != 3 {
+        print("this is expiry month : \(self.expiryMonth.text)  and count \(self.expiryMonth.text?.count),  \(self.expiryMonth.text!.count)")
+        
+        if self.cvv.text!.count != 3 {
             showToast(message: "Please enter a valid CVV number", seconds: 1.2)
             return false
-        } else if self.expiryYear.text?.count != 4 {
-            showToast(message: "Please enter a valid expiry year hint: YYYY", seconds: 1.2)
+        } else if self.expiryYear.text!.count != 2 {
+            showToast(message: "Please enter a valid expiry year hint: YY", seconds: 1.2)
             return false
-        } else if self.expiryMonth.text?.count != 1 || self.expiryMonth.text?.count != 2 {
-            showToast(message: "Please enter a valid expiry hint: 1-12", seconds: 1.2)
+        }else if self.expiryMonth.text!.count < 1 || self.expiryMonth.text!.count > 2 {
+            
+            showToast(message: "Please enter a valid expiry month hint: 1 - 12", seconds: 1.2)
             return false
         }
 

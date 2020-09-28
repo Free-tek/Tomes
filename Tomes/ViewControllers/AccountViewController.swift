@@ -33,6 +33,7 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
         super.viewDidLoad()
 
         setUpElement()
+        
 
         paymentRecordViewModelController.fetchPaymentHistory(completion: { (success) in
             if !success {
@@ -161,22 +162,12 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         if let viewModel = paymentRecordViewModelController.viewModel(at: indexPath.row) {
             cell.configure(with: viewModel)
-
-//            cell.contentView.layer.cornerRadius = 25
-//            cell.contentView.layer.borderWidth = 1.0
-//
             
+            if indexPath.row == 0{
+                cell.payNow.alpha = 1
 
-//            cell.contentView.layer.borderColor = UIColor.clear.cgColor
-//            cell.contentView.layer.masksToBounds = true
-//
-//            cell.layer.shadowColor = UIColor.gray.cgColor
-//            cell.layer.shadowOffset = CGSize(width: 0, height: 2.0)
-//            cell.layer.shadowRadius = 2.0
-//            cell.layer.shadowOpacity = 1.0
-//            cell.layer.masksToBounds = false
-//            cell.layer.shadowPath = UIBezierPath(roundedRect: cell.bounds, cornerRadius: cell.contentView.layer.cornerRadius).cgPath
-
+            }
+            
 
         }
 

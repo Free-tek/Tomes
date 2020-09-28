@@ -36,12 +36,14 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var perMonthLabel: UILabel!
     @IBOutlet weak var bookNow: UIButton!
 
+    @IBOutlet weak var backHome: UIButton!
     var key = ""
     var imagePosition = 0
     var _price = 0
     var _title = ""
     var _apartmentLocation = ""
     var _apartmentAvailability = ""
+    var _apartmentPrices = ""
 
     let animationView = AnimationView();
     
@@ -53,21 +55,24 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         setUpElements()
         setUpApartmentFeatures()
 
-        apartmentDetailsViewModelController.fetchApartments(key, completion: { (success) in
-            if !success {
-                print("error encountered")
-            } else {
-                DispatchQueue.main.async {
-                    
-                    self.animationView.alpha = 1
-                    self.animationView.stop()
-                    self.apartmentImageCollectionView.alpha = 1
-                    self.apartmentImageCollectionView.reloadData()
-                    self.apartmentImageCollectionView.startAutoScrolling(withTimeInterval: TimeInterval(exactly: 3.0)!)
+        if key != nil{
+            apartmentDetailsViewModelController.fetchApartments(key, completion: { (success) in
+                if !success {
+                    print("error encountered")
+                } else {
+                    DispatchQueue.main.async {
+                        
+                        self.animationView.alpha = 1
+                        self.animationView.stop()
+                        self.apartmentImageCollectionView.alpha = 1
+                        self.apartmentImageCollectionView.reloadData()
+                        self.apartmentImageCollectionView.startAutoScrolling(withTimeInterval: TimeInterval(exactly: 3.0)!)
 
+                    }
                 }
-            }
-        })
+            })
+        }
+        
     }
 
     func setUpElements() {
@@ -134,7 +139,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
 
     func setUpApartmentFeatures() {
         var apartmentListModel = [ApartmentListModel?]()
-        let Url = String(format: "https://tomesdocker-tuki75gfda-uc.a.run.app/getApartmentDetails")
+        let Url = String(format: Constants.Endpoints.getApartmentDetails)
         let userID = Auth.auth().currentUser?.uid
 
         let parameters: [String: Any] = [
@@ -164,6 +169,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             let cook = json["result"][0]["cook"].string
                             let laundry = json["result"][0]["laundry"].string
                             self._title = json["result"][0]["title"].string!
+                            self._apartmentPrices = json["result"][0]["apartment_prices"].string!
                             self._price = json["result"][0]["price"].int!
                             self._apartmentLocation = json["result"][0]["location"].string!
                             self._apartmentAvailability = json["result"][0]["Availability"].string!
@@ -253,10 +259,11 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     }
     @IBAction func viewAllFeaturesFunc(_ sender: Any) {
         moreView.alpha = 1
-        apartmentImageCollectionView.alpha = 0
+        apartmentImageCollectionView.alpha = 1
         bookView.alpha = 0
         topFeatureView.alpha = 0
         viewAllFeatures.alpha = 0
+        backHome.alpha  = 0
 
 
     }
@@ -267,6 +274,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         bookView.alpha = 1
         topFeatureView.alpha = 1
         viewAllFeatures.alpha = 1
+        backHome.alpha  = 1
 
     }
 
@@ -285,6 +293,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
             viewController.apartmentName = _title
             viewController.apartmentLocation = _apartmentLocation
             viewController.apartmentAvailability = _apartmentAvailability
+            viewController.apartmentPrices = _apartmentPrices
 
             viewController.view.window?.rootViewController = viewController
             viewController.view.window?.makeKeyAndVisible()

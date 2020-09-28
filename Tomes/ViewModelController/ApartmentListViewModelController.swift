@@ -19,7 +19,7 @@ class ApartmentListViewModelController {
     func fetchApartments(completion: @escaping (_ success: Bool) -> ()) {
 
         var apartmentListModel = [ApartmentListModel?]()
-        let Url = String(format: "https://tomesdocker-tuki75gfda-uc.a.run.app/getApartments")
+        let Url = String(format: Constants.Endpoints.fetchApartments)
         let userID = Auth.auth().currentUser?.uid
 
         let parameters: [String: Any] = [

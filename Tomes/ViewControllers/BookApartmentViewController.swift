@@ -12,7 +12,9 @@ import Firebase
 import FirebaseDatabase
 import Paystack
 
-class BookApartmentViewController: UIViewController {
+class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPickerViewDelegate {
+    
+    
 
     @IBOutlet weak var fullName: UITextField!
     @IBOutlet weak var phoneNo: UITextField!
@@ -20,7 +22,12 @@ class BookApartmentViewController: UIViewController {
     @IBOutlet weak var companyAddress: UITextField!
     @IBOutlet weak var refereeName: UITextField!
     @IBOutlet weak var refereePhoneNo: UITextField!
+    @IBOutlet weak var duration: UITextField!
     @IBOutlet weak var back: UIButton!
+    
+    var durationPicker: UIPickerView?
+    private var durationDataSource = [String] ()
+    var durataionReady = false
     
     @IBOutlet weak var payNow: UIButton!
     
@@ -33,8 +40,10 @@ class BookApartmentViewController: UIViewController {
     var _companyAddress = ""
     var _refereeName = ""
     var _refereePhoneNo = ""
+    var _apartmentPrices = ""
     var  apartmentLocation = ""
     var apartmentAvailability = ""
+    var apartmentPrices = ""
     
     
     var refList: DatabaseReference!
@@ -44,6 +53,7 @@ class BookApartmentViewController: UIViewController {
         super.viewDidLoad()
 
         setUpElements()
+        setUpPricePicker()
         fetchUsersDetails()
         hideKeyboardWhenTappedAround()
     }
@@ -78,6 +88,7 @@ class BookApartmentViewController: UIViewController {
             self.companyAddress.text = self._companyAddress
             self.refereeName.text = self._refereeName
             self.refereePhoneNo.text = self._refereePhoneNo
+            self.duration.text = self._apartmentPrices
             
             
             
@@ -117,6 +128,9 @@ class BookApartmentViewController: UIViewController {
             viewController.refereeName = refereeName.text!
             viewController.refereePhoneNo = refereePhoneNo.text!
             viewController.apartmentLocation = apartmentLocation
+            viewController.apartmentPrices = duration.text!
+            viewController._apartmentPrices = apartmentPrices
+            
             
             viewController.view.window?.rootViewController = viewController
             viewController.view.window?.makeKeyAndVisible()
@@ -149,10 +163,50 @@ class BookApartmentViewController: UIViewController {
         else if self.refereePhoneNo.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             showToast(message: "Please enter your referee phone number", seconds: 1.2)
             return false
+            
+        }else if self.duration.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            showToast(message: "Please select the duration you want to book the apartment for", seconds: 1.2)
+            return false
         }
         
         return true
     }
     
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        return durationDataSource.count
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return durationDataSource[row]
+
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        duration.text = durationDataSource[row]
+    }
+    
+    
+    func setUpPricePicker() {
+        durationPicker = UIPickerView()
+        duration.inputView = durationPicker
+        durationPicker!.delegate = self
+
+        self.durationPicker!.delegate = self
+        self.durationPicker!.dataSource = self
+
+        if apartmentPrices != nil{
+            durationDataSource = apartmentPrices.components(separatedBy: ", ")
+            self.durataionReady = true
+        }
+        
+    }
+
 
 }
+

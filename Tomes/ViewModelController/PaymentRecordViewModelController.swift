@@ -20,7 +20,7 @@ class PaymentRecordViewModelController {
 
         var paymentRecordModel: [PaymentRecordModel?] = []
 
-        let Url = String(format: "https://tomesdocker-tuki75gfda-uc.a.run.app/getPaymentHistory")
+        let Url = String(format: Constants.Endpoints.getPaymentHistory)
         let userID = Auth.auth().currentUser?.uid
 
         let parameters: [String: Any] = [
@@ -60,7 +60,8 @@ class PaymentRecordViewModelController {
                                     
                                     
                                     let itemGotten = PaymentRecordModel(month: month, paidUpTo: paidUpTo, price: price!, apartmentName: apartmentName!, apartmentLocation: apartmentLocation!, count: count)
-                                    paymentRecordModel.append(itemGotten)
+                                    //paymentRecordModel.append(itemGotten)
+                                    paymentRecordModel.insert(itemGotten, at: 0)
                                     completion(true)
                                     
                                     self.viewModels = self.initViewModels(paymentRecordModel)
@@ -102,10 +103,17 @@ class PaymentRecordViewModelController {
                                         let itemGotten = PaymentRecordModel(month: month!, paidUpTo: paidUpTo!, price: price!, apartmentName: apartmentName!,apartmentLocation: apartmentLocation!, count: 0)
                                         paymentRecordModel.append(itemGotten)
                                     }
-                                    paymentRecordModel.append(itemGotten)
+                                    paymentRecordModel.insert(itemGotten, at: 0)
+                                    
                                 }
                                 
                                 self.viewModels = self.initViewModels(paymentRecordModel)
+                                
+                                
+                                let element = self.viewModels.remove(at: self.viewModelsCount - 1)
+                                self.viewModels.insert(element, at: 0)
+                                
+                                
                                 print("this is the viewmodel \(self.viewModels)")
                                 completion(true)
 

@@ -109,7 +109,7 @@
                                     <constraint firstAttribute="height" constant="40" id="Gh7-sr-NMT"/>
                                     <constraint firstAttribute="width" constant="131" id="tqt-cW-7Ov"/>
                                 </constraints>
-                                <state key="normal" title="Pay Now">
+                                <state key="normal" title="Book">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                             </button>

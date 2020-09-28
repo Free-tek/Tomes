@@ -15,6 +15,7 @@
 		B834CEAA24F7BB16001AA809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B834CEA924F7BB16001AA809 /* Assets.xcassets */; };
 		B834CEAD24F7BB16001AA809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B834CEAB24F7BB16001AA809 /* LaunchScreen.storyboard */; };
 		B834CEB724F7BBEA001AA809 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B834CEB624F7BBEA001AA809 /* GoogleService-Info.plist */; };
+		B8705527252152D8009C2C6F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8705526252152D8009C2C6F /* Constants.swift */; };
 		B876279E2507C05700D0EE92 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */; };
 		B896EE1F251AA51700C5A509 /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B896EE1E251AA51700C5A509 /* AccountViewController.swift */; };
 		B896EE21251AA58800C5A509 /* PaymentRecordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B896EE20251AA58800C5A509 /* PaymentRecordModel.swift */; };
@@ -61,6 +62,7 @@
 		B834CEAC24F7BB16001AA809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B834CEAE24F7BB16001AA809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B834CEB624F7BBEA001AA809 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		B8705526252152D8009C2C6F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
 		B896EE1E251AA51700C5A509 /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
 		B896EE20251AA58800C5A509 /* PaymentRecordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentRecordModel.swift; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 		B834CE9F24F7BB10001AA809 /* Tomes */ = {
 			isa = PBXGroup;
 			children = (
+				B8705525252152B9009C2C6F /* EnvironmentVariables */,
 				B8D380A925005FC900A97474 /* ViewModelController */,
 				B8D380A825005FB900A97474 /* ViewModel */,
 				B8D380A525005F9200A97474 /* Model */,
@@ -156,6 +159,14 @@
 				B834CEAE24F7BB16001AA809 /* Info.plist */,
 			);
 			path = Tomes;
+			sourceTree = "<group>";
+		};
+		B8705525252152B9009C2C6F /* EnvironmentVariables */ = {
+			isa = PBXGroup;
+			children = (
+				B8705526252152D8009C2C6F /* Constants.swift */,
+			);
+			path = EnvironmentVariables;
 			sourceTree = "<group>";
 		};
 		B8C8EEBD24F7C76A002DDE20 /* ViewControllers */ = {
@@ -379,6 +390,7 @@
 				B8CCB6A124F7E0D40034C878 /* Utilities.swift in Sources */,
 				B8D380AD2500603800A97474 /* ApartmentListViewModelController.swift in Sources */,
 				B876279E2507C05700D0EE92 /* SplashScreenViewController.swift in Sources */,
+				B8705527252152D8009C2C6F /* Constants.swift in Sources */,
 				B8CCB6AD24F7EADB0034C878 /* SignUpViewController.swift in Sources */,
 				B896EE21251AA58800C5A509 /* PaymentRecordModel.swift in Sources */,
 				B8D380AB25005FE900A97474 /* ApartmentListViewModel.swift in Sources */,

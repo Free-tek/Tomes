@@ -20,7 +20,8 @@ class ApartmentDetailsViewModelController {
 
         var apartmentDetailsModel: [ApartmentDetailsModel?] = []
 
-        let Url = String(format: "https://tomesdocker-tuki75gfda-uc.a.run.app/getApartmentImage")
+        let Url = String(format: Constants.Endpoints.getApartmentImage)
+        
         let userID = Auth.auth().currentUser?.uid
 
         let parameters: [String: Any] = [
