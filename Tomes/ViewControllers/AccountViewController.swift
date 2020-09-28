@@ -24,20 +24,25 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
     @IBOutlet weak var paymentHistoryView: UIView!
     @IBOutlet weak var paymentCollectionView: UICollectionView!
     @IBOutlet weak var historyLabel: UILabel!
-    
+
     let animationView = AnimationView();
 
     let paymentRecordViewModelController: PaymentRecordViewModelController = PaymentRecordViewModelController()
+
+    var key = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         setUpElement()
-        
+
 
         paymentRecordViewModelController.fetchPaymentHistory(completion: { (success) in
             if !success {
                 print("error encountered")
+                self.animationView.stop()
+                self.animationView.alpha = 0
+                
             } else {
                 DispatchQueue.main.async {
                     self.animationView.stop()
@@ -53,7 +58,12 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
     }
 
     func setUpElement() {
-        
+
+        let tap = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.signOut))
+        welcomeText.isUserInteractionEnabled = true
+        welcomeText.addGestureRecognizer(tap)
+
+
         daysLeftView.isHidden = true
         self.animationView.alpha = 1
         self.animationView.animation = Animation.named("loadingTomes")
@@ -81,7 +91,7 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 5, bottom: 0, right: 0)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 0.0
-        
+
         paymentCollectionView.collectionViewLayout = flowLayout
 
 
@@ -100,12 +110,15 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
             let firstName = (data?["firstname"]) as! String
             let paymentDate = (data?["payment_date"])
 
-            self.welcomeText.text = "Hello, \(firstName)"
+            let duration = (data?["duration"])
 
-            if paymentDate == nil {
+            self.welcomeText.text = "Hello, \(firstName)"
+            
+            print("this is the duration \(duration)")
+            if paymentDate == nil || duration == nil {
                 self.daysLeftView.isHidden = true
             } else {
-                
+
                 self.daysLeftView.isHidden = false
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
@@ -115,15 +128,44 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
                 let components = Calendar.current.dateComponents([.day], from: startDate, to: date!)
 
-                if 30 - components.day! <= 0 {
-                    self.daysLeftView.isHidden = true
+                print("this is the duration \(duration)")
+                if duration as! String == "daily" {
+                    if 1 - components.day! <= 0 {
+                        self.daysLeftView.isHidden = true
 
-                } else if 30 - components.day! == 1 {
-                    self.daysLeft.text = "1 day left"
+                    } else if 1 - components.day! == 1 {
+                        self.daysLeft.text = "1 day left"
 
-                } else {
-                    self.daysLeft.text = "\(30 - components.day!) days left"
+                    } else {
+                        self.daysLeft.text = "\(1 - components.day!) days left"
+                    }
+
+                } else if duration as! String == "weekly" {
+
+                    if 7 - components.day! <= 0 {
+                        self.daysLeftView.isHidden = true
+
+                    } else if 7 - components.day! == 1 {
+                        self.daysLeft.text = "1 day left"
+
+                    } else {
+                        self.daysLeft.text = "\(7 - components.day!) days left"
+                    }
+
+                } else if duration as! String == "monthly" {
+
+                    if 30 - components.day! <= 0 {
+                        self.daysLeftView.isHidden = true
+
+                    } else if 30 - components.day! == 1 {
+                        self.daysLeft.text = "1 day left"
+
+                    } else {
+                        self.daysLeft.text = "\(30 - components.day!) days left"
+                    }
+
                 }
+
 
             }
 
@@ -146,11 +188,11 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
 
     @objc public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        
-        if paymentRecordViewModelController.viewModelsCount <= 1{
+
+        if paymentRecordViewModelController.viewModelsCount <= 1 {
             historyLabel.isHidden = false
         }
-        
+
         return paymentRecordViewModelController.viewModelsCount
     }
 
@@ -162,14 +204,17 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
         if let viewModel = paymentRecordViewModelController.viewModel(at: indexPath.row) {
             cell.configure(with: viewModel)
-            
-            if indexPath.row == 0{
+
+            if indexPath.row == 0 {
                 cell.payNow.alpha = 1
 
             }
-            
+
 
         }
+
+        key = paymentRecordViewModelController.viewModel(at: indexPath.row)?.count as! Int
+        cell.payNow.addTarget(self, action: #selector(payNowFunc(_:)), for: .touchUpInside)
 
 
         return cell
@@ -182,6 +227,46 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
     //get clicked item
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath)
     {
+
+    }
+
+    @objc func payNowFunc(_ sender: UIButton) {
+
+        print("i am entering with this key \(key)")
+        let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "apartmentDetailsPage") as! ApartmentDetailsViewController
+
+        viewController.key = String(key)
+
+        viewController.view.window?.rootViewController = viewController
+        viewController.view.window?.makeKeyAndVisible()
+
+        self.present(viewController, animated: false, completion: nil)
+
+
+    }
+
+
+
+    @IBAction func signOut(sender: UITapGestureRecognizer) {
+
+        let alert = UIAlertController(title: "Proceed?", message: "Do you want to proceed to sign out?.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Yes", style: UIAlertAction.Style.default, handler: { (upVote) in
+            try! Auth.auth().signOut()
+            let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
+            let viewController = storyboard.instantiateInitialViewController()
+
+            if let viewController = viewController {
+                self.view.window?.rootViewController = viewController
+                self.view.window?.makeKeyAndVisible()
+                self.present(viewController, animated: true, completion: nil)
+            }
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "No", style: UIAlertAction.Style.default, handler: { (downVote) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
 
     }
 

@@ -56,7 +56,7 @@ class PaymentRecordViewModelController {
                                     let price = json["suggestion"][0]["price"].int
                                     let apartmentName = json["suggestion"][0]["title"].string
                                     let apartmentLocation = json["suggestion"][0]["location"].string
-                                    let count = 0
+                                    let count = Int(json["suggestion_key"][0]["suggestion_key"].string!)!
                                     
                                     
                                     let itemGotten = PaymentRecordModel(month: month, paidUpTo: paidUpTo, price: price!, apartmentName: apartmentName!, apartmentLocation: apartmentLocation!, count: count)

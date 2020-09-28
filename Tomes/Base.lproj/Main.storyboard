@@ -111,7 +111,7 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gyo-4L-pz3">
                                 <rect key="frame" x="108.5" y="504" width="197" height="40"/>
-                                <color key="backgroundColor" red="0.90949791670000002" green="0.27156323189999998" blue="0.05553605407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.90980392156862744" green="0.27058823529411763" blue="0.054901960784313725" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="197" id="GuG-nz-Qn3"/>
                                     <constraint firstAttribute="height" constant="40" id="NCD-gg-BX3"/>
@@ -693,24 +693,561 @@
             </objects>
             <point key="canvasLocation" x="1192.753623188406" y="987.72321428571422"/>
         </scene>
-        <!--View Controller-->
+        <!--Contact Us View Controller-->
         <scene sceneID="Ge7-SB-15c">
             <objects>
-                <viewController modalPresentationStyle="fullScreen" id="eSi-s8-wBH" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="eSi-s8-wBH" customClass="ContactUsViewController" customModule="Tomes" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hpm-SO-dc0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="1100"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oMk-e2-IUb">
+                                <rect key="frame" x="0.0" y="44" width="414" height="57"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hjN-y5-ojP">
+                                        <rect key="frame" x="47" y="13" width="30" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="7fw-W2-6DH"/>
+                                            <constraint firstAttribute="height" constant="30" id="CPS-z1-LPs"/>
+                                        </constraints>
+                                        <state key="normal" image="back"/>
+                                        <connections>
+                                            <action selector="backFunc:" destination="wUy-Uw-lQL" eventType="touchUpInside" id="g57-Kl-zld"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT US" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sj-IT-xJ3">
+                                        <rect key="frame" x="92" y="16" width="162.5" height="26"/>
+                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="23"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstItem="hjN-y5-ojP" firstAttribute="leading" secondItem="oMk-e2-IUb" secondAttribute="leading" constant="47" id="COc-G2-9UV"/>
+                                    <constraint firstAttribute="height" constant="57" id="GME-YO-0Ny"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="414" id="H8t-XO-WY2"/>
+                                    <constraint firstAttribute="width" constant="414" id="HwM-PV-p58"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="57" id="UP4-8i-tPB"/>
+                                    <constraint firstItem="hjN-y5-ojP" firstAttribute="top" secondItem="oMk-e2-IUb" secondAttribute="top" constant="13" id="avQ-Tr-djC"/>
+                                    <constraint firstItem="8sj-IT-xJ3" firstAttribute="top" secondItem="oMk-e2-IUb" secondAttribute="top" constant="16" id="dD6-Dv-aBD"/>
+                                    <constraint firstItem="8sj-IT-xJ3" firstAttribute="leading" secondItem="hjN-y5-ojP" secondAttribute="trailing" constant="15" id="hTN-jl-By9"/>
+                                </constraints>
+                            </view>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="iqp-Cz-4ya">
+                                <rect key="frame" x="0.0" y="109" width="414" height="908"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Lgs-sA-hyu">
+                                        <rect key="frame" x="0.0" y="0.0" width="414" height="908"/>
+                                        <subviews>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="support" translatesAutoresizingMaskIntoConstraints="NO" id="JY2-cw-vUB">
+                                                <rect key="frame" x="19" y="55" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="LW6-Kg-z3w"/>
+                                                    <constraint firstAttribute="width" constant="40" id="xUe-Bz-gXM"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vu9-le-0CD">
+                                                <rect key="frame" x="68" y="55" width="326" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Customer Care" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HKz-4t-Wo9" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="0.0" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="2VZ-r5-U0g"/>
+                                                            <constraint firstAttribute="width" constant="312" id="ugF-x4-knT"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="13"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dial Customer care for general enquiries" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8n3-fL-3KS" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="16" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="312" id="9Iw-FV-ZCP"/>
+                                                            <constraint firstAttribute="height" constant="24" id="wN2-RE-geh"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="9"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.27058823529999998" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="HKz-4t-Wo9" firstAttribute="leading" secondItem="vu9-le-0CD" secondAttribute="leading" constant="14" id="9sQ-lq-JVd"/>
+                                                    <constraint firstAttribute="bottom" secondItem="8n3-fL-3KS" secondAttribute="bottom" id="HjD-gT-snt"/>
+                                                    <constraint firstItem="8n3-fL-3KS" firstAttribute="leading" secondItem="vu9-le-0CD" secondAttribute="leading" constant="14" id="oCk-3e-DDl"/>
+                                                    <constraint firstAttribute="width" constant="326" id="vlN-3r-lz9"/>
+                                                    <constraint firstItem="HKz-4t-Wo9" firstAttribute="top" secondItem="vu9-le-0CD" secondAttribute="top" id="xQj-Gm-lAO"/>
+                                                    <constraint firstAttribute="height" constant="40" id="zJP-K4-XPf"/>
+                                                </constraints>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="janitor" translatesAutoresizingMaskIntoConstraints="NO" id="uTv-G0-hIQ">
+                                                <rect key="frame" x="19" y="135" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="1Da-mJ-zaG"/>
+                                                    <constraint firstAttribute="height" constant="40" id="bHy-dS-1A3"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCa-mP-JUp">
+                                                <rect key="frame" x="68" y="135" width="326" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Facility Manager" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JEO-sI-eJc" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="0.0" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="1yZ-hr-nFX"/>
+                                                            <constraint firstAttribute="width" constant="312" id="DbM-q6-iKz"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="13"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="He can help you fix something in the apartment" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sWg-Xh-gPo" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="16" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="VHy-hl-9XM"/>
+                                                            <constraint firstAttribute="width" constant="312" id="bKB-uD-oRr"/>
+                                                            <constraint firstAttribute="height" constant="24" id="hlQ-83-OWP"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="j9H-M8-yQW"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="9"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.27058823529999998" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="JEO-sI-eJc" firstAttribute="leading" secondItem="JCa-mP-JUp" secondAttribute="leading" constant="14" id="8qW-lO-jqA"/>
+                                                    <constraint firstItem="sWg-Xh-gPo" firstAttribute="leading" secondItem="JCa-mP-JUp" secondAttribute="leading" constant="14" id="BGm-4h-gzh"/>
+                                                    <constraint firstAttribute="height" constant="40" id="XYp-sl-bMN"/>
+                                                    <constraint firstAttribute="bottom" secondItem="sWg-Xh-gPo" secondAttribute="bottom" id="Y3B-cW-6tu"/>
+                                                    <constraint firstAttribute="width" constant="326" id="hh4-qH-DKb"/>
+                                                    <constraint firstItem="JEO-sI-eJc" firstAttribute="top" secondItem="JCa-mP-JUp" secondAttribute="top" id="uXJ-XN-G1C"/>
+                                                </constraints>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cook-1" translatesAutoresizingMaskIntoConstraints="NO" id="t9Y-Aw-zcn">
+                                                <rect key="frame" x="19" y="215" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Ccd-sX-5dX"/>
+                                                    <constraint firstAttribute="height" constant="40" id="bcQ-P1-xjn"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="62p-qs-Zr8">
+                                                <rect key="frame" x="68" y="215" width="326" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="she can bring you some yuminess" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y59-BN-G3D" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="16" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="312" id="159-no-LPS"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="XOo-jb-19i"/>
+                                                            <constraint firstAttribute="height" constant="24" id="oXh-x8-p0O"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="pne-JV-vRe"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="9"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Demand Chef Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gYe-Cu-LUh" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="0.0" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" constant="312" id="6e8-Ii-iy8"/>
+                                                            <constraint firstAttribute="height" constant="24" id="MQK-of-got"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="13"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.27058823529999998" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="Y59-BN-G3D" firstAttribute="leading" secondItem="62p-qs-Zr8" secondAttribute="leading" constant="14" id="2lg-32-AND"/>
+                                                    <constraint firstItem="gYe-Cu-LUh" firstAttribute="leading" secondItem="62p-qs-Zr8" secondAttribute="leading" constant="14" id="99V-Yi-alq"/>
+                                                    <constraint firstAttribute="width" constant="326" id="GNE-du-JN3"/>
+                                                    <constraint firstAttribute="height" constant="40" id="n2z-BX-KOs"/>
+                                                    <constraint firstItem="gYe-Cu-LUh" firstAttribute="top" secondItem="62p-qs-Zr8" secondAttribute="top" id="v85-cd-gzR"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Y59-BN-G3D" secondAttribute="bottom" id="yif-3Q-F8a"/>
+                                                </constraints>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="laundry-1" translatesAutoresizingMaskIntoConstraints="NO" id="E83-Iy-y2L">
+                                                <rect key="frame" x="19" y="295" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="21r-BL-BGg"/>
+                                                    <constraint firstAttribute="width" constant="40" id="z3F-MX-Xmf"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="OVz-PO-5lc">
+                                                <rect key="frame" x="67" y="295" width="327" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="He can fix your laudry up in no time" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p44-oZ-adY" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="16" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="KC4-Pl-Z9c"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="MKJ-aR-64j"/>
+                                                            <constraint firstAttribute="width" constant="312" id="hOo-qe-Nln"/>
+                                                            <constraint firstAttribute="height" constant="24" id="nFa-ua-bwj"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="9"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="On Demand Laundry Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WUH-oT-9dg" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="0.0" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="DHa-zM-4zG"/>
+                                                            <constraint firstAttribute="width" constant="312" id="JFI-or-No9"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="13"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.27058823529999998" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="p44-oZ-adY" firstAttribute="leading" secondItem="OVz-PO-5lc" secondAttribute="leading" constant="14" id="AEu-9a-pV3"/>
+                                                    <constraint firstItem="WUH-oT-9dg" firstAttribute="top" secondItem="OVz-PO-5lc" secondAttribute="top" id="Mn4-mm-lmT"/>
+                                                    <constraint firstItem="WUH-oT-9dg" firstAttribute="leading" secondItem="OVz-PO-5lc" secondAttribute="leading" constant="14" id="RvI-q7-bmT"/>
+                                                    <constraint firstAttribute="bottom" secondItem="p44-oZ-adY" secondAttribute="bottom" id="T8Y-W0-Bom"/>
+                                                    <constraint firstAttribute="height" constant="40" id="gWI-Zm-ljP"/>
+                                                    <constraint firstAttribute="width" constant="327" id="sd5-KQ-vBK"/>
+                                                </constraints>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cleaner" translatesAutoresizingMaskIntoConstraints="NO" id="00J-F8-8Kn">
+                                                <rect key="frame" x="19" y="375" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="40" id="Xvp-ZN-rJn"/>
+                                                    <constraint firstAttribute="height" constant="40" id="wyE-op-ppZ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0OU-93-uab">
+                                                <rect key="frame" x="67" y="375" width="327" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Spilled the wine, call her to come over" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fQO-y6-k6B" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="16" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="4Zq-dw-yKg"/>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="4fA-p8-qea"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="DYS-Ds-5rw"/>
+                                                            <constraint firstAttribute="width" constant="312" id="GtA-MT-qEo"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="9"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Cleaning Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HE1-mC-7fu" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="0.0" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="6wS-ih-mvH"/>
+                                                            <constraint firstAttribute="width" constant="312" id="wKF-Dh-sNs"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="13"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.27058823529999998" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstItem="HE1-mC-7fu" firstAttribute="top" secondItem="0OU-93-uab" secondAttribute="top" id="6tc-YQ-g5L"/>
+                                                    <constraint firstAttribute="height" constant="40" id="Mnb-nS-0u0"/>
+                                                    <constraint firstItem="HE1-mC-7fu" firstAttribute="leading" secondItem="0OU-93-uab" secondAttribute="leading" constant="14" id="a1u-Gy-5TC"/>
+                                                    <constraint firstAttribute="bottom" secondItem="fQO-y6-k6B" secondAttribute="bottom" id="mSY-CZ-Eut"/>
+                                                    <constraint firstAttribute="width" constant="327" id="ps5-ib-B38"/>
+                                                    <constraint firstItem="fQO-y6-k6B" firstAttribute="leading" secondItem="0OU-93-uab" secondAttribute="leading" constant="14" id="zFB-8f-l4l"/>
+                                                </constraints>
+                                            </view>
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chauffer" translatesAutoresizingMaskIntoConstraints="NO" id="Dtg-ed-Smu">
+                                                <rect key="frame" x="19" y="455" width="40" height="40"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="40" id="B41-8h-yOH"/>
+                                                    <constraint firstAttribute="width" constant="40" id="Yxh-dB-5UJ"/>
+                                                </constraints>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WcO-pn-Efq">
+                                                <rect key="frame" x="67" y="455" width="327" height="40"/>
+                                                <subviews>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="He can pick you up to and fro work" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q3a-wp-STD" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="16" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="312" id="6eU-zu-rYX"/>
+                                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="BS2-Sg-wZz"/>
+                                                            <constraint firstAttribute="height" constant="24" id="gto-yl-wbU"/>
+                                                            <constraint firstAttribute="width" constant="312" id="zy1-LG-wpR"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="9"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="10"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chauffer Service" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8a4-Gd-Vvu" customClass="PaddingLabel" customModule="PaddingLabel">
+                                                        <rect key="frame" x="14" y="0.0" width="312" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="QDL-Iz-hUD"/>
+                                                            <constraint firstAttribute="width" constant="312" id="Uba-a3-o1v"/>
+                                                        </constraints>
+                                                        <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="13"/>
+                                                        <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <nil key="highlightedColor"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="topInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="bottomInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="leftInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="rightInset">
+                                                                <real key="value" value="5"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </label>
+                                                </subviews>
+                                                <color key="backgroundColor" red="0.90980392160000001" green="0.27058823529999998" blue="0.054901960780000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="width" constant="327" id="3ju-rI-Xsl"/>
+                                                    <constraint firstItem="8a4-Gd-Vvu" firstAttribute="leading" secondItem="WcO-pn-Efq" secondAttribute="leading" constant="14" id="ANg-CE-9IH"/>
+                                                    <constraint firstAttribute="bottom" secondItem="Q3a-wp-STD" secondAttribute="bottom" id="ZPc-mN-1Kj"/>
+                                                    <constraint firstItem="8a4-Gd-Vvu" firstAttribute="top" secondItem="WcO-pn-Efq" secondAttribute="top" id="b4C-UK-LAf"/>
+                                                    <constraint firstItem="Q3a-wp-STD" firstAttribute="leading" secondItem="WcO-pn-Efq" secondAttribute="leading" constant="14" id="rA8-mH-IDP"/>
+                                                    <constraint firstAttribute="height" constant="40" id="uQp-uk-UEj"/>
+                                                </constraints>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                        <constraints>
+                                            <constraint firstItem="uTv-G0-hIQ" firstAttribute="leading" secondItem="Lgs-sA-hyu" secondAttribute="leading" constant="19" id="4FW-ij-mDa"/>
+                                            <constraint firstItem="0OU-93-uab" firstAttribute="leading" secondItem="00J-F8-8Kn" secondAttribute="trailing" constant="8" id="7Bs-DQ-TJc"/>
+                                            <constraint firstItem="E83-Iy-y2L" firstAttribute="top" secondItem="t9Y-Aw-zcn" secondAttribute="bottom" constant="40" id="A5S-uk-KPe"/>
+                                            <constraint firstItem="WcO-pn-Efq" firstAttribute="top" secondItem="0OU-93-uab" secondAttribute="bottom" constant="40" id="HEC-Lb-LYj"/>
+                                            <constraint firstAttribute="trailing" secondItem="0OU-93-uab" secondAttribute="trailing" constant="20" id="IhG-xx-9Aw"/>
+                                            <constraint firstAttribute="height" constant="908" id="JSe-yD-g1T"/>
+                                            <constraint firstItem="JY2-cw-vUB" firstAttribute="leading" secondItem="Lgs-sA-hyu" secondAttribute="leading" constant="19" id="L22-KQ-Fa1"/>
+                                            <constraint firstAttribute="trailing" secondItem="WcO-pn-Efq" secondAttribute="trailing" constant="20" id="M4w-K6-MmH"/>
+                                            <constraint firstItem="JY2-cw-vUB" firstAttribute="top" secondItem="Lgs-sA-hyu" secondAttribute="top" constant="55" id="Mlv-2Z-Qaw"/>
+                                            <constraint firstItem="vu9-le-0CD" firstAttribute="top" secondItem="Lgs-sA-hyu" secondAttribute="top" constant="55" id="N8J-Xn-hgD"/>
+                                            <constraint firstItem="t9Y-Aw-zcn" firstAttribute="leading" secondItem="Lgs-sA-hyu" secondAttribute="leading" constant="19" id="OD9-MA-c3K"/>
+                                            <constraint firstItem="JCa-mP-JUp" firstAttribute="leading" secondItem="uTv-G0-hIQ" secondAttribute="trailing" constant="9" id="Ofo-F3-IMv"/>
+                                            <constraint firstItem="00J-F8-8Kn" firstAttribute="leading" secondItem="Lgs-sA-hyu" secondAttribute="leading" constant="19" id="S57-Tw-ZWI"/>
+                                            <constraint firstItem="62p-qs-Zr8" firstAttribute="top" secondItem="JCa-mP-JUp" secondAttribute="bottom" constant="40" id="UFM-ZF-HAr"/>
+                                            <constraint firstAttribute="width" constant="414" id="VSQ-7P-Ck6"/>
+                                            <constraint firstAttribute="trailing" secondItem="62p-qs-Zr8" secondAttribute="trailing" constant="20" id="Wr6-cY-9Xf"/>
+                                            <constraint firstItem="vu9-le-0CD" firstAttribute="leading" secondItem="JY2-cw-vUB" secondAttribute="trailing" constant="9" id="a8f-7h-r8d"/>
+                                            <constraint firstItem="OVz-PO-5lc" firstAttribute="top" secondItem="62p-qs-Zr8" secondAttribute="bottom" constant="40" id="dQo-C2-Ind"/>
+                                            <constraint firstAttribute="trailing" secondItem="vu9-le-0CD" secondAttribute="trailing" constant="20" id="dgM-cT-ts3"/>
+                                            <constraint firstItem="WcO-pn-Efq" firstAttribute="leading" secondItem="Dtg-ed-Smu" secondAttribute="trailing" constant="8" id="iTj-qG-S1N"/>
+                                            <constraint firstItem="OVz-PO-5lc" firstAttribute="leading" secondItem="E83-Iy-y2L" secondAttribute="trailing" constant="8" id="iYe-xV-k9r"/>
+                                            <constraint firstItem="0OU-93-uab" firstAttribute="top" secondItem="OVz-PO-5lc" secondAttribute="bottom" constant="40" id="kI0-S3-k3l"/>
+                                            <constraint firstItem="E83-Iy-y2L" firstAttribute="leading" secondItem="Lgs-sA-hyu" secondAttribute="leading" constant="19" id="lfr-3U-7UQ"/>
+                                            <constraint firstItem="t9Y-Aw-zcn" firstAttribute="top" secondItem="uTv-G0-hIQ" secondAttribute="bottom" constant="40" id="mb3-89-jGx"/>
+                                            <constraint firstAttribute="trailing" secondItem="OVz-PO-5lc" secondAttribute="trailing" constant="20" id="qU1-Fq-Ewf"/>
+                                            <constraint firstItem="Dtg-ed-Smu" firstAttribute="top" secondItem="00J-F8-8Kn" secondAttribute="bottom" constant="40" id="qzp-Di-cF7"/>
+                                            <constraint firstItem="uTv-G0-hIQ" firstAttribute="top" secondItem="JY2-cw-vUB" secondAttribute="bottom" constant="40" id="rCK-19-7v0"/>
+                                            <constraint firstAttribute="trailing" secondItem="JCa-mP-JUp" secondAttribute="trailing" constant="20" id="rY0-q2-zhU"/>
+                                            <constraint firstItem="Dtg-ed-Smu" firstAttribute="leading" secondItem="Lgs-sA-hyu" secondAttribute="leading" constant="19" id="sdM-aE-Wb7"/>
+                                            <constraint firstItem="JCa-mP-JUp" firstAttribute="top" secondItem="vu9-le-0CD" secondAttribute="bottom" constant="40" id="wQU-TA-U6V"/>
+                                            <constraint firstItem="62p-qs-Zr8" firstAttribute="leading" secondItem="t9Y-Aw-zcn" secondAttribute="trailing" constant="9" id="wcr-WA-5Pd"/>
+                                            <constraint firstItem="00J-F8-8Kn" firstAttribute="top" secondItem="E83-Iy-y2L" secondAttribute="bottom" constant="40" id="zvJ-Il-o4l"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="908" id="6S1-CL-LGZ"/>
+                                    <constraint firstItem="Lgs-sA-hyu" firstAttribute="leading" secondItem="iqp-Cz-4ya" secondAttribute="leading" id="7dd-hO-s4O"/>
+                                    <constraint firstAttribute="trailing" secondItem="Lgs-sA-hyu" secondAttribute="trailing" id="C4g-Td-G3J"/>
+                                    <constraint firstItem="Lgs-sA-hyu" firstAttribute="top" secondItem="iqp-Cz-4ya" secondAttribute="top" id="kla-tA-P8R"/>
+                                    <constraint firstAttribute="bottom" secondItem="Lgs-sA-hyu" secondAttribute="bottom" id="ohZ-RI-FlY"/>
+                                    <constraint firstItem="Lgs-sA-hyu" firstAttribute="width" secondItem="iqp-Cz-4ya" secondAttribute="width" id="pZE-BC-LM8"/>
+                                    <constraint firstAttribute="width" constant="414" id="r61-4F-Az8"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="iqp-Cz-4ya" firstAttribute="leading" secondItem="ZwQ-rS-bLA" secondAttribute="leading" id="6IH-vs-Qkv"/>
+                            <constraint firstItem="iqp-Cz-4ya" firstAttribute="bottom" secondItem="ZwQ-rS-bLA" secondAttribute="bottom" id="JuW-b7-Rda"/>
+                            <constraint firstItem="iqp-Cz-4ya" firstAttribute="top" secondItem="oMk-e2-IUb" secondAttribute="bottom" constant="8" id="Pll-sQ-iLc"/>
+                            <constraint firstItem="oMk-e2-IUb" firstAttribute="top" secondItem="ZwQ-rS-bLA" secondAttribute="top" id="g8S-sv-0tt"/>
+                            <constraint firstItem="iqp-Cz-4ya" firstAttribute="trailing" secondItem="ZwQ-rS-bLA" secondAttribute="trailing" id="kAl-yp-8Ko"/>
+                            <constraint firstItem="oMk-e2-IUb" firstAttribute="leading" secondItem="ZwQ-rS-bLA" secondAttribute="leading" id="s1n-rh-SGB"/>
+                            <constraint firstItem="oMk-e2-IUb" firstAttribute="trailing" secondItem="ZwQ-rS-bLA" secondAttribute="trailing" id="vYB-9I-MIE"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="ZwQ-rS-bLA"/>
                     </view>
                     <tabBarItem key="tabBarItem" title="" image="call (1)" id="NYr-1u-dD4">
                         <inset key="imageInsets" minX="1" minY="1" maxX="1" maxY="1"/>
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <size key="freeformSize" width="414" height="1100"/>
+                    <connections>
+                        <outlet property="chaufferServiceIcon" destination="Dtg-ed-Smu" id="XQX-iA-giI"/>
+                        <outlet property="chaufferServiceView" destination="WcO-pn-Efq" id="zzN-tK-LYE"/>
+                        <outlet property="chefIcon" destination="t9Y-Aw-zcn" id="8rO-hC-wpU"/>
+                        <outlet property="chefView" destination="62p-qs-Zr8" id="cQb-hu-5Av"/>
+                        <outlet property="cleaningServiceIcon" destination="00J-F8-8Kn" id="bEc-00-qfg"/>
+                        <outlet property="cleaningServiceView" destination="0OU-93-uab" id="P3y-QE-oY2"/>
+                        <outlet property="customerCareIcon" destination="JY2-cw-vUB" id="vh9-dD-nBc"/>
+                        <outlet property="customerCareView" destination="vu9-le-0CD" id="WFK-DG-nkF"/>
+                        <outlet property="facilityManagerIcon" destination="uTv-G0-hIQ" id="QHR-oq-9ou"/>
+                        <outlet property="facilityManagerView" destination="JCa-mP-JUp" id="PIe-7s-ESm"/>
+                        <outlet property="laundryManView" destination="OVz-PO-5lc" id="VUm-Da-fh6"/>
+                        <outlet property="laundryServiceIcon" destination="E83-Iy-y2L" id="9jv-Yd-pTH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9Ne-dv-X5n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2180" y="989"/>
+            <point key="canvasLocation" x="2179.7101449275365" y="988.39285714285711"/>
         </scene>
         <!--Apartment Details View Controller-->
         <scene sceneID="x1U-wi-Rqp">
@@ -1900,7 +2437,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="5Ql-wr-04v"/>
+        <segue reference="ear-EY-7Yu"/>
         <segue reference="eAr-lj-X5f"/>
         <segue reference="trS-sb-gAJ"/>
         <segue reference="3cB-x4-kq7"/>
@@ -1912,14 +2449,20 @@
         <image name="bed (1)" width="25" height="25"/>
         <image name="book (1)" width="25" height="25"/>
         <image name="call (1)" width="25" height="25"/>
+        <image name="chauffer" width="158" height="158"/>
+        <image name="cleaner" width="158" height="158"/>
+        <image name="cook-1" width="158" height="158"/>
         <image name="empty" width="100" height="100"/>
         <image name="furnished" width="151" height="118"/>
         <image name="homeicon" width="334" height="338"/>
         <image name="icons8-male_user" width="100" height="100"/>
         <image name="icons8-timer" width="96" height="96"/>
         <image name="icons8-tune" width="96" height="96"/>
+        <image name="janitor" width="158" height="158"/>
+        <image name="laundry-1" width="158" height="158"/>
         <image name="location" width="100" height="100"/>
         <image name="price" width="100" height="100"/>
         <image name="return" width="100" height="100"/>
+        <image name="support" width="158" height="158"/>
     </resources>
 </document>

@@ -238,9 +238,16 @@ class PaymentViewController: UIViewController {
                     dateFormatter.dateFormat = "LLLL"
                     let month = dateFormatter.string(from: date)
 
-
+                    var endDate = 0
+                    if self.duration == "daily"{
+                        endDate = 1
+                    }else if self.duration == "weekly"{
+                        endDate = 7
+                    }else if self.duration == "monthly"{
+                        endDate = 30
+                    }
                     var dateComponent = DateComponents()
-                    dateComponent.day = 30
+                    dateComponent.day = endDate
                     let futureDate = Calendar.current.date(byAdding: dateComponent, to: date)
 
                     let dateformat = DateFormatter()
@@ -251,7 +258,8 @@ class PaymentViewController: UIViewController {
                     df.dateFormat = "yyyy-MM-dd hh:mm:ss"
                     let now = df.string(from: Date())
 
-
+                    
+                    
                     //Confirm payment and save package to DB
                     let post: [String: Any] = [
                         "fullName": self.fullName,
@@ -272,6 +280,9 @@ class PaymentViewController: UIViewController {
 
                     let userId = Auth.auth().currentUser?.uid
 
+                    let ref2 = Database.database().reference().child("users").child(userId!).child("duration")
+                    ref2.setValue(self.duration)
+                    
                     let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
 
                     ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
@@ -312,8 +323,6 @@ class PaymentViewController: UIViewController {
                             }
                             print("No errors while posting, :")
                             //go to home page
-
-
 
                             self.animationView.stop()
                             self.animationView.alpha = 0
