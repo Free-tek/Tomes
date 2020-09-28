@@ -57,9 +57,10 @@ class PaymentRecordViewModelController {
                                     let apartmentName = json["suggestion"][0]["title"].string
                                     let apartmentLocation = json["suggestion"][0]["location"].string
                                     let count = Int(json["suggestion_key"][0]["suggestion_key"].string!)!
+                                    let suggestion = true
                                     
                                     
-                                    let itemGotten = PaymentRecordModel(month: month, paidUpTo: paidUpTo, price: price!, apartmentName: apartmentName!, apartmentLocation: apartmentLocation!, count: count)
+                                    let itemGotten = PaymentRecordModel(month: month, paidUpTo: paidUpTo, price: price!, apartmentName: apartmentName!, apartmentLocation: apartmentLocation!, count: count, suggestion: suggestion)
                                     //paymentRecordModel.append(itemGotten)
                                     paymentRecordModel.insert(itemGotten, at: 0)
                                     completion(true)
@@ -69,7 +70,7 @@ class PaymentRecordViewModelController {
                                     completion(true)
                                     
                                 }else{
-                                    let itemGotten = PaymentRecordModel(month: "", paidUpTo: "", price: 0, apartmentName: "", apartmentLocation: "", count: 0)
+                                    let itemGotten = PaymentRecordModel(month: "", paidUpTo: "", price: 0, apartmentName: "", apartmentLocation: "", count: 0, suggestion: true)
                                     
                                     self.viewModels = self.initViewModels(paymentRecordModel)
                                     print("this is the viewmodel \(self.viewModels)")
@@ -93,14 +94,15 @@ class PaymentRecordViewModelController {
                                     let price = json["result"][0][i]["price"].int
                                     let apartmentName = json["result"][0][i]["apartment_name"].string
                                     let apartmentLocation = json["result"][0][i]["apartment_location"].string
+                                    
                                     let count = i
 
                                    
                                     
-                                    let itemGotten = PaymentRecordModel(month: month!, paidUpTo: paidUpTo!, price: price!, apartmentName: apartmentName!,apartmentLocation: apartmentLocation!, count: count)
+                                    let itemGotten = PaymentRecordModel(month: month!, paidUpTo: paidUpTo!, price: price!, apartmentName: apartmentName!,apartmentLocation: apartmentLocation!, count: count, suggestion: false)
 
                                     if i == 1{
-                                        let itemGotten = PaymentRecordModel(month: month!, paidUpTo: paidUpTo!, price: price!, apartmentName: apartmentName!,apartmentLocation: apartmentLocation!, count: 0)
+                                        let itemGotten = PaymentRecordModel(month: month!, paidUpTo: paidUpTo!, price: price!, apartmentName: apartmentName!,apartmentLocation: apartmentLocation!, count:count, suggestion: true)
                                         paymentRecordModel.append(itemGotten)
                                     }
                                     paymentRecordModel.insert(itemGotten, at: 0)
@@ -123,10 +125,6 @@ class PaymentRecordViewModelController {
                                 completion(false)
                             }
                             
-//                            self.viewModels = self.initViewModels(paymentRecordModel)
-//                            print("this is the viewmodel \(self.viewModels)")
-//                            completion(true)
-
                             
 
                         } else {

@@ -15,14 +15,16 @@ struct  PaymentRecordModel{
     var apartmentName: String?
     var apartmentLocation: String?
     var count: Int?
+    var suggestion: Bool?
     
-    init( month: String?, paidUpTo: String?, price: Int?, apartmentName: String?, apartmentLocation: String?, count: Int?) {
+    init( month: String?, paidUpTo: String?, price: Int?, apartmentName: String?, apartmentLocation: String?, count: Int?, suggestion: Bool?) {
         self.month = month
         self.paidUpTo = paidUpTo
         self.price = price
         self.apartmentName = apartmentName
         self.apartmentLocation = apartmentLocation
         self.count = count
+        self.suggestion = suggestion
         
     }
     

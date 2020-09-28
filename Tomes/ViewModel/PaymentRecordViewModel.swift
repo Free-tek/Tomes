@@ -15,6 +15,7 @@ struct  PaymentRecordViewModel{
     var apartmentName: String?
     var apartmentLocation: String?
     var count: Int?
+    var suggestion: Bool?
     
     init( paymentRecord: PaymentRecordModel) {
         self.month = paymentRecord.month
@@ -23,6 +24,7 @@ struct  PaymentRecordViewModel{
         self.apartmentName = paymentRecord.apartmentName
         self.apartmentLocation = paymentRecord.apartmentLocation
         self.count = paymentRecord.count
+        self.suggestion = paymentRecord.suggestion
     }
     
 }
