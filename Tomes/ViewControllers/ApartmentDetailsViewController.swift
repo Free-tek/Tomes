@@ -26,6 +26,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     @IBOutlet weak var feature7: UIImageView!
     @IBOutlet weak var feature8: UIImageView!
     @IBOutlet weak var feature9: UIImageView!
+    @IBOutlet weak var feature10: UIImageView!
     @IBOutlet weak var backMore: UIButton!
     @IBOutlet weak var moreView: UIView!
     @IBOutlet weak var viewAllFeatures: UIButton!
@@ -168,6 +169,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             let facility_manager = json["result"][0]["facility_manager"].string
                             let cook = json["result"][0]["cook"].string
                             let laundry = json["result"][0]["laundry"].string
+                            let smarttv = json["result"][0]["smarttv"].string
                             self._title = json["result"][0]["title"].string!
                             self._apartmentPrices = json["result"][0]["apartment_prices"].string!
                             self._price = json["result"][0]["price"].int!
@@ -180,61 +182,67 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             
                             self.bookView.alpha = 1
 
-                            self.feature1.alpha = 1
-                            self.feature2.alpha = 1
-                            self.feature3.alpha = 1
-                            self.feature4.alpha = 1
-                            self.feature5.alpha = 1
-                            self.feature6.alpha = 1
-                            self.feature7.alpha = 1
-                            self.feature8.alpha = 1
-                            self.feature9.alpha = 1
+                            self.feature1.alpha = 0
+                            self.feature2.alpha = 0
+                            self.feature3.alpha = 0
+                            self.feature4.alpha = 0
+                            self.feature5.alpha = 0
+                            self.feature6.alpha = 0
+                            self.feature7.alpha = 0
+                            self.feature8.alpha = 0
+                            self.feature9.alpha = 0
+                            self.feature10.alpha = 0
 
-                            if furnished! == "true" {
+                            if furnished != nil && furnished! == "true" {
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "furnished")
                             }
 
-                            if kitchen! == "true" {
+                            if kitchen != nil && kitchen! == "true" {
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "kitchen")
                             }
 
-                            if power! == "true" {
+                            if power != nil && power! == "true" {
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "power")
                             }
 
 
-                            if internet! == "true" {
+                            if internet != nil && internet! == "true" {
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "internet")
                             }
 
-                            if security! == "true" {
+                            if security != nil && security! == "true" {
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "security")
                             }
 
-                            if transport! == "true" {
+                            if transport != nil && transport! == "true" {
                                 self.imagePosition = self.imagePosition + 1
-                                self.setImage(self.imagePosition, "transportation")
+                                self.setImage(self.imagePosition, "onDemandTransportation")
                             }
 
-                            if facility_manager! == "true" {
+                            if facility_manager != nil && facility_manager! == "true" {
                                 self.viewAllFeatures.alpha = 1
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "facility")
                             }
 
-                            if cook! == "true" {
+                            if cook != nil && cook! == "true" {
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "cook")
                             }
 
-                            if laundry! == "true" {
+                            if laundry != nil && laundry! == "true" {
                                 self.imagePosition = self.imagePosition + 1
                                 self.setImage(self.imagePosition, "laundry")
+                            }
+                            
+                            if smarttv != nil && smarttv! == "true" {
+                                self.imagePosition = self.imagePosition + 1
+                                self.setImage(self.imagePosition, "smarttv")
                             }
                             
                             
@@ -309,22 +317,34 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         switch imagePosition {
         case 1:
             feature1.image = UIImage(named: imageName)
+            feature1.alpha = 1
         case 2:
             feature2.image = UIImage(named: imageName)
+            feature2.alpha = 1
         case 3:
             feature3.image = UIImage(named: imageName)
+            feature3.alpha = 1
         case 4:
             feature4.image = UIImage(named: imageName)
+            feature4.alpha = 1
         case 5:
             feature5.image = UIImage(named: imageName)
+            feature5.alpha = 1
         case 6:
             feature6.image = UIImage(named: imageName)
+            feature6.alpha = 1
         case 7:
             feature7.image = UIImage(named: imageName)
+            feature7.alpha = 1
         case 8:
             feature8.image = UIImage(named: imageName)
+            feature8.alpha = 1
         case 9:
             feature9.image = UIImage(named: imageName)
+            feature9.alpha = 1
+        case 10:
+            feature10.image = UIImage(named: imageName)
+            feature10.alpha = 1
         default:
             print("Out of bounds")
         }

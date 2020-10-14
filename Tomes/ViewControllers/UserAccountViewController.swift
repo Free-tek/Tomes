@@ -1,8 +1,8 @@
 //
-//  AccountViewController.swift
+//  UserAccountViewController.swift
 //  Tomes
 //
-//  Created by Botosoft Technologies on 22/09/2020.
+//  Created by Babatunde Adewole on 10/14/20.
 //  Copyright © 2020 Tomes. All rights reserved.
 //
 
@@ -12,9 +12,7 @@ import FirebaseAuth
 import FirebaseDatabase
 import Lottie
 
-class AccountViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource {
-
-
+class UserAccountViewController: UITabBarController, UICollectionViewDelegate, UICollectionViewDataSource {
 
     @IBOutlet weak var welcomeText: UILabel!
     @IBOutlet weak var daysLeftView: UIView!
@@ -58,7 +56,9 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     func setUpElement() {
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(AccountViewController.signOut))
+        daysLeftView.isHidden = true
+        
+        let tap = UITapGestureRecognizer(target: self, action: #selector(UserAccountViewController.signOut))
         welcomeText.isUserInteractionEnabled = true
         welcomeText.addGestureRecognizer(tap)
 
@@ -302,4 +302,5 @@ extension UIView {
     }
 
 }
+
 

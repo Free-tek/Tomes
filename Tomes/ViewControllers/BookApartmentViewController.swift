@@ -19,10 +19,10 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
     @IBOutlet weak var fullName: UITextField!
     @IBOutlet weak var phoneNo: UITextField!
     @IBOutlet weak var emailAddress: UITextField!
-    @IBOutlet weak var companyAddress: UITextField!
-    @IBOutlet weak var refereeName: UITextField!
-    @IBOutlet weak var refereePhoneNo: UITextField!
+    @IBOutlet weak var occupation: UITextField!
     @IBOutlet weak var duration: UITextField!
+    @IBOutlet weak var nextOfKinName: UITextField!
+    @IBOutlet weak var nextOfKinPhoneNo: UITextField!
     @IBOutlet weak var back: UIButton!
     
     var durationPicker: UIPickerView?
@@ -37,13 +37,14 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
     var _fullName = ""
     var _phoneNo = ""
     var _emailAddress = ""
-    var _companyAddress = ""
-    var _refereeName = ""
-    var _refereePhoneNo = ""
+    var _occupation = ""
     var _apartmentPrices = ""
     var  apartmentLocation = ""
     var apartmentAvailability = ""
     var apartmentPrices = ""
+    var __companyAddress = ""
+    var __nextOfKinName = ""
+    var __nextOfKinPhoneNo = ""
     
     
     var refList: DatabaseReference!
@@ -76,6 +77,9 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             let _surname  = data?["surname"]
             let _phoneNumber = data?["phoneNo"]
             let _email = data?["email"]
+            let _occupation = data?["occupation"]
+            let _nextOfKinName = data?["nextOfKinName"]
+            let _nextOfKinPhoneNo = data?["nextOfKinPhoneNo"]
             
             
             let fname = (_firstName as? String)!
@@ -85,11 +89,25 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             self.phoneNo.text = (_phoneNumber as? String)!
             self.emailAddress.text = (_email as? String)!
             
-            self.companyAddress.text = self._companyAddress
-            self.refereeName.text = self._refereeName
-            self.refereePhoneNo.text = self._refereePhoneNo
+            if _occupation != nil{
+                self.occupation.text = (_occupation as? String)!
+            }
+            
+            if _nextOfKinName != nil{
+                self.nextOfKinName.text = (_nextOfKinName as? String)!
+            }
+            
+            if _nextOfKinPhoneNo != nil{
+                self.nextOfKinPhoneNo.text = (_nextOfKinPhoneNo as? String)!
+            }
+            
+        
+            
+            self.occupation.text = self._occupation
             self.duration.text = self._apartmentPrices
             
+            self.nextOfKinName.text = self.__nextOfKinName
+            self.nextOfKinPhoneNo.text = self.__nextOfKinPhoneNo
             
             
             
@@ -124,12 +142,11 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             viewController.fullName = fullName.text!
             viewController.phoneNo = phoneNo.text!
             viewController.emailAddress = emailAddress.text!
-            viewController.companyAddress = companyAddress.text!
-            viewController.refereeName = refereeName.text!
-            viewController.refereePhoneNo = refereePhoneNo.text!
+            viewController.occupation = occupation.text!
             viewController.apartmentLocation = apartmentLocation
             viewController.apartmentPrices = duration.text!
-            viewController._apartmentPrices = apartmentPrices
+            viewController.nextOfKinName = nextOfKinName.text!
+            viewController.nextOfKinPhoneNo = nextOfKinPhoneNo.text!
             
             
             viewController.view.window?.rootViewController = viewController
@@ -152,20 +169,18 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             showToast(message: "Please enter your email address", seconds: 1.2)
             return false
         }
-        else if self.companyAddress.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            showToast(message: "Please enter your company address", seconds: 1.2)
+        else if self.occupation.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            showToast(message: "Please enter your occupation", seconds: 1.2)
             return false
         }
-        else if self.refereeName.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            showToast(message: "Please enter your refree full name", seconds: 1.2)
-            return false
-        }
-        else if self.refereePhoneNo.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
-            showToast(message: "Please enter your referee phone number", seconds: 1.2)
-            return false
-            
-        }else if self.duration.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+        else if self.duration.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
             showToast(message: "Please select the duration you want to book the apartment for", seconds: 1.2)
+            return false
+        }else if self.nextOfKinName.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            showToast(message: "Please enter the name of your next of kin", seconds: 1.2)
+            return false
+        }else if self.nextOfKinPhoneNo.text?.trimmingCharacters(in: .whitespacesAndNewlines) == ""{
+            showToast(message: "Please enter the phone no of your next of kin", seconds: 1.2)
             return false
         }
         

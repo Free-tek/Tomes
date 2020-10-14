@@ -46,14 +46,14 @@ class PaymentViewController: UIViewController {
     var apartmentName = ""
     var fullName = ""
     var phoneNo = ""
-    var companyAddress = ""
+    var occupation = ""
     var emailAddress = ""
-    var refereeName = ""
-    var refereePhoneNo = ""
     var apartmentLocation = ""
     var apartmentPrices = ""
     var duration = ""
     var _apartmentPrices = ""
+    var nextOfKinName = ""
+    var nextOfKinPhoneNo = ""
 
     let cardParams = PSTCKCardParams.init();
 
@@ -257,24 +257,40 @@ class PaymentViewController: UIViewController {
                     let df = DateFormatter()
                     df.dateFormat = "yyyy-MM-dd hh:mm:ss"
                     let now = df.string(from: Date())
-
                     
                     
                     //Confirm payment and save package to DB
                     let post: [String: Any] = [
                         "fullName": self.fullName,
                         "phoneNo": self.phoneNo,
-                        "companyAddress": self.companyAddress,
+                        "occupation": self.occupation,
                         "emailAddress": self.emailAddress,
-                        "refereeName": self.refereeName,
-                        "refereePhoneNo": self.refereePhoneNo,
                         "price": self.price,
                         "apartment_location": self.apartmentLocation,
                         "apartment_name": self.apartmentName,
                         "date": now,
                         "month": month,
                         "paidUpTo": paidUpTo,
-                        "duration": self.duration
+                        "duration": self.duration,
+                        "nextOfKinName": self.nextOfKinName,
+                        "nextOfPhoneNo": self.nextOfKinPhoneNo
+                    ]
+                    
+                    
+                    let postOrders: [String: Any] = [
+                        "fullName": self.fullName,
+                        "phoneNo": self.phoneNo,
+                        "occupation": self.occupation,
+                        "emailAddress": self.emailAddress,
+                        "price": self.price,
+                        "apartment_location": self.apartmentLocation,
+                        "apartment_name": self.apartmentName,
+                        "date": now,
+                        "month": month,
+                        "paidUpTo": paidUpTo,
+                        "duration": self.duration,
+                        "nextOfKinName": self.nextOfKinName,
+                        "nextOfPhoneNo": self.nextOfKinPhoneNo
                     ]
 
 
@@ -284,6 +300,8 @@ class PaymentViewController: UIViewController {
                     ref2.setValue(self.duration)
                     
                     let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
+                    
+                    let refPayments = Database.database().reference().child("payments")
 
                     ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                         print(snapshot.childrenCount)
@@ -295,9 +313,12 @@ class PaymentViewController: UIViewController {
 
 
                         let refUser = Database.database().reference().child("users").child(userId!)
+                        
+                        refUser.child("nextOfKinName").setValue(self.nextOfKinName)
+                        refUser.child("nextOfPhoneNo").setValue(self.nextOfKinPhoneNo)
                         refUser.child("payment_date").setValue(now)
-
-
+                        
+                        
                         //save user's data
                         ref.child("\(snapshot.childrenCount + 1)").setValue(post) { (err, resp) in
                             guard err == nil else {
@@ -323,36 +344,73 @@ class PaymentViewController: UIViewController {
                             }
                             print("No errors while posting, :")
                             //go to home page
+                            
+                            //----------
+                            refPayments.child(now).setValue(postOrders) { (err, resp) in
+                                guard err == nil else {
+                                    print("Posting failed : ")
 
-                            self.animationView.stop()
-                            self.animationView.alpha = 0
+                                    self.animationView.stop()
+                                    self.animationView.alpha = 0
 
-                            self.cardNumber.alpha = 1
-                            self.cvv.alpha = 1
-                            self.expiryYear.alpha = 1
-                            self.expiryMonth.alpha = 1
-                            self.payNow.alpha = 1
+                                    self.cardNumber.alpha = 1
+                                    self.cvv.alpha = 1
+                                    self.expiryYear.alpha = 1
+                                    self.expiryMonth.alpha = 1
+                                    self.payNow.alpha = 1
 
-                            self.paymentHeader.alpha = 1
-                            self.cardNoHeader.alpha = 1
-                            self.cvvHeader.alpha = 1
-                            self.expiryYearHeader.alpha = 1
-                            self.expiryMonthHeader.alpha = 1
-                            self.backButton.alpha = 1
+                                    self.paymentHeader.alpha = 1
+                                    self.cardNoHeader.alpha = 1
+                                    self.cvvHeader.alpha = 1
+                                    self.expiryYearHeader.alpha = 1
+                                    self.expiryMonthHeader.alpha = 1
+                                    self.backButton.alpha = 1
+
+                                    return
+                                }
+                                print("No errors while posting, :")
+                                //go to home page
+
+                                self.animationView.stop()
+                                self.animationView.alpha = 0
+
+                                self.cardNumber.alpha = 1
+                                self.cvv.alpha = 1
+                                self.expiryYear.alpha = 1
+                                self.expiryMonth.alpha = 1
+                                self.payNow.alpha = 1
+
+                                self.paymentHeader.alpha = 1
+                                self.cardNoHeader.alpha = 1
+                                self.cvvHeader.alpha = 1
+                                self.expiryYearHeader.alpha = 1
+                                self.expiryMonthHeader.alpha = 1
+                                self.backButton.alpha = 1
 
 
-                            self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
+                                
+                                
+                                
+                                self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
 
 
-                            //transition account
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                                    self.performSegue(withIdentifier: "toAccount", sender: nil)
-                                })
+//                                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+//                                let vc = storyBoard.instantiateViewController(withIdentifier: "yourTabbarController") as! UITabBarController
+//                                self.present(vc, animated: true, completion: nil)
+//                                
+                                
+                                //transition account
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                        self.performSegue(withIdentifier: "toAccount", sender: nil)
+                                    })
+                                
+
+                            }
+
 
 
                         }
-
-
+                        
 
                     })
 
@@ -397,11 +455,12 @@ class PaymentViewController: UIViewController {
         viewController._fullName = fullName
         viewController._phoneNo = phoneNo
         viewController._emailAddress = emailAddress
-        viewController._companyAddress = companyAddress
-        viewController._refereeName = refereeName
-        viewController._refereePhoneNo = refereePhoneNo
+        viewController._occupation = occupation
         viewController._apartmentPrices = apartmentPrices
         viewController.apartmentPrices = _apartmentPrices
+        viewController.__nextOfKinName = nextOfKinName
+        viewController.__nextOfKinPhoneNo = nextOfKinPhoneNo
+        
         
         viewController.view.window?.rootViewController = viewController
         viewController.view.window?.makeKeyAndVisible()
