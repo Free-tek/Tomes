@@ -15,6 +15,7 @@
 		437BC3352536F405000317EE /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3342536F405000317EE /* Comfortaa-Bold.ttf */; };
 		437BC33C2536F461000317EE /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3382536F45E000317EE /* Comfortaa-Light.ttf */; };
 		437BC33E2536F461000317EE /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */; };
+		43DDDB312537BC2300E59017 /* tomesicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DDDB302537BC2300E59017 /* tomesicon.png */; };
 		7A0973F5643DF89DE4B8343A /* Pods_Tomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BC872C0A932D45E1E1FB60 /* Pods_Tomes.framework */; };
 		B834CEA124F7BB10001AA809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834CEA024F7BB10001AA809 /* AppDelegate.swift */; };
 		B834CEA324F7BB10001AA809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834CEA224F7BB10001AA809 /* SceneDelegate.swift */; };
@@ -63,6 +64,7 @@
 		437BC3382536F45E000317EE /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
 		437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
 		43DDDB062537535D00E59017 /* saxmono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = saxmono.ttf; path = ../../../../saxmono.ttf; sourceTree = "<group>"; };
+		43DDDB302537BC2300E59017 /* tomesicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tomesicon.png; path = ../../tomesicon.png; sourceTree = "<group>"; };
 		8EC47D0A82A84FE05B4D5A26 /* Pods-Tomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomes.release.xcconfig"; path = "Target Support Files/Pods-Tomes/Pods-Tomes.release.xcconfig"; sourceTree = "<group>"; };
 		B834CE9D24F7BB10001AA809 /* Tomes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B834CEA024F7BB10001AA809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -156,6 +158,7 @@
 				B834CEA624F7BB11001AA809 /* Main.storyboard */,
 				B834CEA924F7BB16001AA809 /* Assets.xcassets */,
 				B834CEAB24F7BB16001AA809 /* LaunchScreen.storyboard */,
+				43DDDB302537BC2300E59017 /* tomesicon.png */,
 				437BC32B2536EB42000317EE /* loadingTomes.json */,
 				437BC32C2536EB44000317EE /* tomes.json */,
 				437BC3302536EB7C000317EE /* GoogleService-Info.plist */,
@@ -326,6 +329,7 @@
 				B834CEAD24F7BB16001AA809 /* LaunchScreen.storyboard in Resources */,
 				437BC32D2536EB44000317EE /* loadingTomes.json in Resources */,
 				437BC3352536F405000317EE /* Comfortaa-Bold.ttf in Resources */,
+				43DDDB312537BC2300E59017 /* tomesicon.png in Resources */,
 				437BC33E2536F461000317EE /* Comfortaa-Regular.ttf in Resources */,
 				437BC33C2536F461000317EE /* Comfortaa-Light.ttf in Resources */,
 				B834CEAA24F7BB16001AA809 /* Assets.xcassets in Resources */,
