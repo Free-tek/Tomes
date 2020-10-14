@@ -89,25 +89,31 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             self.phoneNo.text = (_phoneNumber as? String)!
             self.emailAddress.text = (_email as? String)!
             
+            print("this is result \(_occupation) -- \(_nextOfKinName) -- \(_nextOfKinPhoneNo)")
             if _occupation != nil{
                 self.occupation.text = (_occupation as? String)!
+                //self._occupation = (_nextOfKinName as? String)!
             }
             
             if _nextOfKinName != nil{
+                print("entered next of kin")
                 self.nextOfKinName.text = (_nextOfKinName as? String)!
+                //self.nextOfKinName.text = self.__nextOfKinName
+                
             }
             
             if _nextOfKinPhoneNo != nil{
                 self.nextOfKinPhoneNo.text = (_nextOfKinPhoneNo as? String)!
+                //self.nextOfKinPhoneNo.text = self.__nextOfKinPhoneNo
             }
             
         
             
-            self.occupation.text = self._occupation
+            //self.occupation.text = self._occupation
             self.duration.text = self._apartmentPrices
             
-            self.nextOfKinName.text = self.__nextOfKinName
-            self.nextOfKinPhoneNo.text = self.__nextOfKinPhoneNo
+            //self.nextOfKinName.text = self.__nextOfKinName
+            //self.nextOfKinPhoneNo.text = self.__nextOfKinPhoneNo
             
             
             

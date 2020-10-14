@@ -259,6 +259,7 @@ class PaymentViewController: UIViewController {
                     let now = df.string(from: Date())
                     
                     
+                    
                     //Confirm payment and save package to DB
                     let post: [String: Any] = [
                         "fullName": self.fullName,
@@ -273,7 +274,7 @@ class PaymentViewController: UIViewController {
                         "paidUpTo": paidUpTo,
                         "duration": self.duration,
                         "nextOfKinName": self.nextOfKinName,
-                        "nextOfPhoneNo": self.nextOfKinPhoneNo
+                        "nextOfKinPhoneNo": self.nextOfKinPhoneNo
                     ]
                     
                     
@@ -290,7 +291,7 @@ class PaymentViewController: UIViewController {
                         "paidUpTo": paidUpTo,
                         "duration": self.duration,
                         "nextOfKinName": self.nextOfKinName,
-                        "nextOfPhoneNo": self.nextOfKinPhoneNo
+                        "nextOfKinPhoneNo": self.nextOfKinPhoneNo
                     ]
 
 
@@ -308,15 +309,13 @@ class PaymentViewController: UIViewController {
 
 
                         let refApartment = Database.database().reference().child("apartments").child(self.key)
+                        
 
                         refApartment.child("Availability").setValue("false")
 
 
-                        let refUser = Database.database().reference().child("users").child(userId!)
                         
-                        refUser.child("nextOfKinName").setValue(self.nextOfKinName)
-                        refUser.child("nextOfPhoneNo").setValue(self.nextOfKinPhoneNo)
-                        refUser.child("payment_date").setValue(now)
+                        
                         
                         
                         //save user's data
@@ -389,19 +388,18 @@ class PaymentViewController: UIViewController {
 
 
                                 
+                                let refUser = Database.database().reference().child("users").child(userId!)
+                                refUser.child("nextOfKinName").setValue("\(self.nextOfKinName)")
+                                refUser.child("occupation").setValue("\(self.occupation)")
+                                refUser.child("nextOfKinPhoneNo").setValue("\(self.nextOfKinPhoneNo)")
+                                refUser.child("payment_date").setValue(now)
                                 
                                 
                                 self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
 
-
-//                                let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-//                                let vc = storyBoard.instantiateViewController(withIdentifier: "yourTabbarController") as! UITabBarController
-//                                self.present(vc, animated: true, completion: nil)
-//                                
-                                
                                 //transition account
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                                        self.performSegue(withIdentifier: "toAccount", sender: nil)
+                                        self.performSegue(withIdentifier: "backHome_Payment", sender: nil)
                                     })
                                 
 
