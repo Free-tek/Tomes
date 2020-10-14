@@ -14,7 +14,6 @@
 		437BC3312536EB7C000317EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3302536EB7C000317EE /* GoogleService-Info.plist */; };
 		437BC3352536F405000317EE /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3342536F405000317EE /* Comfortaa-Bold.ttf */; };
 		437BC33C2536F461000317EE /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3382536F45E000317EE /* Comfortaa-Light.ttf */; };
-		437BC33D2536F461000317EE /* saxmono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3392536F45E000317EE /* saxmono.ttf */; };
 		437BC33E2536F461000317EE /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */; };
 		7A0973F5643DF89DE4B8343A /* Pods_Tomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BC872C0A932D45E1E1FB60 /* Pods_Tomes.framework */; };
 		B834CEA124F7BB10001AA809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834CEA024F7BB10001AA809 /* AppDelegate.swift */; };
@@ -62,8 +61,8 @@
 		437BC3302536EB7C000317EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		437BC3342536F405000317EE /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
 		437BC3382536F45E000317EE /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
-		437BC3392536F45E000317EE /* saxmono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = saxmono.ttf; path = ../../../../../../../Volumes/USBSTORAGE/saxmono.ttf; sourceTree = "<group>"; };
 		437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		43DDDB062537535D00E59017 /* saxmono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = saxmono.ttf; path = ../../../../saxmono.ttf; sourceTree = "<group>"; };
 		8EC47D0A82A84FE05B4D5A26 /* Pods-Tomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomes.release.xcconfig"; path = "Target Support Files/Pods-Tomes/Pods-Tomes.release.xcconfig"; sourceTree = "<group>"; };
 		B834CE9D24F7BB10001AA809 /* Tomes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B834CEA024F7BB10001AA809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -197,8 +196,8 @@
 				437BC3252536EB35000317EE /* IndigoRegular.ttf */,
 				437BC3382536F45E000317EE /* Comfortaa-Light.ttf */,
 				437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */,
-				437BC3392536F45E000317EE /* saxmono.ttf */,
 				437BC3342536F405000317EE /* Comfortaa-Bold.ttf */,
+				43DDDB062537535D00E59017 /* saxmono.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -334,7 +333,6 @@
 				B834CEA824F7BB11001AA809 /* Main.storyboard in Resources */,
 				B896EE29251AA72700C5A509 /* PaymentDetailCollectionViewCell.xib in Resources */,
 				437BC3282536EB36000317EE /* IndigoRegular.ttf in Resources */,
-				437BC33D2536F461000317EE /* saxmono.ttf in Resources */,
 				437BC32E2536EB44000317EE /* tomes.json in Resources */,
 				B8D380A425005BEA00A97474 /* ApartmentListTableViewCell.xib in Resources */,
 				437BC3272536EB36000317EE /* Indigo Regular.otf in Resources */,

@@ -54,7 +54,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     var refList: DatabaseReference!
     var locations = [String]()
-    var date: Date?
+    var lastRatingDate: Date?
 
     var pickerView = UIPickerView()
 
@@ -230,59 +230,72 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let duration = (data?["duration"])
             let lastRating = (data?["last_rating"])
             
+            let startDate = Date()
+            
+            let _dateFormatter = DateFormatter()
+            _dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            let _paymentDate = _dateFormatter.date(from: paymentDate as! String)
+            
+            let paymentComponents = Calendar.current.dateComponents([.day], from: _paymentDate!, to: startDate)
+            
+            
+            
             if duration == nil || paymentDate == nil{
                 
                 completionHandler(false)
             
-            }else if lastRating == nil{
+            }else if paymentComponents.day! >= 30{
                 
                 print("entered here for rating ... 1")
+                completionHandler(false)
+                
+            }else if lastRating == nil{
+                
+                print("entered here for rating ... 2")
                 
                 let df = DateFormatter()
                 df.dateFormat = "yyyy-MM-dd"
                 let dateString = df.string(from: Date())
                 
                 ref.child("last_rating").setValue(dateString)
-                
                 completionHandler(true)
                 
             }else{
                 
-                print("entered here for rating ... 2")
+                print("entered here for rating ... 3")
                 
                 let dateFormatter = DateFormatter()
                 dateFormatter.dateFormat = "yyyy-MM-dd"
-                self.date = dateFormatter.date(from: lastRating as! String)
+                self.lastRatingDate = dateFormatter.date(from: lastRating as! String)
                 
-                let startDate = Date()
-
-                let components = Calendar.current.dateComponents([.day], from: startDate, to: self.date!)
-                
-                
-                print("this is the duration \(duration)")
+                let components = Calendar.current.dateComponents([.day], from: startDate, to: self.lastRatingDate!)
                 
                 if duration as! String == "monthly" {
                     
-                    if 30 - components.day! <= 0 {
+                    print("this is the duration 2 \(components.day!)")
+                    
+                    if components.day! <= -7{
                         
+                        print("hereee 1")
+                        let df = DateFormatter()
+                        df.dateFormat = "yyyy-MM-dd"
+                        let dateString = df.string(from: startDate)
+                        
+                        ref.child("last_rating").setValue(dateString)
+                        completionHandler(true)
+                    }
+                    
+                    else if components.day! <= 0 {
+                        print("hereee 2")
                         completionHandler(false)
 
                     }else {
+                        let df = DateFormatter()
+                        df.dateFormat = "yyyy-MM-dd"
+                        let dateString = df.string(from: startDate)
                         
-                        if components.day! >= 7{
-                            
-                            
-                            let df = DateFormatter()
-                            df.dateFormat = "yyyy-MM-dd"
-                            let dateString = df.string(from: startDate)
-                            
-                            ref.child("last_rating").setValue(dateString)
-                            completionHandler(true)
-                            
-                        }else{
-                            completionHandler(false)
-
-                        }
+                        ref.child("last_rating").setValue(dateString)
+                        completionHandler(true)
                     }
 
                 }else{
@@ -398,6 +411,15 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     
     @IBAction func cancelRatingView(_ sender: Any) {
         
+        self.animationView.alpha = 1
+        self.animationView.animation = Animation.named("loadingTomes")
+        self.animationView.frame = CGRect(x: 0, y: 0, width: 150, height: 150)
+        self.animationView.center = self.view.center
+        self.animationView.contentMode = .scaleAspectFit
+        self.animationView.loopMode = .loop
+        self.animationView.play()
+        self.view.addSubview(self.animationView)
+        
         ratingView.alpha=0
         apartmentListViewModelController.fetchApartments(completion: { (success) in
             if !success {
@@ -497,7 +519,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func twoStarFunc(_ sender: Any) {
         self.rating = 2
         twoStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
-        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
         threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
         fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
         fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
@@ -507,8 +529,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func threeStarFunc(_ sender: Any) {
         self.rating = 3
         threeStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
-        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
-        twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        twoStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
         fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
         fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
 
@@ -517,9 +539,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func fourStarFunc(_ sender: Any) {
         self.rating = 4
         fourStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
-        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
-        twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
-        threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        twoStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        threeStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
         fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
 
     }
@@ -527,10 +549,10 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBAction func fiveStarFunc(_ sender: Any) {
         self.rating = 5
         fiveStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
-        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
-        twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
-        threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
-        fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        twoStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        threeStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        fourStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
     }
     
     
