@@ -7,14 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		96D1F18206DFA54C3C6FAC52 /* Pods_Tomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A78172E8C5ADFA41D94BBC7 /* Pods_Tomes.framework */; };
+		437BC3272536EB36000317EE /* Indigo Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3242536EB34000317EE /* Indigo Regular.otf */; };
+		437BC3282536EB36000317EE /* IndigoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3252536EB35000317EE /* IndigoRegular.ttf */; };
+		437BC32D2536EB44000317EE /* loadingTomes.json in Resources */ = {isa = PBXBuildFile; fileRef = 437BC32B2536EB42000317EE /* loadingTomes.json */; };
+		437BC32E2536EB44000317EE /* tomes.json in Resources */ = {isa = PBXBuildFile; fileRef = 437BC32C2536EB44000317EE /* tomes.json */; };
+		437BC3312536EB7C000317EE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3302536EB7C000317EE /* GoogleService-Info.plist */; };
+		437BC3352536F405000317EE /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3342536F405000317EE /* Comfortaa-Bold.ttf */; };
+		437BC33C2536F461000317EE /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3382536F45E000317EE /* Comfortaa-Light.ttf */; };
+		437BC33D2536F461000317EE /* saxmono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC3392536F45E000317EE /* saxmono.ttf */; };
+		437BC33E2536F461000317EE /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */; };
+		7A0973F5643DF89DE4B8343A /* Pods_Tomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BC872C0A932D45E1E1FB60 /* Pods_Tomes.framework */; };
 		B834CEA124F7BB10001AA809 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834CEA024F7BB10001AA809 /* AppDelegate.swift */; };
 		B834CEA324F7BB10001AA809 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834CEA224F7BB10001AA809 /* SceneDelegate.swift */; };
 		B834CEA524F7BB10001AA809 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B834CEA424F7BB10001AA809 /* ViewController.swift */; };
 		B834CEA824F7BB11001AA809 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B834CEA624F7BB11001AA809 /* Main.storyboard */; };
 		B834CEAA24F7BB16001AA809 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B834CEA924F7BB16001AA809 /* Assets.xcassets */; };
 		B834CEAD24F7BB16001AA809 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B834CEAB24F7BB16001AA809 /* LaunchScreen.storyboard */; };
-		B834CEB724F7BBEA001AA809 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = B834CEB624F7BBEA001AA809 /* GoogleService-Info.plist */; };
 		B8705527252152D8009C2C6F /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8705526252152D8009C2C6F /* Constants.swift */; };
 		B87055292521DA6B009C2C6F /* ContactUsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B87055282521DA6B009C2C6F /* ContactUsViewController.swift */; };
 		B876279E2507C05700D0EE92 /* SplashScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */; };
@@ -32,17 +40,10 @@
 		B8B409022507DFDD00B46A7C /* ApartmentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */; };
 		B8B40904250831DE00B46A7C /* BookApartmentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B40903250831DE00B46A7C /* BookApartmentViewController.swift */; };
 		B8B409062508373200B46A7C /* PaymentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8B409052508373200B46A7C /* PaymentViewController.swift */; };
-		B8C8EEBB24F7C758002DDE20 /* tomes.json in Resources */ = {isa = PBXBuildFile; fileRef = B8C8EEBA24F7C758002DDE20 /* tomes.json */; };
 		B8C8EEC124F7CA35002DDE20 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8C8EEC024F7CA35002DDE20 /* LoginViewController.swift */; };
 		B8CCB6A124F7E0D40034C878 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6A024F7E0D40034C878 /* Utilities.swift */; };
-		B8CCB6A524F7E4470034C878 /* Comfortaa-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6A224F7E4470034C878 /* Comfortaa-Light.ttf */; };
-		B8CCB6A624F7E4470034C878 /* Comfortaa-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6A324F7E4470034C878 /* Comfortaa-Bold.ttf */; };
-		B8CCB6A724F7E4470034C878 /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6A424F7E4470034C878 /* Comfortaa-Regular.ttf */; };
-		B8CCB6A924F7E45D0034C878 /* IndigoRegular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6A824F7E45D0034C878 /* IndigoRegular.ttf */; };
-		B8CCB6AB24F7E46C0034C878 /* saxmono.ttf in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6AA24F7E46B0034C878 /* saxmono.ttf */; };
 		B8CCB6AD24F7EADB0034C878 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6AC24F7EADB0034C878 /* SignUpViewController.swift */; };
 		B8CCB6AF24F7EF990034C878 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6AE24F7EF990034C878 /* ForgotPasswordViewController.swift */; };
-		B8CCB6B124F802D70034C878 /* loadingTomes.json in Resources */ = {isa = PBXBuildFile; fileRef = B8CCB6B024F802D70034C878 /* loadingTomes.json */; };
 		B8CCB6B324F80D1A0034C878 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CCB6B224F80D1A0034C878 /* HomeViewController.swift */; };
 		B8D380A325005BEA00A97474 /* ApartmentListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8D380A125005BEA00A97474 /* ApartmentListTableViewCell.swift */; };
 		B8D380A425005BEA00A97474 /* ApartmentListTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B8D380A225005BEA00A97474 /* ApartmentListTableViewCell.xib */; };
@@ -52,8 +53,18 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5F10667030514F75BE722767 /* Pods-Tomes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomes.debug.xcconfig"; path = "Target Support Files/Pods-Tomes/Pods-Tomes.debug.xcconfig"; sourceTree = "<group>"; };
-		9A78172E8C5ADFA41D94BBC7 /* Pods_Tomes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tomes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		01BC872C0A932D45E1E1FB60 /* Pods_Tomes.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Tomes.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		358FD41EF2CDA6AE5E4E3979 /* Pods-Tomes.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomes.debug.xcconfig"; path = "Target Support Files/Pods-Tomes/Pods-Tomes.debug.xcconfig"; sourceTree = "<group>"; };
+		437BC3242536EB34000317EE /* Indigo Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Indigo Regular.otf"; sourceTree = "<group>"; };
+		437BC3252536EB35000317EE /* IndigoRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = IndigoRegular.ttf; sourceTree = "<group>"; };
+		437BC32B2536EB42000317EE /* loadingTomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = loadingTomes.json; sourceTree = "<group>"; };
+		437BC32C2536EB44000317EE /* tomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = tomes.json; sourceTree = "<group>"; };
+		437BC3302536EB7C000317EE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		437BC3342536F405000317EE /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
+		437BC3382536F45E000317EE /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Light.ttf"; sourceTree = "<group>"; };
+		437BC3392536F45E000317EE /* saxmono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = saxmono.ttf; path = ../../../../../../../Volumes/USBSTORAGE/saxmono.ttf; sourceTree = "<group>"; };
+		437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
+		8EC47D0A82A84FE05B4D5A26 /* Pods-Tomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomes.release.xcconfig"; path = "Target Support Files/Pods-Tomes/Pods-Tomes.release.xcconfig"; sourceTree = "<group>"; };
 		B834CE9D24F7BB10001AA809 /* Tomes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Tomes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B834CEA024F7BB10001AA809 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		B834CEA224F7BB10001AA809 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -62,7 +73,6 @@
 		B834CEA924F7BB16001AA809 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B834CEAC24F7BB16001AA809 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B834CEAE24F7BB16001AA809 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B834CEB624F7BBEA001AA809 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		B8705526252152D8009C2C6F /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		B87055282521DA6B009C2C6F /* ContactUsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsViewController.swift; sourceTree = "<group>"; };
 		B876279D2507C05700D0EE92 /* SplashScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenViewController.swift; sourceTree = "<group>"; };
@@ -80,24 +90,16 @@
 		B8B409012507DFDD00B46A7C /* ApartmentDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentDetailsViewController.swift; sourceTree = "<group>"; };
 		B8B40903250831DE00B46A7C /* BookApartmentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookApartmentViewController.swift; sourceTree = "<group>"; };
 		B8B409052508373200B46A7C /* PaymentViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaymentViewController.swift; sourceTree = "<group>"; };
-		B8C8EEBA24F7C758002DDE20 /* tomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = tomes.json; path = ../../tomes.json; sourceTree = "<group>"; };
 		B8C8EEC024F7CA35002DDE20 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		B8CCB6A024F7E0D40034C878 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = SOURCE_ROOT; };
-		B8CCB6A224F7E4470034C878 /* Comfortaa-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Light.ttf"; path = "../../../comfortaa/Comfortaa-Light.ttf"; sourceTree = "<group>"; };
-		B8CCB6A324F7E4470034C878 /* Comfortaa-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Bold.ttf"; path = "../../../comfortaa/Comfortaa-Bold.ttf"; sourceTree = "<group>"; };
-		B8CCB6A424F7E4470034C878 /* Comfortaa-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = "Comfortaa-Regular.ttf"; path = "../../../comfortaa/Comfortaa-Regular.ttf"; sourceTree = "<group>"; };
-		B8CCB6A824F7E45D0034C878 /* IndigoRegular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = IndigoRegular.ttf; path = ../../../indigo/IndigoRegular.ttf; sourceTree = "<group>"; };
-		B8CCB6AA24F7E46B0034C878 /* saxmono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = saxmono.ttf; path = ../../../saxmono.ttf; sourceTree = "<group>"; };
 		B8CCB6AC24F7EADB0034C878 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		B8CCB6AE24F7EF990034C878 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
-		B8CCB6B024F802D70034C878 /* loadingTomes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = loadingTomes.json; path = ../../loadingTomes.json; sourceTree = "<group>"; };
 		B8CCB6B224F80D1A0034C878 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		B8D380A125005BEA00A97474 /* ApartmentListTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListTableViewCell.swift; sourceTree = "<group>"; };
 		B8D380A225005BEA00A97474 /* ApartmentListTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ApartmentListTableViewCell.xib; sourceTree = "<group>"; };
 		B8D380A625005FAA00A97474 /* ApartmentListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListModel.swift; sourceTree = "<group>"; };
 		B8D380AA25005FE900A97474 /* ApartmentListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListViewModel.swift; sourceTree = "<group>"; };
 		B8D380AC2500603800A97474 /* ApartmentListViewModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApartmentListViewModelController.swift; sourceTree = "<group>"; };
-		FB591B4B845AD2F7AFCC706F /* Pods-Tomes.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Tomes.release.xcconfig"; path = "Target Support Files/Pods-Tomes/Pods-Tomes.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,17 +107,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				96D1F18206DFA54C3C6FAC52 /* Pods_Tomes.framework in Frameworks */,
+				7A0973F5643DF89DE4B8343A /* Pods_Tomes.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		B3D03360F1D03149524555EE /* Frameworks */ = {
+		B3ACEFC8705270ECF12C1AB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				9A78172E8C5ADFA41D94BBC7 /* Pods_Tomes.framework */,
+				01BC872C0A932D45E1E1FB60 /* Pods_Tomes.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -126,7 +128,7 @@
 				B834CE9F24F7BB10001AA809 /* Tomes */,
 				B834CE9E24F7BB10001AA809 /* Products */,
 				D167229A94B5C70A322D4F88 /* Pods */,
-				B3D03360F1D03149524555EE /* Frameworks */,
+				B3ACEFC8705270ECF12C1AB0 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -155,9 +157,9 @@
 				B834CEA624F7BB11001AA809 /* Main.storyboard */,
 				B834CEA924F7BB16001AA809 /* Assets.xcassets */,
 				B834CEAB24F7BB16001AA809 /* LaunchScreen.storyboard */,
-				B8CCB6B024F802D70034C878 /* loadingTomes.json */,
-				B8C8EEBA24F7C758002DDE20 /* tomes.json */,
-				B834CEB624F7BBEA001AA809 /* GoogleService-Info.plist */,
+				437BC32B2536EB42000317EE /* loadingTomes.json */,
+				437BC32C2536EB44000317EE /* tomes.json */,
+				437BC3302536EB7C000317EE /* GoogleService-Info.plist */,
 				B834CEAE24F7BB16001AA809 /* Info.plist */,
 			);
 			path = Tomes;
@@ -191,11 +193,12 @@
 		B8C8EED324F7D573002DDE20 /* Font */ = {
 			isa = PBXGroup;
 			children = (
-				B8CCB6A824F7E45D0034C878 /* IndigoRegular.ttf */,
-				B8CCB6A324F7E4470034C878 /* Comfortaa-Bold.ttf */,
-				B8CCB6A224F7E4470034C878 /* Comfortaa-Light.ttf */,
-				B8CCB6AA24F7E46B0034C878 /* saxmono.ttf */,
-				B8CCB6A424F7E4470034C878 /* Comfortaa-Regular.ttf */,
+				437BC3242536EB34000317EE /* Indigo Regular.otf */,
+				437BC3252536EB35000317EE /* IndigoRegular.ttf */,
+				437BC3382536F45E000317EE /* Comfortaa-Light.ttf */,
+				437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */,
+				437BC3392536F45E000317EE /* saxmono.ttf */,
+				437BC3342536F405000317EE /* Comfortaa-Bold.ttf */,
 			);
 			path = Font;
 			sourceTree = "<group>";
@@ -254,8 +257,8 @@
 		D167229A94B5C70A322D4F88 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				5F10667030514F75BE722767 /* Pods-Tomes.debug.xcconfig */,
-				FB591B4B845AD2F7AFCC706F /* Pods-Tomes.release.xcconfig */,
+				358FD41EF2CDA6AE5E4E3979 /* Pods-Tomes.debug.xcconfig */,
+				8EC47D0A82A84FE05B4D5A26 /* Pods-Tomes.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -267,11 +270,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = B834CEB124F7BB16001AA809 /* Build configuration list for PBXNativeTarget "Tomes" */;
 			buildPhases = (
-				5D6498A05389E432D2CE9F48 /* [CP] Check Pods Manifest.lock */,
+				D6846941AC4F87D546501FE6 /* [CP] Check Pods Manifest.lock */,
 				B834CE9924F7BB10001AA809 /* Sources */,
 				B834CE9A24F7BB10001AA809 /* Frameworks */,
 				B834CE9B24F7BB10001AA809 /* Resources */,
-				87CCA03EECDE12A4E4E64AA8 /* [CP] Embed Pods Frameworks */,
+				AABA59B6AEF26E9A033F2F0A /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -320,27 +323,45 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8C8EEBB24F7C758002DDE20 /* tomes.json in Resources */,
+				437BC3312536EB7C000317EE /* GoogleService-Info.plist in Resources */,
 				B834CEAD24F7BB16001AA809 /* LaunchScreen.storyboard in Resources */,
-				B834CEB724F7BBEA001AA809 /* GoogleService-Info.plist in Resources */,
+				437BC32D2536EB44000317EE /* loadingTomes.json in Resources */,
+				437BC3352536F405000317EE /* Comfortaa-Bold.ttf in Resources */,
+				437BC33E2536F461000317EE /* Comfortaa-Regular.ttf in Resources */,
+				437BC33C2536F461000317EE /* Comfortaa-Light.ttf in Resources */,
 				B834CEAA24F7BB16001AA809 /* Assets.xcassets in Resources */,
-				B8CCB6AB24F7E46C0034C878 /* saxmono.ttf in Resources */,
-				B8CCB6A724F7E4470034C878 /* Comfortaa-Regular.ttf in Resources */,
-				B8CCB6A924F7E45D0034C878 /* IndigoRegular.ttf in Resources */,
-				B8CCB6A524F7E4470034C878 /* Comfortaa-Light.ttf in Resources */,
 				B8B408FE2507CEDF00B46A7C /* ApartmentDetailCollectionViewCell.xib in Resources */,
 				B834CEA824F7BB11001AA809 /* Main.storyboard in Resources */,
 				B896EE29251AA72700C5A509 /* PaymentDetailCollectionViewCell.xib in Resources */,
-				B8CCB6B124F802D70034C878 /* loadingTomes.json in Resources */,
+				437BC3282536EB36000317EE /* IndigoRegular.ttf in Resources */,
+				437BC33D2536F461000317EE /* saxmono.ttf in Resources */,
+				437BC32E2536EB44000317EE /* tomes.json in Resources */,
 				B8D380A425005BEA00A97474 /* ApartmentListTableViewCell.xib in Resources */,
-				B8CCB6A624F7E4470034C878 /* Comfortaa-Bold.ttf in Resources */,
+				437BC3272536EB36000317EE /* Indigo Regular.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5D6498A05389E432D2CE9F48 /* [CP] Check Pods Manifest.lock */ = {
+		AABA59B6AEF26E9A033F2F0A /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tomes/Pods-Tomes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Tomes/Pods-Tomes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tomes/Pods-Tomes-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D6846941AC4F87D546501FE6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -360,23 +381,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		87CCA03EECDE12A4E4E64AA8 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tomes/Pods-Tomes-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Tomes/Pods-Tomes-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Tomes/Pods-Tomes-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -554,7 +558,7 @@
 		};
 		B834CEB224F7BB16001AA809 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5F10667030514F75BE722767 /* Pods-Tomes.debug.xcconfig */;
+			baseConfigurationReference = 358FD41EF2CDA6AE5E4E3979 /* Pods-Tomes.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -574,7 +578,7 @@
 		};
 		B834CEB324F7BB16001AA809 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FB591B4B845AD2F7AFCC706F /* Pods-Tomes.release.xcconfig */;
+			baseConfigurationReference = 8EC47D0A82A84FE05B4D5A26 /* Pods-Tomes.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;

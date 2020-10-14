@@ -10,6 +10,7 @@ import UIKit
 import RangeSeekSlider
 import Firebase
 import FirebaseDatabase
+import FirebaseAuth
 import Lottie
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, RangeSeekSliderDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
@@ -32,10 +33,28 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var noResultIcon: UIImageView!
     @IBOutlet weak var noResultLabel: UILabel!
 
+    
+    @IBOutlet weak var ratingView: UIView!
+    @IBOutlet weak var cancelRatingView: UIButton!
+    @IBOutlet weak var serviceLabel: UILabel!
+    
+    @IBOutlet weak var oneStar: UIButton!
+    @IBOutlet weak var twoStar: UIButton!
+    @IBOutlet weak var threeStar: UIButton!
+    @IBOutlet weak var fourStar: UIButton!
+    @IBOutlet weak var fiveStar: UIButton!
+    @IBOutlet weak var nextRating: UIButton!
+    
+    var services: [String] = ["Power Supply", "Internet Service", "Cleaning Service", "Conduciveness", "Security"]
+    var currentService = 0
+    var rating = 0
+    
+    
     let apartmentListViewModelController: ApartmentListViewModelController = ApartmentListViewModelController()
 
     var refList: DatabaseReference!
     var locations = [String]()
+    var date: Date?
 
     var pickerView = UIPickerView()
 
@@ -49,18 +68,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         setUpElements()
 
-        apartmentListViewModelController.fetchApartments(completion: { (success) in
-            if !success {
-                print("error encountered")
-            } else {
-                DispatchQueue.main.async {
-                    self.animationView.stop()
-                    self.animationView.alpha = 0
-                    self.ApartmentListTableView.alpha = 1
-                    self.ApartmentListTableView.reloadData()
-                }
-            }
-        })
+        
 
     }
 
@@ -74,14 +82,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         self.animationView.loopMode = .loop
         self.animationView.play()
         self.view.addSubview(self.animationView)
-
-
+        
         revert.alpha = 0
         noResultIcon.alpha = 0
         noResultLabel.alpha = 0
-
-
-
+        
         priceView.layer.cornerRadius = 10
         priceView.clipsToBounds = true
 
@@ -89,19 +94,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         locationView.clipsToBounds = true
 
         filterView.alpha = 0
-
-        //fetch locations
-        let ref = Database.database().reference().child("locations")
-
-        ref.observeSingleEvent(of: .value) { snapshot in
-            for case let child as DataSnapshot in snapshot.children {
-
-                let _location = child.value as! String
-                print(_location)
-                self.locations.append(_location)
-
-            }
-        }
+        
+        
         goFilter.layer.cornerRadius = 5.0
         goFilter.clipsToBounds = true
 
@@ -123,8 +117,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         priceRangeSlider.minLabelFont = UIFont(name: "ChalkboardSE-Regular", size: 15.0)!
         priceRangeSlider.maxLabelFont = UIFont(name: "ChalkboardSE-Regular", size: 15.0)!
 
-
-
+        
         filterView.alpha = 0
         filterView.layer.cornerRadius = 10.0
         filterView.clipsToBounds = true
@@ -138,6 +131,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         filterView.layer.shadowOpacity = 1.0
         filterView.layer.masksToBounds = false
         filterView.layer.shadowPath = UIBezierPath(roundedRect: filterView.bounds, cornerRadius: filterView.layer.cornerRadius).cgPath
+        
+        
+        
 
         self.activityIndicator.alpha = 0
         
@@ -156,8 +152,151 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         registerCellForTableView()
 
+        
+        //fetch locations
+        let ref = Database.database().reference().child("locations")
+
+        ref.observeSingleEvent(of: .value) { snapshot in
+            for case let child as DataSnapshot in snapshot.children {
+
+                let _location = child.value as! String
+                print(_location)
+                self.locations.append(_location)
+
+            }
+        }
+        
+        showRating(completionHandler: { (result) in
+            
+            if !result! {
+                
+                self.apartmentListViewModelController.fetchApartments(completion: { (success) in
+                    if !success {
+                        print("error encountered")
+                    } else {
+                        DispatchQueue.main.async {
+                            self.animationView.stop()
+                            self.animationView.alpha = 0
+                            self.ApartmentListTableView.alpha = 1
+                            self.ApartmentListTableView.reloadData()
+                        }
+                    }
+                })
+                
+            } else {
+            
+                
+                self.animationView.stop()
+                self.animationView.alpha = 0
+                
+                self.ratingView.alpha = 1
+                self.ratingView.layer.cornerRadius = 15
+                
+                self.ratingView.clipsToBounds = true
+
+                self.ratingView.layer.borderColor = UIColor.clear.cgColor
+                self.ratingView.layer.masksToBounds = true
+
+                self.ratingView.layer.shadowColor = UIColor.gray.cgColor
+                self.ratingView.layer.shadowOffset = CGSize(width: 0, height: 2.0)
+                self.ratingView.layer.shadowRadius = 2.0
+                self.ratingView.layer.shadowOpacity = 1.0
+                self.ratingView.layer.masksToBounds = false
+                self.ratingView.layer.shadowPath = UIBezierPath(roundedRect: self.ratingView.bounds, cornerRadius: self.ratingView.layer.cornerRadius).cgPath
+                
+                
+                self.serviceLabel.text = self.services[0].uppercased()
+                
+                self.nextRating.layer.cornerRadius = 10
+                
+                
+            }
+
+        })
+        
     }
 
+    func showRating(completionHandler:@escaping (_ result: Bool?)->()){
+        
+        let userId = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("users").child(userId!)
+
+        
+        ref.observeSingleEvent(of: .value, with: {
+            (snapshot) in
+
+            let data = snapshot.value as? [String: Any]
+            let paymentDate = (data?["payment_date"])
+            let duration = (data?["duration"])
+            let lastRating = (data?["last_rating"])
+            
+            if duration == nil || paymentDate == nil{
+                
+                completionHandler(false)
+            
+            }else if lastRating == nil{
+                
+                print("entered here for rating ... 1")
+                
+                let df = DateFormatter()
+                df.dateFormat = "yyyy-MM-dd"
+                let dateString = df.string(from: Date())
+                
+                ref.child("last_rating").setValue(dateString)
+                
+                completionHandler(true)
+                
+            }else{
+                
+                print("entered here for rating ... 2")
+                
+                let dateFormatter = DateFormatter()
+                dateFormatter.dateFormat = "yyyy-MM-dd"
+                self.date = dateFormatter.date(from: lastRating as! String)
+                
+                let startDate = Date()
+
+                let components = Calendar.current.dateComponents([.day], from: startDate, to: self.date!)
+                
+                
+                print("this is the duration \(duration)")
+                
+                if duration as! String == "monthly" {
+                    
+                    if 30 - components.day! <= 0 {
+                        
+                        completionHandler(false)
+
+                    }else {
+                        
+                        if components.day! >= 7{
+                            
+                            
+                            let df = DateFormatter()
+                            df.dateFormat = "yyyy-MM-dd"
+                            let dateString = df.string(from: startDate)
+                            
+                            ref.child("last_rating").setValue(dateString)
+                            completionHandler(true)
+                            
+                        }else{
+                            completionHandler(false)
+
+                        }
+                    }
+
+                }else{
+                    completionHandler(false)
+                }
+                
+                
+                
+            }
+            
+        })
+
+    }
+    
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
@@ -256,6 +395,24 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
     }
 
+    
+    @IBAction func cancelRatingView(_ sender: Any) {
+        
+        ratingView.alpha=0
+        apartmentListViewModelController.fetchApartments(completion: { (success) in
+            if !success {
+                print("error encountered")
+            } else {
+                DispatchQueue.main.async {
+                    self.animationView.stop()
+                    self.animationView.alpha = 0
+                    self.ApartmentListTableView.alpha = 1
+                    self.ApartmentListTableView.reloadData()
+                }
+            }
+        })
+    }
+    
     @IBAction func goFilter(_ sender: Any) {
 
         self.animationView.play()
@@ -326,8 +483,114 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             }
         })
     }
+    
+    
+    @IBAction func oneStarFunc(_ sender: Any) {
+        self.rating = 1
+        oneStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+    }
+    
+    @IBAction func twoStarFunc(_ sender: Any) {
+        self.rating = 2
+        twoStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
 
+    }
+    
+    @IBAction func threeStarFunc(_ sender: Any) {
+        self.rating = 3
+        threeStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
 
+    }
+    
+    @IBAction func fourStarFunc(_ sender: Any) {
+        self.rating = 4
+        fourStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+
+    }
+    
+    @IBAction func fiveStarFunc(_ sender: Any) {
+        self.rating = 5
+        fiveStar.setImage(UIImage(named: "star-filled.png"), for: .normal)
+        oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+        fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+    }
+    
+    
+    @IBAction func nextRatingFunc(_ sender: Any) {
+        
+        if serviceLabel.text == services[services.count-1]{
+            //done
+            ratingView.alpha = 0
+            
+            showToast(message: "Thanks for filling the rating", seconds: 1)
+            
+            
+            apartmentListViewModelController.fetchApartments(completion: { (success) in
+                if !success {
+                    print("error encountered")
+                } else {
+                    DispatchQueue.main.async {
+                        self.animationView.stop()
+                        self.animationView.alpha = 0
+                        self.ApartmentListTableView.alpha = 1
+                        self.ApartmentListTableView.reloadData()
+                    }
+                }
+            })
+            
+            
+        }else{
+            
+            oneStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+            twoStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+            threeStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+            fourStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+            fiveStar.setImage(UIImage(named: "star-hollow.png"), for: .normal)
+            
+            serviceLabel.text = services[currentService+1]
+            currentService += 1
+            
+            if currentService == services.count - 1{
+                nextRating.setTitle("Done", for: .normal)
+            }
+            
+            
+            
+        }
+        
+        let df = DateFormatter()
+        df.dateFormat = "yyyy-MM-dd"
+        let dateString = df.string(from: Date())
+        
+        let userId = Auth.auth().currentUser?.uid
+        let ref = Database.database().reference().child("ratings").child(dateString).child(userId!)
+        
+        ref.child("\(services[currentService - 1])").setValue(rating)
+        Database.database().reference().child("users").child(userId!).child("last_rating").setValue(dateString)
+       
+        rating = 0
+        
+        
+        
+    }
 }
 
 extension HomeViewController: UISearchBarDelegate {
