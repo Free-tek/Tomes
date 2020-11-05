@@ -37,6 +37,7 @@ class ApartmentListTableViewCell: UITableViewCell {
 
     }
     
+    
        override func prepareForReuse() {
            super.prepareForReuse()
                    

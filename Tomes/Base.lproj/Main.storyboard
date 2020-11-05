@@ -3,7 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -59,25 +59,25 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L3d-W6-6m4">
-                                <rect key="frame" x="147" y="198" width="40.5" height="45.5"/>
+                                <rect key="frame" x="149" y="198" width="36" height="47"/>
                                 <fontDescription key="fontDescription" name="IndigoRegular-Regular" family="Indigo Regular" pointSize="39"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="mes" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="r9R-Mc-AuG">
-                                <rect key="frame" x="192.5" y="198" width="74" height="45.5"/>
+                                <rect key="frame" x="190" y="198" width="78" height="47"/>
                                 <fontDescription key="fontDescription" name="IndigoRegular-Regular" family="Indigo Regular" pointSize="39"/>
                                 <color key="textColor" red="0.90949791670000002" green="0.27156323189999998" blue="0.05553605407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZNF-fE-rYL">
-                                <rect key="frame" x="60" y="260.5" width="42" height="20"/>
+                                <rect key="frame" x="52.5" y="262" width="49.5" height="19"/>
                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="mvC-dC-D5r">
-                                <rect key="frame" x="52" y="370.5" width="310" height="34"/>
+                                <rect key="frame" x="52" y="370" width="310" height="34"/>
                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="310" id="1yq-AH-RMx"/>
@@ -93,7 +93,7 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OBM-t2-3AU">
-                                <rect key="frame" x="59" y="343.5" width="75.5" height="20"/>
+                                <rect key="frame" x="52" y="344" width="82.5" height="19"/>
                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -141,7 +141,7 @@
                                 </connections>
                             </button>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="5Pa-iI-sWQ">
-                                <rect key="frame" x="52" y="288.5" width="310" height="35"/>
+                                <rect key="frame" x="52" y="289" width="310" height="35"/>
                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="310" id="M8L-7a-rFt"/>
@@ -363,7 +363,7 @@
                             </activityIndicatorView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="yhp-v1-SjS">
                                 <rect key="frame" x="20" y="256" width="374" height="557"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="606" id="YNw-QL-7m9"/>
                                     <constraint firstAttribute="width" constant="374" id="t67-ll-Jkb"/>
@@ -1603,7 +1603,7 @@
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="More.." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jeh-Ue-fHK">
-                                        <rect key="frame" x="133" y="10" width="54.5" height="22"/>
+                                        <rect key="frame" x="129.5" y="10" width="61" height="22"/>
                                         <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="19"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1648,13 +1648,13 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N500000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oIJ-E0-9LM">
-                                        <rect key="frame" x="8" y="17" width="85.5" height="24.5"/>
+                                        <rect key="frame" x="8" y="16.5" width="106.5" height="25.5"/>
                                         <fontDescription key="fontDescription" name="IndigoRegular-Regular" family="Indigo Regular" pointSize="21"/>
                                         <color key="textColor" red="0.29405295850000002" green="0.33355444670000001" blue="0.37225496769999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="/per month" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ivk-0R-oe6">
-                                        <rect key="frame" x="97.5" y="20" width="107" height="17"/>
+                                        <rect key="frame" x="118.5" y="20" width="107" height="17"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="17" id="CDQ-sd-cwd"/>
                                             <constraint firstAttribute="width" constant="107" id="XEO-Yp-C04"/>
@@ -1746,7 +1746,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="BOOK APARTMENT" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s9u-Th-AJL">
-                                        <rect key="frame" x="92" y="16" width="208" height="27"/>
+                                        <rect key="frame" x="92" y="16" width="229" height="26"/>
                                         <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1769,13 +1769,13 @@
                                         <rect key="frame" x="0.0" y="0.0" width="414" height="901"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Full Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HiH-cU-iS8">
-                                                <rect key="frame" x="47" y="22" width="77" height="20"/>
+                                                <rect key="frame" x="47" y="22" width="89" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="esl-Cq-rV6">
-                                                <rect key="frame" x="47" y="56" width="310" height="34"/>
+                                                <rect key="frame" x="47" y="55" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="2co-HU-mjs"/>
@@ -1791,13 +1791,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Phone No" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KfD-36-7PD">
-                                                <rect key="frame" x="51" y="113" width="76" height="20"/>
+                                                <rect key="frame" x="51" y="112" width="86" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aBU-rm-uoA">
-                                                <rect key="frame" x="47" y="147" width="310" height="34"/>
+                                                <rect key="frame" x="47" y="145" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="O7C-Hl-fql"/>
@@ -1813,13 +1813,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email Address" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xvn-KK-bcA">
-                                                <rect key="frame" x="51" y="204" width="109" height="20"/>
+                                                <rect key="frame" x="51" y="202" width="126" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="4ZU-80-xhr">
-                                                <rect key="frame" x="47" y="238" width="310" height="34"/>
+                                                <rect key="frame" x="47" y="235" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="310" id="8Vx-Bg-sIs"/>
@@ -1835,13 +1835,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Occupation" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Is4-Jv-6Qj">
-                                                <rect key="frame" x="51" y="294" width="88.5" height="20"/>
+                                                <rect key="frame" x="51" y="291" width="106" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8f0-FR-EcH">
-                                                <rect key="frame" x="47" y="328" width="310" height="34"/>
+                                                <rect key="frame" x="47" y="324" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="310" id="BDN-Zq-pb3"/>
@@ -1857,13 +1857,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next of kin (Name)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6rB-yK-zTA">
-                                                <rect key="frame" x="51" y="389" width="140.5" height="20"/>
+                                                <rect key="frame" x="51" y="385" width="160" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yAk-g3-dFW">
-                                                <rect key="frame" x="47" y="423" width="310" height="34"/>
+                                                <rect key="frame" x="47" y="418" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="310" id="G5u-bx-Dev"/>
@@ -1879,13 +1879,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Next of Kin (Phone No)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9Fn-QN-uRO">
-                                                <rect key="frame" x="56" y="484" width="173.5" height="20"/>
+                                                <rect key="frame" x="56" y="479" width="195.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Dkb-Q8-epp">
-                                                <rect key="frame" x="52" y="518" width="310" height="34"/>
+                                                <rect key="frame" x="52" y="512" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="LGG-w9-DWJ"/>
@@ -1901,7 +1901,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration of Stay" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tQG-yw-42A">
-                                                <rect key="frame" x="51" y="579" width="156" height="19"/>
+                                                <rect key="frame" x="51" y="573" width="156" height="19"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="156" id="5a7-9t-2Bc"/>
                                                     <constraint firstAttribute="height" constant="19" id="mX3-cf-GLD"/>
@@ -1911,7 +1911,7 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="SIc-w1-Gcq">
-                                                <rect key="frame" x="47" y="612" width="310" height="34"/>
+                                                <rect key="frame" x="47" y="606" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="310" id="32c-Wd-Evs"/>
@@ -1927,7 +1927,7 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BPI-lf-P9P">
-                                                <rect key="frame" x="84" y="699" width="246" height="40"/>
+                                                <rect key="frame" x="84" y="693" width="246" height="40"/>
                                                 <color key="backgroundColor" red="0.90949791670000002" green="0.27156323189999998" blue="0.05553605407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="40" id="5sd-37-X0Q"/>
@@ -2030,7 +2030,7 @@
         <scene sceneID="E6y-SZ-LRD">
             <objects>
                 <viewController storyboardIdentifier="payment" modalPresentationStyle="fullScreen" id="PtE-ZB-8jQ" customClass="PaymentViewController" customModule="Tomes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="R0K-ED-p1G" customClass="Payme">
+                    <view key="view" contentMode="scaleToFill" id="R0K-ED-p1G" customClass="Payme">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2284,7 +2284,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ijs-GD-6ym">
-                                <rect key="frame" x="57.5" y="70" width="40" height="35"/>
+                                <rect key="frame" x="44.5" y="70" width="40" height="35"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="35" id="6bp-ar-DAs"/>
                                     <constraint firstAttribute="width" constant="40" id="Pxj-gw-t9v"/>
@@ -2295,7 +2295,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Get Started" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Iki-Qj-Zh7">
-                                <rect key="frame" x="111.5" y="71" width="155.5" height="35"/>
+                                <rect key="frame" x="98.5" y="71" width="180.5" height="33.5"/>
                                 <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
                                 <color key="textColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
@@ -2307,7 +2307,7 @@
                                         <rect key="frame" x="0.0" y="-4" width="414" height="770"/>
                                         <subviews>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="B1t-dT-yAM">
-                                                <rect key="frame" x="52" y="42" width="310" height="34"/>
+                                                <rect key="frame" x="52" y="41" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="34" id="9NU-wG-kSC"/>
@@ -2323,13 +2323,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="FirstName" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kc0-u9-Izt">
-                                                <rect key="frame" x="65.5" y="8" width="78.5" height="20"/>
+                                                <rect key="frame" x="52.5" y="8" width="91.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="sTj-nf-pVG">
-                                                <rect key="frame" x="52" y="133" width="310" height="35"/>
+                                                <rect key="frame" x="52" y="131" width="310" height="35"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="1Cd-Up-Ghi"/>
@@ -2345,13 +2345,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Surname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gO-Pv-imF">
-                                                <rect key="frame" x="64" y="99" width="69" height="20"/>
+                                                <rect key="frame" x="52.5" y="98" width="80.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6K4-fv-XIj">
-                                                <rect key="frame" x="52" y="225" width="310" height="34"/>
+                                                <rect key="frame" x="52" y="222" width="310" height="34"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="310" id="126-E9-vUl"/>
@@ -2367,13 +2367,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Mp-Tk-LA9">
-                                                <rect key="frame" x="60" y="191" width="42" height="20"/>
+                                                <rect key="frame" x="52.5" y="189" width="49.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tqo-px-TtQ">
-                                                <rect key="frame" x="52" y="316" width="310" height="35"/>
+                                                <rect key="frame" x="52" y="312" width="310" height="35"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="tUE-YL-plI"/>
@@ -2389,13 +2389,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="PhoneNo" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mfw-1P-aUx">
-                                                <rect key="frame" x="62" y="282" width="71" height="20"/>
+                                                <rect key="frame" x="52" y="279" width="81" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="OUA-Ra-8JY">
-                                                <rect key="frame" x="52" y="408" width="310" height="35"/>
+                                                <rect key="frame" x="52" y="403" width="310" height="35"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="310" id="9lN-qi-f6g"/>
@@ -2411,13 +2411,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gy4-B0-sHz">
-                                                <rect key="frame" x="59.5" y="374" width="75.5" height="20"/>
+                                                <rect key="frame" x="52.5" y="370" width="82.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bmx-a7-zzu">
-                                                <rect key="frame" x="52" y="500" width="310" height="35"/>
+                                                <rect key="frame" x="52" y="494" width="310" height="35"/>
                                                 <color key="backgroundColor" red="0.23230290410000001" green="0.25998088720000001" blue="0.29149553179999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="35" id="jfY-JN-TN8"/>
@@ -2433,13 +2433,13 @@
                                                 </userDefinedRuntimeAttributes>
                                             </textField>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Confirm Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="l2w-FJ-Khc">
-                                                <rect key="frame" x="69.5" y="466" width="140.5" height="20"/>
+                                                <rect key="frame" x="52.5" y="461" width="157.5" height="19"/>
                                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hux-cS-gU6">
-                                                <rect key="frame" x="108.5" y="571" width="197" height="40"/>
+                                                <rect key="frame" x="108.5" y="565" width="197" height="40"/>
                                                 <color key="backgroundColor" red="0.90949791670000002" green="0.27156323189999998" blue="0.05553605407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="width" constant="197" id="gHX-Jt-w42"/>
@@ -2647,40 +2647,43 @@
     </scenes>
     <designables>
         <designable name="8a4-Gd-Vvu">
-            <size key="intrinsicContentSize" width="96.5" height="15.5"/>
+            <size key="intrinsicContentSize" width="106.5" height="25.5"/>
         </designable>
         <designable name="8n3-fL-3KS">
-            <size key="intrinsicContentSize" width="162" height="10.5"/>
+            <size key="intrinsicContentSize" width="172" height="25.5"/>
         </designable>
         <designable name="HE1-mC-7fu">
-            <size key="intrinsicContentSize" width="98" height="15.5"/>
+            <size key="intrinsicContentSize" width="108" height="25.5"/>
         </designable>
         <designable name="HKz-4t-Wo9">
-            <size key="intrinsicContentSize" width="88.5" height="15.5"/>
+            <size key="intrinsicContentSize" width="98.5" height="25.5"/>
+        </designable>
+        <designable name="IqN-TT-Sen">
+            <size key="intrinsicContentSize" width="-1" height="65"/>
         </designable>
         <designable name="JEO-sI-eJc">
-            <size key="intrinsicContentSize" width="96" height="15.5"/>
+            <size key="intrinsicContentSize" width="106" height="25.5"/>
         </designable>
         <designable name="Q3a-wp-STD">
-            <size key="intrinsicContentSize" width="141.5" height="10.5"/>
+            <size key="intrinsicContentSize" width="151.5" height="25.5"/>
         </designable>
         <designable name="WUH-oT-9dg">
-            <size key="intrinsicContentSize" width="167.5" height="15.5"/>
+            <size key="intrinsicContentSize" width="177.5" height="25.5"/>
         </designable>
         <designable name="Y59-BN-G3D">
-            <size key="intrinsicContentSize" width="137" height="10.5"/>
+            <size key="intrinsicContentSize" width="147" height="25.5"/>
         </designable>
         <designable name="fQO-y6-k6B">
-            <size key="intrinsicContentSize" width="153.5" height="10.5"/>
+            <size key="intrinsicContentSize" width="163.5" height="25.5"/>
         </designable>
         <designable name="gYe-Cu-LUh">
-            <size key="intrinsicContentSize" width="148" height="15.5"/>
+            <size key="intrinsicContentSize" width="158" height="25.5"/>
         </designable>
         <designable name="p44-oZ-adY">
-            <size key="intrinsicContentSize" width="143" height="10.5"/>
+            <size key="intrinsicContentSize" width="153" height="25.5"/>
         </designable>
         <designable name="sWg-Xh-gPo">
-            <size key="intrinsicContentSize" width="190.5" height="10.5"/>
+            <size key="intrinsicContentSize" width="200.5" height="25.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>

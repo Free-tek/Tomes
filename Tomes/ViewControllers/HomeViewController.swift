@@ -152,6 +152,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
         registerCellForTableView()
 
+        ApartmentListTableView.backgroundColor = UIColor.clear
         
         //fetch locations
         let ref = Database.database().reference().child("locations")
@@ -339,7 +340,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             apartmentListViewModelController.viewModel(at: indexPath.row) {
             cell.configure(with: viewModel)
         }
-
+        
         return cell
     }
 
@@ -635,6 +636,10 @@ extension HomeViewController: UISearchBarDelegate {
                         self.animationView.alpha = 0
                         self.ApartmentListTableView.alpha = 1
                         self.ApartmentListTableView.reloadData()
+                        
+                        self.noResultIcon.alpha = 0
+                        self.noResultLabel.alpha = 0
+                        self.revert.alpha = 0
 
                         if self.ApartmentListTableView.visibleCells.isEmpty {
                             // no result
@@ -650,6 +655,10 @@ extension HomeViewController: UISearchBarDelegate {
 
         } else {
 
+            revert.alpha = 0
+            noResultIcon.alpha = 0
+            noResultLabel.alpha = 0
+            
             apartmentListViewModelController.fetchApartmentSearched("search", searchText, [Int](), completion: { (success) in
 
                     if !success {
@@ -681,5 +690,21 @@ extension HomeViewController: UISearchBarDelegate {
 
     }
 
+}
+
+
+extension UIView {
+
+    func addShadow(offset: CGSize, color: UIColor, radius: CGFloat, opacity: Float) {
+        layer.masksToBounds = false
+        layer.shadowOffset = offset
+        layer.shadowColor = color.cgColor
+        layer.shadowRadius = radius
+        layer.shadowOpacity = opacity
+
+        let backgroundCGColor = backgroundColor?.cgColor
+        backgroundColor = nil
+        layer.backgroundColor = backgroundCGColor
+    }
 }
 
