@@ -180,35 +180,55 @@ class ContactUsViewController: UIViewController {
                 
                 self.activityIndicator.stopAnimating()
                 
-                print("this is my firstname \(name) and phone no \(phoneNo)")
+                
 
                 if phoneNo != nil{
                     
-                    
-                    
-                    let whatsAppUrl = NSURL(string: "https://api.whatsapp.com/send?phone=\(phoneNo)&text=Hello,%20I%20am%20\(name),%20I%20will%20like%20to")
+                    let urlWhats = "whatsapp://send?phone=\(phoneNo)&text=I am \(name), I will like to"
 
+                    var characterSet = CharacterSet.urlQueryAllowed
+                    characterSet.insert(charactersIn: "?&")
 
+                    if let urlString = urlWhats.addingPercentEncoding(withAllowedCharacters: characterSet){
 
-                    if UIApplication.shared.canOpenURL(whatsAppUrl as! URL) {
-                        UIApplication.shared.openURL(whatsAppUrl as! URL)
-                    }
-                    else {
-                        self.showToast(message: "Ooops, You don't have whatsapp installed", seconds: 1.2)
-                    }
+                    if let whatsappURL = NSURL(string: urlString) {
+                                    if UIApplication.shared.canOpenURL(whatsappURL as URL){
+                                        UIApplication.shared.openURL(whatsappURL as URL)
+                                    }
+                                    else {
+                                        self.showToast(message: "Ooops, You don't have whatsapp installed", seconds: 1.2)
+
+                                    }
+                                }
+                            }
                     
                     
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+//                    print("this is my firstname \(name) and phone no \(phoneNo)")
 //
-//                    let whatsAppUrl = NSURL(string: "https://api.whatsapp.com/send?phone=2348129151589&text=Hello, I am \(name). i  will like to ")
+//                    let whatsAppUrl = NSURL(string: "https://api.whatsapp.com/send?phone=\(phoneNo)&text=Hello,%20I%20am%20\(name),%20I%20will%20like%20to")
 //
-//                    print("this is  the url \(whatsAppUrl)")
 //
-//                    if UIApplication.shared.canOpenURL(whatsAppUrl! as URL) {
-//                        UIApplication.shared.openURL(whatsAppUrl! as URL)
+//
+//                    print("this is whatspp url \(whatsAppUrl)")
+//
+//                    if UIApplication.shared.canOpenURL(whatsAppUrl as! URL) {
+//                        UIApplication.shared.openURL(whatsAppUrl as! URL)
 //                    }
 //                    else {
 //                        self.showToast(message: "Ooops, You don't have whatsapp installed", seconds: 1.2)
 //                    }
+//
+//
                 }
                 
 

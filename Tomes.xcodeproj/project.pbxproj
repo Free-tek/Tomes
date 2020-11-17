@@ -17,6 +17,7 @@
 		437BC33E2536F461000317EE /* Comfortaa-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 437BC33A2536F461000317EE /* Comfortaa-Regular.ttf */; };
 		437EA59625642090003E2803 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437EA59525642090003E2803 /* NotificationService.swift */; };
 		437EA59A25642090003E2803 /* OneSignalNotificationServiceExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 437EA5932564208F003E2803 /* OneSignalNotificationServiceExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		437EA5DF25643859003E2803 /* Projector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 437EA5DE25643859003E2803 /* Projector.swift */; };
 		43DDDB312537BC2300E59017 /* tomesicon.png in Resources */ = {isa = PBXBuildFile; fileRef = 43DDDB302537BC2300E59017 /* tomesicon.png */; };
 		7A0973F5643DF89DE4B8343A /* Pods_Tomes.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 01BC872C0A932D45E1E1FB60 /* Pods_Tomes.framework */; };
 		7C4164EA49DB1D3577EB591B /* Pods_OneSignalNotificationServiceExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 49774C5CE0AD1BE8C9D6124C /* Pods_OneSignalNotificationServiceExtension.framework */; };
@@ -95,6 +96,7 @@
 		437EA59725642090003E2803 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		437EA5C52564244A003E2803 /* Tomes.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Tomes.entitlements; sourceTree = "<group>"; };
 		437EA5C825642659003E2803 /* OneSignalNotificationServiceExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = OneSignalNotificationServiceExtension.entitlements; sourceTree = "<group>"; };
+		437EA5DE25643859003E2803 /* Projector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Projector.swift; sourceTree = "<group>"; };
 		43DDDB062537535D00E59017 /* saxmono.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = saxmono.ttf; path = ../../../../saxmono.ttf; sourceTree = "<group>"; };
 		43DDDB302537BC2300E59017 /* tomesicon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = tomesicon.png; path = ../../tomesicon.png; sourceTree = "<group>"; };
 		49774C5CE0AD1BE8C9D6124C /* Pods_OneSignalNotificationServiceExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_OneSignalNotificationServiceExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -168,6 +170,14 @@
 			path = OneSignalNotificationServiceExtension;
 			sourceTree = "<group>";
 		};
+		437EA5D72564380B003E2803 /* UITesting */ = {
+			isa = PBXGroup;
+			children = (
+				437EA5DE25643859003E2803 /* Projector.swift */,
+			);
+			path = UITesting;
+			sourceTree = "<group>";
+		};
 		B3ACEFC8705270ECF12C1AB0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -200,6 +210,7 @@
 		B834CE9F24F7BB10001AA809 /* Tomes */ = {
 			isa = PBXGroup;
 			children = (
+				437EA5D72564380B003E2803 /* UITesting */,
 				437EA5C52564244A003E2803 /* Tomes.entitlements */,
 				B8705525252152B9009C2C6F /* EnvironmentVariables */,
 				B8D380A925005FC900A97474 /* ViewModelController */,
@@ -525,6 +536,7 @@
 				B8D380AB25005FE900A97474 /* ApartmentListViewModel.swift in Sources */,
 				B8B409062508373200B46A7C /* PaymentViewController.swift in Sources */,
 				B8B40904250831DE00B46A7C /* BookApartmentViewController.swift in Sources */,
+				437EA5DF25643859003E2803 /* Projector.swift in Sources */,
 				B834CEA524F7BB10001AA809 /* ViewController.swift in Sources */,
 				B8D380A325005BEA00A97474 /* ApartmentListTableViewCell.swift in Sources */,
 				B896EE25251AA70200C5A509 /* PaymentRecordViewModelController.swift in Sources */,

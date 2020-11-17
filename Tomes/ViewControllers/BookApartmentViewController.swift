@@ -46,6 +46,8 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
     var __nextOfKinName = ""
     var __nextOfKinPhoneNo = ""
     
+    var fromProceedToPayment = false
+    
     
     var refList: DatabaseReference!
     var ref = Database.database().reference()
@@ -108,12 +110,16 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             }
             
         
+            if self.fromProceedToPayment{
+                self.occupation.text = self._occupation
+                self.nextOfKinName.text = self.__nextOfKinName
+                self.nextOfKinPhoneNo.text = self.__nextOfKinPhoneNo
+            }
             
-            //self.occupation.text = self._occupation
+           
             self.duration.text = self._apartmentPrices
             
-            //self.nextOfKinName.text = self.__nextOfKinName
-            //self.nextOfKinPhoneNo.text = self.__nextOfKinPhoneNo
+            
             
             
             
@@ -153,6 +159,7 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             viewController.apartmentPrices = duration.text!
             viewController.nextOfKinName = nextOfKinName.text!
             viewController.nextOfKinPhoneNo = nextOfKinPhoneNo.text!
+    
             
             
             viewController.view.window?.rootViewController = viewController

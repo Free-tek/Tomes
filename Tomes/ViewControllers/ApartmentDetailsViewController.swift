@@ -130,7 +130,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
 
 
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: screenWidth - 5, height: screenHeight)
+        flowLayout.itemSize = CGSize(width: screenWidth - 5, height: screenHeight+150)
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 0.0
@@ -365,9 +365,24 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         return cell
     }
 
-    func collectionView(_ collectionView: UICollectionView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 250
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let height = view.frame.size.height
+        let width = view.frame.size.width
+        // in case you you want the cell to be 40% of your controllers view
+        return CGSize(width: width-5, height: height+150)
     }
+    
+    
+//    func collectionView(_ collectionView: UICollectionView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+//
+//        let screenRect = UIScreen.main.bounds
+//        let screenHeight = screenRect.size.height
+//
+//        return screenHeight
+//
+//    }
 
     //get clicked item
     private func collectionView(_ collectionView: UICollectionView, didSelectRowAt indexPath: IndexPath) {

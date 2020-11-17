@@ -458,6 +458,7 @@ class PaymentViewController: UIViewController {
         viewController.apartmentPrices = _apartmentPrices
         viewController.__nextOfKinName = nextOfKinName
         viewController.__nextOfKinPhoneNo = nextOfKinPhoneNo
+        viewController.fromProceedToPayment = true
         
         
         viewController.view.window?.rootViewController = viewController
@@ -468,16 +469,18 @@ class PaymentViewController: UIViewController {
 
 
     func validate() -> Bool {
-
-        print("this is expiry month : \(self.expiryMonth.text)  and count \(self.expiryMonth.text?.count),  \(self.expiryMonth.text!.count)")
         
         if self.cvv.text!.count != 3 {
             showToast(message: "Please enter a valid CVV number", seconds: 1.2)
             return false
-        } else if self.expiryYear.text!.count != 2 {
+        }else if self.expiryYear.text!.count != 2 {
             showToast(message: "Please enter a valid expiry year hint: YY", seconds: 1.2)
             return false
         }else if self.expiryMonth.text!.count < 1 || self.expiryMonth.text!.count > 2 {
+            showToast(message: "Please enter a valid expiry month hint: 1 - 12", seconds: 1.2)
+            return false
+            
+        }else if String(Array(self.expiryMonth.text!)[0]) == "0" && (Int(String(Array(self.expiryMonth.text!)[1]))! > 9 || Int(String(Array(self.expiryMonth.text!)[1]))! <= 0)  {
             
             showToast(message: "Please enter a valid expiry month hint: 1 - 12", seconds: 1.2)
             return false

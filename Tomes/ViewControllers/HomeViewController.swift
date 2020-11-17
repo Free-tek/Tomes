@@ -265,25 +265,26 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 let paymentComponents = Calendar.current.dateComponents([.day], from: _paymentDate!, to: startDate)
                 
                 
-                if paymentComponents.day! >= 30{
-                    
-                    print("entered here for rating ... 1")
-                    completionHandler(false)
-                    
-                }else if lastRating == nil{
-                    
-                    print("entered here for rating ... 2")
+                if lastRating == nil{
                     
                     let df = DateFormatter()
                     df.dateFormat = "yyyy-MM-dd"
                     let dateString = df.string(from: Date())
                     
                     ref.child("last_rating").setValue(dateString)
-                    completionHandler(true)
+                    completionHandler(false)
                     
-                }else{
+                }
+                
+                
+                if paymentComponents.day! >= 30{
                     
-                    print("entered here for rating ... 3")
+                    
+                    completionHandler(false)
+                    
+                    
+                }else if lastRating != nil{
+                    
                     
                     let dateFormatter = DateFormatter()
                     dateFormatter.dateFormat = "yyyy-MM-dd"
@@ -293,11 +294,9 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     if duration as! String == "monthly" {
                         
-                        print("this is the duration 2 \(components.day!)")
                         
                         if components.day! <= -7{
                             
-                            print("hereee 1")
                             let df = DateFormatter()
                             df.dateFormat = "yyyy-MM-dd"
                             let dateString = df.string(from: startDate)
@@ -307,7 +306,6 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         }
                         
                         else if components.day! <= 0 {
-                            print("hereee 2")
                             completionHandler(false)
 
                         }else {
