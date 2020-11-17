@@ -49,13 +49,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         //UI Testing
-        if let rootWindow = window {
-            let screenSize = DeviceType.iPhone11.getSize()
-            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
-        }
+//        if let rootWindow = window {
+//            let screenSize = DeviceType.iPhone11.getSize()
+//            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
+//        }
         
         
-        //END OneSignal initializataion code
+        
         return true
     }
 

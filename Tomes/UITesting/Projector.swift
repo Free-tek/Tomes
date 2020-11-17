@@ -77,7 +77,17 @@ enum DeviceType {
    iPhone XS Max, iPhone 11 Pro Max
    */
    case iPhone11ProMax
+    
+    
+   case iPhone12
+    
+    
+   case iPhone12Pro
+    
+    
+   case iPhone12ProMax
    
+   case iPhone12Mini
    
    //MARK: - iPads
    
@@ -110,6 +120,7 @@ enum DeviceType {
    iPad Pro 12.9-inch 1st, 2nd, 3rd and 4th Generation
    */
    case iPadPro12
+    
 
    func getSize() -> CGSize {
        switch self {
@@ -126,6 +137,14 @@ enum DeviceType {
            return CGSize(width: 414, height: 896)
        case .iPhone11ProMax:
            return CGSize(width: 414, height: 896)
+       case .iPhone12:
+           return CGSize(width: 390, height: 844)
+       case .iPhone12Mini:
+           return CGSize(width: 375, height: 812)
+       case .iPhone12ProMax:
+           return CGSize(width: 428, height: 926)
+       case .iPhone12Pro:
+           return CGSize(width: 390, height: 844)
        case .iPadMini:
            return CGSize(width: 768, height: 1024)
        case .iPad9_7:
