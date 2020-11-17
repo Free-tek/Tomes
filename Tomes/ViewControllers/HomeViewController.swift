@@ -12,6 +12,7 @@ import Firebase
 import FirebaseDatabase
 import FirebaseAuth
 import Lottie
+import OneSignal
 
 class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, UITableViewDataSourcePrefetching, RangeSeekSliderDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
 
@@ -67,6 +68,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         super.viewDidLoad()
 
         setUpElements()
+        saveOneSignalId()
 
         
 
@@ -216,6 +218,20 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
         
     }
+    
+    func saveOneSignalId(){
+        
+        let oneSignalUserId = OneSignal.getPermissionSubscriptionState().subscriptionStatus.userId
+        
+        if oneSignalUserId != nil{
+            let userID = Auth.auth().currentUser?.uid
+            let refUser = Database.database().reference().child("users").child(userID!)
+            refUser.child("oneSignalUserId").setValue(oneSignalUserId)
+        }
+        
+        
+    }
+    
 
     func showRating(completionHandler:@escaping (_ result: Bool?)->()){
         
@@ -235,77 +251,84 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             
             let _dateFormatter = DateFormatter()
             _dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
-            let _paymentDate = _dateFormatter.date(from: paymentDate as! String)
-            
-            let paymentComponents = Calendar.current.dateComponents([.day], from: _paymentDate!, to: startDate)
-            
             
             
             if duration == nil || paymentDate == nil{
                 
                 completionHandler(false)
             
-            }else if paymentComponents.day! >= 30{
-                
-                print("entered here for rating ... 1")
-                completionHandler(false)
-                
-            }else if lastRating == nil{
-                
-                print("entered here for rating ... 2")
-                
-                let df = DateFormatter()
-                df.dateFormat = "yyyy-MM-dd"
-                let dateString = df.string(from: Date())
-                
-                ref.child("last_rating").setValue(dateString)
-                completionHandler(true)
-                
             }else{
                 
-                print("entered here for rating ... 3")
                 
-                let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd"
-                self.lastRatingDate = dateFormatter.date(from: lastRating as! String)
+                let _paymentDate = _dateFormatter.date(from: paymentDate as! String)
                 
-                let components = Calendar.current.dateComponents([.day], from: startDate, to: self.lastRatingDate!)
+                let paymentComponents = Calendar.current.dateComponents([.day], from: _paymentDate!, to: startDate)
                 
-                if duration as! String == "monthly" {
+                
+                if paymentComponents.day! >= 30{
                     
-                    print("this is the duration 2 \(components.day!)")
-                    
-                    if components.day! <= -7{
-                        
-                        print("hereee 1")
-                        let df = DateFormatter()
-                        df.dateFormat = "yyyy-MM-dd"
-                        let dateString = df.string(from: startDate)
-                        
-                        ref.child("last_rating").setValue(dateString)
-                        completionHandler(true)
-                    }
-                    
-                    else if components.day! <= 0 {
-                        print("hereee 2")
-                        completionHandler(false)
-
-                    }else {
-                        let df = DateFormatter()
-                        df.dateFormat = "yyyy-MM-dd"
-                        let dateString = df.string(from: startDate)
-                        
-                        ref.child("last_rating").setValue(dateString)
-                        completionHandler(true)
-                    }
-
-                }else{
+                    print("entered here for rating ... 1")
                     completionHandler(false)
+                    
+                }else if lastRating == nil{
+                    
+                    print("entered here for rating ... 2")
+                    
+                    let df = DateFormatter()
+                    df.dateFormat = "yyyy-MM-dd"
+                    let dateString = df.string(from: Date())
+                    
+                    ref.child("last_rating").setValue(dateString)
+                    completionHandler(true)
+                    
+                }else{
+                    
+                    print("entered here for rating ... 3")
+                    
+                    let dateFormatter = DateFormatter()
+                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    self.lastRatingDate = dateFormatter.date(from: lastRating as! String)
+                    
+                    let components = Calendar.current.dateComponents([.day], from: startDate, to: self.lastRatingDate!)
+                    
+                    if duration as! String == "monthly" {
+                        
+                        print("this is the duration 2 \(components.day!)")
+                        
+                        if components.day! <= -7{
+                            
+                            print("hereee 1")
+                            let df = DateFormatter()
+                            df.dateFormat = "yyyy-MM-dd"
+                            let dateString = df.string(from: startDate)
+                            
+                            ref.child("last_rating").setValue(dateString)
+                            completionHandler(true)
+                        }
+                        
+                        else if components.day! <= 0 {
+                            print("hereee 2")
+                            completionHandler(false)
+
+                        }else {
+                            let df = DateFormatter()
+                            df.dateFormat = "yyyy-MM-dd"
+                            let dateString = df.string(from: startDate)
+                            
+                            ref.child("last_rating").setValue(dateString)
+                            completionHandler(true)
+                        }
+
+                    }else{
+                        completionHandler(false)
+                    }
+                    
+                    
+                    
                 }
                 
-                
-                
             }
+            
             
         })
 
@@ -689,7 +712,7 @@ extension HomeViewController: UISearchBarDelegate {
 
 
     }
-
+    
 }
 
 

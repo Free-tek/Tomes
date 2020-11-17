@@ -109,6 +109,7 @@ PODS:
     - nanopb/encode (= 1.30906.0)
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
+  - OneSignal (2.15.4)
   - PaddingLabel (1.2)
   - Paystack (3.0.13):
     - Paystack/Core (= 3.0.13)
@@ -131,6 +132,7 @@ DEPENDENCIES:
   - ImageSlideshow (~> 1.9.0)
   - Kingfisher
   - lottie-ios
+  - OneSignal (< 3.0, >= 2.5.2)
   - PaddingLabel (= 1.2)
   - Paystack
   - RAMAnimatedTabBarController
@@ -161,6 +163,7 @@ SPEC REPOS:
     - leveldb-library
     - lottie-ios
     - nanopb
+    - OneSignal
     - PaddingLabel
     - Paystack
     - PromisesObjC
@@ -192,6 +195,7 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   lottie-ios: 48fac6be217c76937e36e340e2d09cf7b10b7f5f
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
+  OneSignal: 6647275955d0f06d9e17c90dc93af9d85ecfd2b9
   PaddingLabel: 21ab5282c780366018b04c30e3920c2f55a2fd14
   Paystack: b09ee1590bf6631d36eef48a73c8b7f6ba68f7b0
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
@@ -200,6 +204,6 @@ SPEC CHECKSUMS:
   RangeSeekSlider: 650b11fa1edcb92e1e0ede797669d98622570fb5
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 03e0dc540660b310327fe5960e779072c98cea0e
+PODFILE CHECKSUM: ac6c8f9ad6955eab442e83d2e25b25f6a1713f56
 
 COCOAPODS: 1.10.0.rc.1

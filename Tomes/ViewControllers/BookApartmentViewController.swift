@@ -210,6 +210,7 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         duration.text = durationDataSource[row]
+        view.endEditing(true)
     }
     
     

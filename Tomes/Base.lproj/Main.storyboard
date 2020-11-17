@@ -2030,7 +2030,7 @@
         <scene sceneID="E6y-SZ-LRD">
             <objects>
                 <viewController storyboardIdentifier="payment" modalPresentationStyle="fullScreen" id="PtE-ZB-8jQ" customClass="PaymentViewController" customModule="Tomes" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="R0K-ED-p1G" customClass="Payme">
+                    <view key="view" contentMode="scaleToFill" ambiguous="YES" id="R0K-ED-p1G" customClass="Payme">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -2658,9 +2658,6 @@
         <designable name="HKz-4t-Wo9">
             <size key="intrinsicContentSize" width="98.5" height="25.5"/>
         </designable>
-        <designable name="IqN-TT-Sen">
-            <size key="intrinsicContentSize" width="-1" height="65"/>
-        </designable>
         <designable name="JEO-sI-eJc">
             <size key="intrinsicContentSize" width="106" height="25.5"/>
         </designable>
@@ -2687,7 +2684,7 @@
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="qeJ-Wv-IHg"/>
+        <segue reference="ear-EY-7Yu"/>
         <segue reference="Hxh-1z-fOb"/>
         <segue reference="387-lZ-X99"/>
     </inferredMetricsTieBreakers>

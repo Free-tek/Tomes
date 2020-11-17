@@ -11,7 +11,8 @@ import Foundation
 struct Constants{
     
     struct Credentials {
-        
+        static let oneSignalId = "eb54525f-44e5-4320-80ce-3ab4946e635e"
+        static let payStackPublicKey = "pk_test_4630d972a60683fef74c82acb4e8dace692ff638"
         
     }
     
