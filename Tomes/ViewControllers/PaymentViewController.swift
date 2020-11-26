@@ -112,11 +112,11 @@ class PaymentViewController: UIViewController {
         // building new Paystack Transaction
         if validate() != false && price != 0 {
 
-            print("this is apartment price \(apartmentPrices)")
+           
             if apartmentPrices != "" && apartmentPrices.lowercased().contains("weekly") {
                 price = Int (apartmentPrices.lowercased().replacingOccurrences(of: "weekly - ₦", with: ""))!
                 duration = "weekly"
-                print("entered price 1 \(price)")
+                
 
             } else if apartmentPrices != "" && apartmentPrices.lowercased().contains("monthly") {
                 price = Int (apartmentPrices.lowercased().replacingOccurrences(of: "monthly - ₦", with: ""))!
@@ -181,7 +181,7 @@ class PaymentViewController: UIViewController {
                 try transactionParams.setMetadataValueDict(custom_filters, forKey: "custom_filters");
                 try transactionParams.setMetadataValueArray(items, forKey: "items");
             } catch {
-                print(error);
+               
 
                 cardNumber.alpha = 1
                 cvv.alpha = 1
@@ -205,7 +205,7 @@ class PaymentViewController: UIViewController {
 
             PSTCKAPIClient.shared().chargeCard(cardParams, forTransaction: transactionParams, on: self,
                 didEndWithError: { (error, reference) -> Void in
-                    print("error payment: \(error)")
+                   
 
                     self.cardNumber.alpha = 1
                     self.cvv.alpha = 1
@@ -305,7 +305,7 @@ class PaymentViewController: UIViewController {
                     let refPayments = Database.database().reference().child("payments")
 
                     ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                        print(snapshot.childrenCount)
+                       
 
 
                         let refApartment = Database.database().reference().child("apartments").child(self.key)
@@ -321,7 +321,7 @@ class PaymentViewController: UIViewController {
                         //save user's data
                         ref.child("\(snapshot.childrenCount + 1)").setValue(post) { (err, resp) in
                             guard err == nil else {
-                                print("Posting failed : ")
+                               
 
                                 self.animationView.stop()
                                 self.animationView.alpha = 0
@@ -341,13 +341,13 @@ class PaymentViewController: UIViewController {
 
                                 return
                             }
-                            print("No errors while posting, :")
+                           
                             //go to home page
                             
                             //----------
                             refPayments.child(now).setValue(postOrders) { (err, resp) in
                                 guard err == nil else {
-                                    print("Posting failed : ")
+                                  
 
                                     self.animationView.stop()
                                     self.animationView.alpha = 0

@@ -130,7 +130,24 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
 
 
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.itemSize = CGSize(width: screenWidth - 5, height: screenHeight+150)
+        
+        if screenHeight >= 812{
+            
+            if screenHeight < 896{
+                let padding =  (896 - screenHeight) + 150
+                flowLayout.itemSize = CGSize(width: screenWidth - 10, height: screenHeight + padding)
+            }else{
+                let padding =  (screenHeight - 896) + 150
+                flowLayout.itemSize = CGSize(width: screenWidth - 10, height: screenHeight + padding)
+            }
+        
+            flowLayout.itemSize = CGSize(width: screenWidth - 10, height: screenHeight + 150)
+        
+        }else{
+            
+            flowLayout.itemSize = CGSize(width: screenWidth - 10, height: screenHeight)
+        }
+        
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         flowLayout.scrollDirection = .horizontal
         flowLayout.minimumInteritemSpacing = 0.0
@@ -157,7 +174,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                     if response.data != nil {
                         let json = try JSON(data: response.data!)
 
-                        print("success line \(json["success"][0]["success"])")
+                        
                         if json["success"][0]["success"].string == "success" {
 
                             let furnished = json["result"][0]["furnished"].string

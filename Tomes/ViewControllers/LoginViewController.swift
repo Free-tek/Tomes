@@ -45,7 +45,7 @@ class LoginViewController: UIViewController {
 
     @IBAction func loginFunc(_ sender: Any) {
         if(!validateFields()!){
-            print("form not field correctly")
+           
         }else  if (!isInternetAvailable()){
             showToast(message: "No Internet Connection", seconds: 1.2)
         }else{

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17126"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -876,7 +876,7 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="57"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CONTACT US" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8sj-IT-xJ3">
-                                        <rect key="frame" x="92" y="31" width="162.5" height="26"/>
+                                        <rect key="frame" x="92" y="31" width="144.5" height="27"/>
                                         <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="23"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
@@ -1712,9 +1712,8 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Wot-rM-7Ab"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" systemColor="systemGray4Color"/>
                         <constraints>
-                            <constraint firstItem="Hme-L4-ymt" firstAttribute="top" secondItem="Wot-rM-7Ab" secondAttribute="top" constant="-44" id="0vk-4T-4gL"/>
                             <constraint firstItem="0Py-qz-Aea" firstAttribute="trailing" secondItem="Wot-rM-7Ab" secondAttribute="trailing" id="KEO-n1-4Xv"/>
                             <constraint firstAttribute="bottom" secondItem="Hme-L4-ymt" secondAttribute="bottom" id="MEg-XI-6eh"/>
                             <constraint firstItem="0NW-cZ-Am2" firstAttribute="top" secondItem="Wot-rM-7Ab" secondAttribute="top" constant="17" id="Owh-aG-25T"/>
@@ -1722,6 +1721,7 @@
                             <constraint firstItem="0NW-cZ-Am2" firstAttribute="leading" secondItem="Wot-rM-7Ab" secondAttribute="leading" constant="8" id="W8k-mT-kGm"/>
                             <constraint firstItem="0Py-qz-Aea" firstAttribute="leading" secondItem="Wot-rM-7Ab" secondAttribute="leading" id="YDb-D9-3UC"/>
                             <constraint firstItem="rcU-b2-55E" firstAttribute="leading" secondItem="Wot-rM-7Ab" secondAttribute="leading" id="Zcu-XD-0jr"/>
+                            <constraint firstItem="Hme-L4-ymt" firstAttribute="top" secondItem="5eN-Im-YRO" secondAttribute="top" id="Zwj-rF-ofM"/>
                             <constraint firstItem="Wot-rM-7Ab" firstAttribute="bottom" secondItem="rcU-b2-55E" secondAttribute="bottom" constant="61" id="aUT-jP-URy"/>
                             <constraint firstItem="Hme-L4-ymt" firstAttribute="trailing" secondItem="Wot-rM-7Ab" secondAttribute="trailing" id="d3h-Gq-mFl"/>
                             <constraint firstItem="rcU-b2-55E" firstAttribute="top" secondItem="0NW-cZ-Am2" secondAttribute="bottom" constant="7" id="gdD-YT-V4a"/>
@@ -2589,13 +2589,13 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Forgot Password" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yZ9-dc-0y9">
-                                <rect key="frame" x="99" y="85" width="261" height="33.5"/>
+                                <rect key="frame" x="99" y="85" width="229" height="35"/>
                                 <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="30"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="6Rg-Tv-tfi">
-                                <rect key="frame" x="52" y="210" width="310" height="34"/>
+                                <rect key="frame" x="52" y="211" width="310" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="34" id="DgB-ca-Pu7"/>
@@ -2611,13 +2611,13 @@
                                 </userDefinedRuntimeAttributes>
                             </textField>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Email" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6iG-k7-DhM">
-                                <rect key="frame" x="46.5" y="177" width="49.5" height="19"/>
+                                <rect key="frame" x="54" y="177" width="42" height="20"/>
                                 <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="17"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sVe-6Y-VtC">
-                                <rect key="frame" x="73.5" y="302" width="267" height="40"/>
+                                <rect key="frame" x="73.5" y="303" width="267" height="40"/>
                                 <color key="backgroundColor" red="0.90949791670000002" green="0.27156323189999998" blue="0.05553605407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="267" id="CKC-19-mek"/>
@@ -2681,46 +2681,48 @@
     </scenes>
     <designables>
         <designable name="8a4-Gd-Vvu">
-            <size key="intrinsicContentSize" width="124.5" height="24.5"/>
+            <size key="intrinsicContentSize" width="106.5" height="25.5"/>
         </designable>
         <designable name="8n3-fL-3KS">
-            <size key="intrinsicContentSize" width="200.5" height="25.5"/>
+            <size key="intrinsicContentSize" width="172" height="25.5"/>
         </designable>
         <designable name="HE1-mC-7fu">
-            <size key="intrinsicContentSize" width="125" height="24.5"/>
+            <size key="intrinsicContentSize" width="108" height="25.5"/>
         </designable>
         <designable name="HKz-4t-Wo9">
-            <size key="intrinsicContentSize" width="113" height="24.5"/>
+            <size key="intrinsicContentSize" width="98.5" height="25.5"/>
+        </designable>
+        <designable name="IqN-TT-Sen">
+            <size key="intrinsicContentSize" width="-1" height="65"/>
         </designable>
         <designable name="JEO-sI-eJc">
-            <size key="intrinsicContentSize" width="125" height="24.5"/>
+            <size key="intrinsicContentSize" width="106" height="25.5"/>
         </designable>
         <designable name="Q3a-wp-STD">
-            <size key="intrinsicContentSize" width="174" height="25.5"/>
+            <size key="intrinsicContentSize" width="151.5" height="25.5"/>
         </designable>
         <designable name="WUH-oT-9dg">
-            <size key="intrinsicContentSize" width="207.5" height="24.5"/>
+            <size key="intrinsicContentSize" width="177.5" height="25.5"/>
         </designable>
         <designable name="Y59-BN-G3D">
-            <size key="intrinsicContentSize" width="168" height="25.5"/>
+            <size key="intrinsicContentSize" width="147" height="25.5"/>
         </designable>
         <designable name="fQO-y6-k6B">
-            <size key="intrinsicContentSize" width="186" height="25.5"/>
+            <size key="intrinsicContentSize" width="163.5" height="25.5"/>
         </designable>
         <designable name="gYe-Cu-LUh">
-            <size key="intrinsicContentSize" width="182" height="24.5"/>
+            <size key="intrinsicContentSize" width="158" height="25.5"/>
         </designable>
         <designable name="p44-oZ-adY">
-            <size key="intrinsicContentSize" width="177" height="25.5"/>
+            <size key="intrinsicContentSize" width="153" height="25.5"/>
         </designable>
         <designable name="sWg-Xh-gPo">
-            <size key="intrinsicContentSize" width="233.5" height="25.5"/>
+            <size key="intrinsicContentSize" width="200.5" height="25.5"/>
         </designable>
     </designables>
     <inferredMetricsTieBreakers>
-        <segue reference="Pz7-IC-AjR"/>
-        <segue reference="ear-EY-7Yu"/>
-        <segue reference="Hxh-1z-fOb"/>
+        <segue reference="5Ql-wr-04v"/>
+        <segue reference="VUL-9s-mLd"/>
         <segue reference="3cB-x4-kq7"/>
     </inferredMetricsTieBreakers>
     <resources>
@@ -2757,6 +2759,9 @@
         </systemColor>
         <systemColor name="systemGray3Color">
             <color red="0.7803921568627451" green="0.7803921568627451" blue="0.80000000000000004" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemGray4Color">
+            <color red="0.81960784313725488" green="0.81960784313725488" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
         <systemColor name="systemGray5Color">
             <color red="0.89803921568627454" green="0.89803921568627454" blue="0.91764705882352937" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

@@ -29,7 +29,7 @@ class PaymentRecordViewModelController {
 
         AF.request(Url, method: .post, parameters: parameters)
             .responseJSON { response in
-                print(response)
+               
 
                 do {
 
@@ -37,7 +37,7 @@ class PaymentRecordViewModelController {
 
                         let json = try JSON(data: response.data!)
 
-                        print("success line \(json["success"][0]["success"])")
+                       
                         if json["success"][0]["success"].string == "success" {
                             
                             if json["error"][0]["error"].string == "no history"{
@@ -66,14 +66,14 @@ class PaymentRecordViewModelController {
                                     completion(true)
                                     
                                     self.viewModels = self.initViewModels(paymentRecordModel)
-                                    print("this is the viewmodel \(self.viewModels)")
+                                    
                                     completion(true)
                                     
                                 }else{
                                     let itemGotten = PaymentRecordModel(month: "", paidUpTo: "", price: 0, apartmentName: "", apartmentLocation: "", count: 0, suggestion: true)
                                     
                                     self.viewModels = self.initViewModels(paymentRecordModel)
-                                    print("this is the viewmodel \(self.viewModels)")
+                                    
                                     completion(true)
                                     paymentRecordModel.append(itemGotten)
                                     completion(false)
@@ -85,7 +85,7 @@ class PaymentRecordViewModelController {
                                 
                             }else if json["result"].count >= 1{
                                 
-                                print("this is the history count \(json["result"][0][1])")
+                                
                                 for i in 1...json["result"][0].count - 1 {
                                     
                                     
@@ -116,7 +116,7 @@ class PaymentRecordViewModelController {
                                 self.viewModels.insert(element, at: 0)
                                 
                                 
-                                print("this is the viewmodel \(self.viewModels)")
+                               
                                 completion(true)
 
                                 
@@ -129,7 +129,7 @@ class PaymentRecordViewModelController {
 
                         } else {
                             //TODO: error occurred
-                            print("error occured")
+                            
                             completion(false)
                         }
 
@@ -137,15 +137,14 @@ class PaymentRecordViewModelController {
                     } else {
 
                         //TODO: Network ERROR
-                        print("Network Error")
+                        
                         completion(false)
                     }
 
 
                 } catch let error as NSError {
                     //TODO: error occurred
-                    print("error occured")
-                    print("Failed to load: \(error.localizedDescription)")
+                    
                     completion(false)
                 }
 

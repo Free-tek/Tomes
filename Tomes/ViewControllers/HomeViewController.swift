@@ -175,7 +175,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 
                 self.apartmentListViewModelController.fetchApartments(completion: { (success) in
                     if !success {
-                        print("error encountered")
+                        
                     } else {
                         DispatchQueue.main.async {
                             self.animationView.stop()
@@ -421,11 +421,11 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     }
 
     func didStartTouches(in slider: RangeSeekSlider) {
-        print("did start touches \(minimumPrice) :: \(maximumPrice)")
+        
     }
 
     func didEndTouches(in slider: RangeSeekSlider) {
-        print("did end touches \(minimumPrice) :: \(maximumPrice)")
+        
 
 
     }
@@ -497,6 +497,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         })
     }
 
+    
 
     @IBAction func revertFunction(_ sender: Any) {
         noResultIcon.alpha = 0
@@ -526,6 +527,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 }
             }
         })
+        
+    
     }
     
     

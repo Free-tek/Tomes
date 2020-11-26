@@ -55,7 +55,6 @@ class PaymentDetailCollectionViewCell: UICollectionViewCell {
             nameOfApartment.text = viewModel.apartmentName!
             locationOfApartment.text = viewModel.apartmentLocation!
             
-            print("this is my viewmodel \(viewModel.count)")
             if viewModel.suggestion == true && viewModel.apartmentName != ""{
                 paidUpTo.isHidden = true
                 paidUpToLabel.isHidden = true

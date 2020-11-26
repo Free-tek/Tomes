@@ -54,7 +54,7 @@ class SignUpViewController: UIViewController {
     @IBAction func signUpFunc(_ sender: Any) {
 
         if(!validateFields()!) {
-            print("Incomplete form")
+           
         } else if(!isInternetAvailable()) {
             showToast(message: "No Internet Connection", seconds: 1.2)
         } else {
@@ -145,12 +145,12 @@ class SignUpViewController: UIViewController {
                 //save user's data
                 ref.setValue(post) { (err, resp) in
                     guard err == nil else {
-                        print("Posting failed : ")
+                        
                         self.showToast(message: "Oopss.., we couldnt create your account", seconds: 1.2)
 
                         return
                     }
-                    print("No errors while posting, :")
+                    
                     //go to home page
                     self.animationView.stop()
                     self.animationView.alpha = 0

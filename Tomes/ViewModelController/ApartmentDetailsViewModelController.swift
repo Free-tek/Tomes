@@ -31,7 +31,6 @@ class ApartmentDetailsViewModelController {
 
         AF.request(Url, method: .post, parameters: parameters)
             .responseJSON { response in
-                print(response)
 
                 do {
 
@@ -39,7 +38,6 @@ class ApartmentDetailsViewModelController {
 
                         let json = try JSON(data: response.data!)
 
-                        print("success line \(json["success"][0]["success"])")
                         if json["success"][0]["success"].string == "success" {
 
                             let apartmentImageList = json["result"][0].array
@@ -47,7 +45,6 @@ class ApartmentDetailsViewModelController {
                             for i in 1...apartmentImageList!.count - 1 {
                                 let itemImage = apartmentImageList![i].string
 
-                                print("this is  the image \(itemImage!)")
 
                                 let itemGotten = ApartmentDetailsModel(itemImage: itemImage!, itemKey: i)
 
@@ -55,12 +52,10 @@ class ApartmentDetailsViewModelController {
                             }
 
                             self.viewModels = self.initViewModels(apartmentDetailsModel)
-                            print("this is the viewmodel \(self.viewModels)")
                             completion(true)
 
                         } else {
                             //TODO: error occurred
-                            print("error occured")
                             completion(false)
                         }
 
@@ -68,15 +63,13 @@ class ApartmentDetailsViewModelController {
                     } else {
 
                         //TODO: Network ERROR
-                        print("Network Error")
                         completion(false)
                     }
 
 
                 } catch let error as NSError {
                     //TODO: error occurred
-                    print("error occured")
-                    print("Failed to load: \(error.localizedDescription)")
+                    
                     completion(false)
                 }
 

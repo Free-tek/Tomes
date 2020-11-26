@@ -23,9 +23,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         //Screen UITest
 //        if let rootWindow = window {
-//            let screenSize = DeviceType.iPhone11.getSize()
+//            let screenSize = DeviceType.iPadPro11.getSize()
 //            Projector.display(rootWindow: rootWindow, testingSize: screenSize)
 //        }
+        
     }
 
     @available(iOS 13.0, *)

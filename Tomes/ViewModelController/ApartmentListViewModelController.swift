@@ -28,16 +28,16 @@ class ApartmentListViewModelController {
 
         AF.request(Url, method: .post, parameters: parameters)
             .responseJSON { response in
-                print(response)
+                
 
                 do {
                     if response.data != nil {
                         let json = try JSON(data: response.data!)
 
-                        print("success line \(json["success"][0]["success"])")
+                        
                         if json["success"][0]["success"].string == "success" {
                             for i in 0...json["result"].count-1 {
-                                print("at stage \(i)")
+                                
 
                                 let itemImage = json["result"][i]["image"].string
                                 let itemPrice = json["result"][i]["price"].int
@@ -46,7 +46,6 @@ class ApartmentListViewModelController {
                                 let itemAvailability = json["result"][i]["Availability"].string
                                 let itemKey = "\(i)"
 
-                                print(itemImage!, itemPrice!, itemTitle!, itemLocation!, itemAvailability!, itemKey)
                                 
                                 let itemGotten = ApartmentListModel(itemImage: itemImage!, itemPrice: itemPrice!, itemTitle: itemTitle!, itemLocation: itemLocation!, itemAvailability: itemAvailability!, itemKey: itemKey)
 
@@ -70,7 +69,6 @@ class ApartmentListViewModelController {
 
                 } catch let error as NSError {
                     completion(false)
-                    print("Failed to load: \(error.localizedDescription)")
                 }
 
         }
@@ -79,13 +77,11 @@ class ApartmentListViewModelController {
     
     func fetchApartmentSearched(_ searchType : String, _ searchItem1 : String, _ searchItem2 : [Int], completion: @escaping (_ success: Bool) -> ()){
         
-        print("i got called here")
         
         if searchType == "search"{
             fetchApartments(completion: { (success) in
                 if !success {
                     completion(false)
-                    print("error encountered")
                 }else{
                     self.viewModels =  self.viewModels.filter({($0?.itemTitle!.lowercased())!.prefix(searchItem1.count) == searchItem1.lowercased()})
                     completion(true)
@@ -94,11 +90,9 @@ class ApartmentListViewModelController {
         }else{
             //filter operation
             
-            print("this was the location serached \(searchItem1)")
             fetchApartments(completion: { (success) in
                 if !success {
                     completion(false)
-                    print("error encountered")
                 }else{
                     self.viewModels =  self.viewModels.filter({($0?.itemLocation!.lowercased())!.prefix(searchItem1.count) == searchItem1.lowercased()})
                     
