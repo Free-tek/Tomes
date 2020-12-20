@@ -19,9 +19,7 @@ struct Constants{
     struct Endpoints {
         static let fetchApartments = "https://tomesdocker-tuki75gfda-uc.a.run.app/getApartments"
         static let getApartmentImage = "https://tomesdocker-tuki75gfda-uc.a.run.app/getApartmentImage"
-        
         static let getPaymentHistory = "https://tomesdocker-tuki75gfda-uc.a.run.app/getPaymentHistory"
-       
         static let getApartmentDetails = "https://tomesdocker-tuki75gfda-uc.a.run.app/getApartmentDetails"
        
         

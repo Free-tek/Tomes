@@ -35,6 +35,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var noResultLabel: UILabel!
 
     
+    @IBOutlet weak var helpFindApartment: UIButton!
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var cancelRatingView: UIButton!
     @IBOutlet weak var serviceLabel: UILabel!
@@ -394,6 +395,21 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
 
 
+    @IBAction func helpFindApartmentFunc(_ sender: Any) {
+    
+        let alert = UIAlertController(title: "Ooops..", message: "We are sorry we couldn't help you find an apartment, but we have a form that you can fill so we know exactly what you want, so we could possibly fix you up with your dream apartment.", preferredStyle: UIAlertController.Style.alert)
+        alert.addAction(UIAlertAction(title: "Fill form", style: UIAlertAction.Style.default, handler: { (upVote) in
+            if let url = URL(string: "https://forms.gle/Luupj9hXZCrWXfRa6") {
+                UIApplication.shared.open(url)
+            }
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.default, handler: { (downVote) in
+            alert.dismiss(animated: true, completion: nil)
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
     @IBAction func backFromFilterFunc(_ sender: Any) {
         filterView.alpha = 0
         searchBar.alpha = 1

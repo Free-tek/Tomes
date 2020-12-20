@@ -50,6 +50,7 @@ class PaymentViewController: UIViewController {
     var emailAddress = ""
     var apartmentLocation = ""
     var apartmentPrices = ""
+    var allApartmentPrices = ""
     var duration = ""
     var _apartmentPrices = ""
     var nextOfKinName = ""
@@ -108,6 +109,8 @@ class PaymentViewController: UIViewController {
         cardParams.expMonth = UInt(expiryMonth.text!)!
 
         //check if card is valid
+        print("see error details:: \(cardNumber.text!) : \(cvv.text!) :: \(UInt(expiryYear.text!)!) :: \(UInt(expiryMonth.text!)!), price \(price)")
+        
         
         // building new Paystack Transaction
         if validate() != false && price != 0 {
@@ -125,6 +128,10 @@ class PaymentViewController: UIViewController {
             } else if apartmentPrices != "" && apartmentPrices.lowercased().contains("daily") {
                 price = Int (apartmentPrices.lowercased().replacingOccurrences(of: "daily - ₦", with: ""))!
                 duration = "daily"
+
+            } else if apartmentPrices != "" && apartmentPrices.lowercased().contains("yearly") {
+                price = Int (apartmentPrices.lowercased().replacingOccurrences(of: "yearly - ₦", with: ""))!
+                duration = "yearly"
 
             }
 
@@ -170,7 +177,7 @@ class PaymentViewController: UIViewController {
 
                 self.animationView.stop()
                 self.animationView.alpha = 0
-                showToast(message: "Ooops... We couldnt process your payment", seconds: 1.2)
+                showToast(message: "Ooops... We couldn't process your payment", seconds: 1.2)
             }
 
 
@@ -245,7 +252,10 @@ class PaymentViewController: UIViewController {
                         endDate = 7
                     }else if self.duration == "monthly"{
                         endDate = 30
+                    }else if self.duration == "yearly"{
+                        endDate = 365
                     }
+                    
                     var dateComponent = DateComponents()
                     dateComponent.day = endDate
                     let futureDate = Calendar.current.date(byAdding: dateComponent, to: date)
@@ -301,22 +311,15 @@ class PaymentViewController: UIViewController {
                     ref2.setValue(self.duration)
                     
                     let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
-                    
                     let refPayments = Database.database().reference().child("payments")
 
                     ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
                        
-
-
                         let refApartment = Database.database().reference().child("apartments").child(self.key)
-                        
-
                         refApartment.child("Availability").setValue("false")
+                        refApartment.child("paidUpTo").setValue(paidUpTo)
 
 
-                        
-                        
-                        
                         
                         //save user's data
                         ref.child("\(snapshot.childrenCount + 1)").setValue(post) { (err, resp) in
@@ -394,9 +397,9 @@ class PaymentViewController: UIViewController {
                                 refUser.child("nextOfKinPhoneNo").setValue("\(self.nextOfKinPhoneNo)")
                                 refUser.child("payment_date").setValue(now)
                                 
-                                
+                                self.setUpNotificationsForRenewal(endDate: endDate, planType: self.duration)
                                 self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
-
+                                
                                 //transition account
                                 DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
                                         self.performSegue(withIdentifier: "backHome_Payment", sender: nil)
@@ -455,7 +458,7 @@ class PaymentViewController: UIViewController {
         viewController._emailAddress = emailAddress
         viewController._occupation = occupation
         viewController._apartmentPrices = apartmentPrices
-        viewController.apartmentPrices = _apartmentPrices
+        viewController.allApartmentPrices = allApartmentPrices
         viewController.__nextOfKinName = nextOfKinName
         viewController.__nextOfKinPhoneNo = nextOfKinPhoneNo
         viewController.fromProceedToPayment = true
@@ -488,6 +491,202 @@ class PaymentViewController: UIViewController {
 
         return true
     }
+    
+    func setUpNotificationsForRenewal(endDate: Int, planType: String){
+        let date = Date()
+        let calendar = Calendar.current
+        let dateformat = DateFormatter()
+        dateformat.dateFormat = "MM/dd/yy"
+        if self.duration == "daily"{
+            
+            //75% notification
+            let firstNotificationDate = calendar.date(byAdding: .hour, value: 6, to: date)
+            
+            let notificationDate = dateformat.string(from: firstNotificationDate!)
+            let localDate = dateformat.date(from: notificationDate)
+            let year = String(NSCalendar.current.component(.year, from: localDate!))
+            let month = String(NSCalendar.current.component(.month, from: localDate!))
+            let day = String(NSCalendar.current.component(.day, from: localDate!))
+            let hour = String(NSCalendar.current.component(.hour, from: localDate!))
+            let minute = String(NSCalendar.current.component(.minute, from: localDate!))
+            
+            scheduleLocalNotification(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute:  Int(minute)!, percentageUsed: "75%", plan:"daily")
+            
+            //50% notification
+            let secondNotificationDate = calendar.date(byAdding: .hour, value: 12, to: date)
+            
+            let secondnotificationDate = dateformat.string(from: secondNotificationDate!)
+            let secondlocalDate = dateformat.date(from: secondnotificationDate)
+            
+            let secondyear = String(NSCalendar.current.component(.year, from: secondlocalDate!))
+            let secondmonth = String(NSCalendar.current.component(.month, from: secondlocalDate!))
+            let secondday = String(NSCalendar.current.component(.day, from: secondlocalDate!))
+            let secondhour = String(NSCalendar.current.component(.hour, from: secondlocalDate!))
+            let secondminute = String(NSCalendar.current.component(.minute, from: secondlocalDate!))
+            
+            scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"daily")
+            
+            //25% notification
+            let thirdNotificationDate = calendar.date(byAdding: .hour, value: 18, to: date)
+            
+            let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
+            let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
+            
+            let thirdyear = String(NSCalendar.current.component(.year, from: thirdlocalDate!))
+            let thirdmonth = String(NSCalendar.current.component(.month, from: thirdlocalDate!))
+            let thirdday = String(NSCalendar.current.component(.day, from: thirdlocalDate!))
+            let thirdhour = String(NSCalendar.current.component(.hour, from: thirdlocalDate!))
+            let thirdminute = String(NSCalendar.current.component(.minute, from: thirdlocalDate!))
+            
+            scheduleLocalNotification(year: Int(thirdyear)!, month: Int(thirdmonth)!, day: Int(thirdday)!, hour: Int(thirdhour)!, minute:  Int(thirdminute)!, percentageUsed: "25%", plan:"daily")
+            
+            
+        }else if self.duration == "weekly"{
+            //75% notification
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 1, to: date)
+            
+            let notificationDate = dateformat.string(from: firstNotificationDate!)
+            let localDate = dateformat.date(from: notificationDate)
+            let year = String(NSCalendar.current.component(.year, from: localDate!))
+            let month = String(NSCalendar.current.component(.month, from: localDate!))
+            let day = String(NSCalendar.current.component(.day, from: localDate!))
+            let hour = String(NSCalendar.current.component(.hour, from: localDate!))
+            let minute = String(NSCalendar.current.component(.minute, from: localDate!))
+            
+            scheduleLocalNotification(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute:  Int(minute)!, percentageUsed: "75%", plan:"weekly")
+            
+            //50% notification
+            let secondNotificationDate = calendar.date(byAdding: .day, value: 3, to: date)
+            
+            let secondnotificationDate = dateformat.string(from: secondNotificationDate!)
+            let secondlocalDate = dateformat.date(from: secondnotificationDate)
+            
+            let secondyear = String(NSCalendar.current.component(.year, from: secondlocalDate!))
+            let secondmonth = String(NSCalendar.current.component(.month, from: secondlocalDate!))
+            let secondday = String(NSCalendar.current.component(.day, from: secondlocalDate!))
+            let secondhour = String(NSCalendar.current.component(.hour, from: secondlocalDate!))
+            let secondminute = String(NSCalendar.current.component(.minute, from: secondlocalDate!))
+            
+            scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"weekly")
+            
+            //25% notification
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 5, to: date)
+            
+            let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
+            let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
+            
+            let thirdyear = String(NSCalendar.current.component(.year, from: thirdlocalDate!))
+            let thirdmonth = String(NSCalendar.current.component(.month, from: thirdlocalDate!))
+            let thirdday = String(NSCalendar.current.component(.day, from: thirdlocalDate!))
+            let thirdhour = String(NSCalendar.current.component(.hour, from: thirdlocalDate!))
+            let thirdminute = String(NSCalendar.current.component(.minute, from: thirdlocalDate!))
+            
+            scheduleLocalNotification(year: Int(thirdyear)!, month: Int(thirdmonth)!, day: Int(thirdday)!, hour: Int(thirdhour)!, minute:  Int(thirdminute)!, percentageUsed: "25%", plan:"weekly")
+            
+        }else if self.duration == "monthly"{
+            
+            //75% notification
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 23, to: date)
+            
+            let notificationDate = dateformat.string(from: firstNotificationDate!)
+            let localDate = dateformat.date(from: notificationDate)
+            let year = String(NSCalendar.current.component(.year, from: localDate!))
+            let month = String(NSCalendar.current.component(.month, from: localDate!))
+            let day = String(NSCalendar.current.component(.day, from: localDate!))
+            let hour = String(NSCalendar.current.component(.hour, from: localDate!))
+            let minute = String(NSCalendar.current.component(.minute, from: localDate!))
+            
+            scheduleLocalNotification(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute:  Int(minute)!, percentageUsed: "75%", plan:"monthly")
+            
+            //50% notification
+            let secondNotificationDate = calendar.date(byAdding: .day, value: 15, to: date)
+            
+            let secondnotificationDate = dateformat.string(from: secondNotificationDate!)
+            let secondlocalDate = dateformat.date(from: secondnotificationDate)
+            
+            let secondyear = String(NSCalendar.current.component(.year, from: secondlocalDate!))
+            let secondmonth = String(NSCalendar.current.component(.month, from: secondlocalDate!))
+            let secondday = String(NSCalendar.current.component(.day, from: secondlocalDate!))
+            let secondhour = String(NSCalendar.current.component(.hour, from: secondlocalDate!))
+            let secondminute = String(NSCalendar.current.component(.minute, from: secondlocalDate!))
+            
+            scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"monthly")
+            
+            //25% notification
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 8, to: date)
+            
+            let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
+            let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
+            
+            let thirdyear = String(NSCalendar.current.component(.year, from: thirdlocalDate!))
+            let thirdmonth = String(NSCalendar.current.component(.month, from: thirdlocalDate!))
+            let thirdday = String(NSCalendar.current.component(.day, from: thirdlocalDate!))
+            let thirdhour = String(NSCalendar.current.component(.hour, from: thirdlocalDate!))
+            let thirdminute = String(NSCalendar.current.component(.minute, from: thirdlocalDate!))
+            
+            scheduleLocalNotification(year: Int(thirdyear)!, month: Int(thirdmonth)!, day: Int(thirdday)!, hour: Int(thirdhour)!, minute:  Int(thirdminute)!, percentageUsed: "25%", plan:"monthly")
+        }else if self.duration == "yearly"{
+            
+            //75% notification
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 273, to: date)
+            
+            let notificationDate = dateformat.string(from: firstNotificationDate!)
+            let localDate = dateformat.date(from: notificationDate)
+            let year = String(NSCalendar.current.component(.year, from: localDate!))
+            let month = String(NSCalendar.current.component(.month, from: localDate!))
+            let day = String(NSCalendar.current.component(.day, from: localDate!))
+            let hour = String(NSCalendar.current.component(.hour, from: localDate!))
+            let minute = String(NSCalendar.current.component(.minute, from: localDate!))
+            
+            scheduleLocalNotification(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute:  Int(minute)!, percentageUsed: "75%", plan:"yearly")
+            
+            //50% notification
+            let secondNotificationDate = calendar.date(byAdding: .day, value: 182, to: date)
+            
+            let secondnotificationDate = dateformat.string(from: secondNotificationDate!)
+            let secondlocalDate = dateformat.date(from: secondnotificationDate)
+            
+            let secondyear = String(NSCalendar.current.component(.year, from: secondlocalDate!))
+            let secondmonth = String(NSCalendar.current.component(.month, from: secondlocalDate!))
+            let secondday = String(NSCalendar.current.component(.day, from: secondlocalDate!))
+            let secondhour = String(NSCalendar.current.component(.hour, from: secondlocalDate!))
+            let secondminute = String(NSCalendar.current.component(.minute, from: secondlocalDate!))
+            
+            scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"yearly")
+            
+            //25% notification
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 91, to: date)
+            
+            let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
+            let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
+            
+            let thirdyear = String(NSCalendar.current.component(.year, from: thirdlocalDate!))
+            let thirdmonth = String(NSCalendar.current.component(.month, from: thirdlocalDate!))
+            let thirdday = String(NSCalendar.current.component(.day, from: thirdlocalDate!))
+            let thirdhour = String(NSCalendar.current.component(.hour, from: thirdlocalDate!))
+            let thirdminute = String(NSCalendar.current.component(.minute, from: thirdlocalDate!))
+            
+            scheduleLocalNotification(year: Int(thirdyear)!, month: Int(thirdmonth)!, day: Int(thirdday)!, hour: Int(thirdhour)!, minute:  Int(thirdminute)!, percentageUsed: "25%", plan:"yearly")
+        }
+        
+        
+    }
 
+    
+    func scheduleLocalNotification(year: Int, month: Int, day: Int, hour: Int, minute:  Int, percentageUsed: String, plan: String) {
+        
+        let dateComponents = DateComponents(year: year, month: month, day: day, hour: hour, minute: minute)
+        let yourFireDate = Calendar.current.date(from: dateComponents)
+
+        let notification = UILocalNotification()
+        notification.fireDate = yourFireDate
+        notification.alertBody = "Hello \(self.fullName), you have used up \(percentageUsed) of your \(plan) plan, you can renew your subscription now, so the room doesn't go available"
+        notification.alertTitle = "TOMES: You have used up \(percentageUsed) of your \(plan) plan"
+        //notification.alertAction = "be awesome!"
+        notification.soundName = UILocalNotificationDefaultSoundName
+        //notification.userInfo = ["CustomField1": "w00t"]
+        notification.applicationIconBadgeNumber += 1
+        UIApplication.shared.scheduleLocalNotification(notification)
+    }
 
 }

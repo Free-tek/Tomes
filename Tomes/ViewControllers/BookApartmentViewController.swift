@@ -41,7 +41,7 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
     var _apartmentPrices = ""
     var  apartmentLocation = ""
     var apartmentAvailability = ""
-    var apartmentPrices = ""
+    var allApartmentPrices = ""
     var __companyAddress = ""
     var __nextOfKinName = ""
     var __nextOfKinPhoneNo = ""
@@ -116,7 +116,7 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             }
             
            
-            self.duration.text = self._apartmentPrices
+            //self.duration.text = self._apartmentPrices
             
             
             
@@ -148,7 +148,7 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             let viewController = storyboard.instantiateViewController(withIdentifier: "payment") as! PaymentViewController
             
             viewController.key = key
-            viewController.price = price
+            viewController.price = 1
             viewController.apartmentName = apartmentName
             viewController.fullName = fullName.text!
             viewController.phoneNo = phoneNo.text!
@@ -156,6 +156,7 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
             viewController.occupation = occupation.text!
             viewController.apartmentLocation = apartmentLocation
             viewController.apartmentPrices = duration.text!
+            viewController.allApartmentPrices = allApartmentPrices
             viewController.nextOfKinName = nextOfKinName.text!
             viewController.nextOfKinPhoneNo = nextOfKinPhoneNo.text!
     
@@ -228,8 +229,8 @@ class BookApartmentViewController: UIViewController,UIPickerViewDataSource, UIPi
         self.durationPicker!.delegate = self
         self.durationPicker!.dataSource = self
 
-        if apartmentPrices != nil{
-            durationDataSource = apartmentPrices.components(separatedBy: ", ")
+        if allApartmentPrices != nil{
+            durationDataSource = allApartmentPrices.components(separatedBy: ", ")
             self.durataionReady = true
         }
         

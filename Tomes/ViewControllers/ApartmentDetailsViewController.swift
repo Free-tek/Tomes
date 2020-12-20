@@ -318,7 +318,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
             viewController.apartmentName = _title
             viewController.apartmentLocation = _apartmentLocation
             viewController.apartmentAvailability = _apartmentAvailability
-            viewController.apartmentPrices = _apartmentPrices
+            viewController.allApartmentPrices = _apartmentPrices
 
             viewController.view.window?.rootViewController = viewController
             viewController.view.window?.makeKeyAndVisible()
