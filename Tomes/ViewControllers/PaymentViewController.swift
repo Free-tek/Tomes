@@ -15,15 +15,10 @@ import Lottie
 
 class PaymentViewController: UIViewController {
 
-    //let paymentTextField = PSTCKPaymentCardTextField()
-
     let paystackPublicKey = "pk_test_4630d972a60683fef74c82acb4e8dace692ff638"
-    let backendURLString = "https://calm-scrubland-33409.herokuapp.com"
     let card: PSTCKCard = PSTCKCard()
-
     let animationView = AnimationView();
 
-    // MARK: Properties
 
     @IBOutlet weak var cardNumber: UITextField!
     @IBOutlet weak var cvv: UITextField!
@@ -108,9 +103,6 @@ class PaymentViewController: UIViewController {
         cardParams.expYear = UInt(expiryYear.text!)!
         cardParams.expMonth = UInt(expiryMonth.text!)!
 
-        //check if card is valid
-        print("see error details:: \(cardNumber.text!) : \(cvv.text!) :: \(UInt(expiryYear.text!)!) :: \(UInt(expiryMonth.text!)!), price \(price)")
-        
         
         // building new Paystack Transaction
         if validate() != false && price != 0 {
@@ -177,7 +169,7 @@ class PaymentViewController: UIViewController {
 
                 self.animationView.stop()
                 self.animationView.alpha = 0
-                showToast(message: "Ooops... We couldn't process your payment", seconds: 1.2)
+                showToast(message: "Ooops... We couldn't process your payment, please check your card details", seconds: 1.2)
             }
 
 
@@ -205,7 +197,7 @@ class PaymentViewController: UIViewController {
 
                 self.animationView.stop()
                 self.animationView.alpha = 0
-                showToast(message: "Ooops... We couldnt process your payment", seconds: 1.2)
+                showToast(message: "Ooops... We couldnt process your payment, please check your card details", seconds: 1.2)
 
             }
             transactionParams.email = emailAddress;
@@ -229,7 +221,7 @@ class PaymentViewController: UIViewController {
 
                     self.animationView.stop()
                     self.animationView.alpha = 0
-                    self.showToast(message: "Ooops... we couldnt make this payment", seconds: 1.2)
+                    self.showToast(message: "Ooops... we couldnt make this payment, please check your card details", seconds: 1.2)
                 }, didRequestValidation: { (reference) -> Void in
                     // an OTP was requested, transaction has not yet succeeded
                     self.animationView.stop()
@@ -305,52 +297,79 @@ class PaymentViewController: UIViewController {
                     ]
 
 
-                    let userId = Auth.auth().currentUser?.uid
-
-                    let ref2 = Database.database().reference().child("users").child(userId!).child("duration")
-                    ref2.setValue(self.duration)
                     
-                    let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
-                    let refPayments = Database.database().reference().child("payments")
+                    
+                    let userId = Auth.auth().currentUser?.uid
+                    let userRef = Database.database().reference().child("users").child(userId!)
+                    userRef.observeSingleEvent(of: .value, with: {
+                        (snapshot) in
 
-                    ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
-                       
-                        let refApartment = Database.database().reference().child("apartments").child(self.key)
-                        refApartment.child("Availability").setValue("false")
-                        refApartment.child("paidUpTo").setValue(paidUpTo)
-
-
+                        let data = snapshot.value as? [String: Any]
+                        let bookedTill = (data?["bookedTill"])
+                        let bookedOn = (data?["bookedOn"])
                         
-                        //save user's data
-                        ref.child("\(snapshot.childrenCount + 1)").setValue(post) { (err, resp) in
-                            guard err == nil else {
-                               
-
-                                self.animationView.stop()
-                                self.animationView.alpha = 0
-
-                                self.cardNumber.alpha = 1
-                                self.cvv.alpha = 1
-                                self.expiryYear.alpha = 1
-                                self.expiryMonth.alpha = 1
-                                self.payNow.alpha = 1
-
-                                self.paymentHeader.alpha = 1
-                                self.cardNoHeader.alpha = 1
-                                self.cvvHeader.alpha = 1
-                                self.expiryYearHeader.alpha = 1
-                                self.expiryMonthHeader.alpha = 1
-                                self.backButton.alpha = 1
-
-                                return
-                            }
-                           
-                            //go to home page
+                        if bookedTill == nil || bookedOn == nil{
+                            userRef.child("duration").setValue(self.duration)
+                            userRef.child("bookedTill").setValue(paidUpTo)
+                            userRef.child("bookedOn").setValue(now)
+                        }else{
                             
-                            //----------
-                            refPayments.child(now).setValue(postOrders) { (err, resp) in
+                            let startDate = dateformat.date(from: bookedTill as! String)
+                            
+                            let today = Date()
+                            if today > startDate! || today == startDate! {
+                                //today is later than startDate
+                                userRef.child("duration").setValue(self.duration)
+                                userRef.child("bookedTill").setValue(paidUpTo)
+                                userRef.child("bookedOn").setValue(now)
+                            }else{
+                                let daysLeftComponents = Calendar.current.dateComponents([.day], from: today, to: startDate!)
+                                let newEndingDate = Calendar.current.date(byAdding: .day, value: daysLeftComponents.day! + endDate, to: today)
+                                let paidUpTo = dateformat.string(from: newEndingDate!)
+                                userRef.child("duration").setValue("Top Up")
+                                userRef.child("bookedTill").setValue(paidUpTo)
+                                userRef.child("bookedOn").setValue(now)
+                                userRef.child("totalDays").setValue(Int(daysLeftComponents.day! + endDate))
+                                endDate = daysLeftComponents.day! + endDate
+                                
+                                let refApartment = Database.database().reference().child("apartments").child(self.key)
+                                refApartment.child("totalDays").setValue(Int(daysLeftComponents.day! + endDate))
+                                
+                            }
+                            
+                            
+                        }
+                        
+                        
+                        
+                        if bookedTill != nil || bookedOn != nil{
+                            let startDate = dateformat.date(from: bookedTill as! String)
+                            
+                            let today = Date()
+                            if today < startDate! && today != startDate!{
+                                self.duration = "Top Up"
+                            }
+                        }
+                        
+                        
+                        let ref = Database.database().reference().child("users").child(userId!).child("payment_history")
+                        let refPayments = Database.database().reference().child("payments")
+
+                        ref.observeSingleEvent(of: DataEventType.value, with: { (snapshot) in
+                           
+                            let refApartment = Database.database().reference().child("apartments").child(self.key)
+                            refApartment.child("Availability").setValue("false")
+                            refApartment.child("paidUpTo").setValue(paidUpTo)
+                            refApartment.child("currentOccupant").setValue(userId!)
+                            refApartment.child("bookedTill").setValue(paidUpTo)
+                            refApartment.child("bookingDuration").setValue(self.duration)
+                            
+
+                            
+                            //save user's data
+                            ref.child("\(snapshot.childrenCount + 1)").setValue(post) { (err, resp) in
                                 guard err == nil else {
-                                  
+                                   
 
                                     self.animationView.stop()
                                     self.animationView.alpha = 0
@@ -370,52 +389,84 @@ class PaymentViewController: UIViewController {
 
                                     return
                                 }
-                                print("No errors while posting, :")
+                               
                                 //go to home page
-
-                                self.animationView.stop()
-                                self.animationView.alpha = 0
-
-                                self.cardNumber.alpha = 1
-                                self.cvv.alpha = 1
-                                self.expiryYear.alpha = 1
-                                self.expiryMonth.alpha = 1
-                                self.payNow.alpha = 1
-
-                                self.paymentHeader.alpha = 1
-                                self.cardNoHeader.alpha = 1
-                                self.cvvHeader.alpha = 1
-                                self.expiryYearHeader.alpha = 1
-                                self.expiryMonthHeader.alpha = 1
-                                self.backButton.alpha = 1
-
-
                                 
-                                let refUser = Database.database().reference().child("users").child(userId!)
-                                refUser.child("nextOfKinName").setValue("\(self.nextOfKinName)")
-                                refUser.child("occupation").setValue("\(self.occupation)")
-                                refUser.child("nextOfKinPhoneNo").setValue("\(self.nextOfKinPhoneNo)")
-                                refUser.child("payment_date").setValue(now)
-                                
-                                self.setUpNotificationsForRenewal(endDate: endDate, planType: self.duration)
-                                self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
-                                
-                                //transition account
-                                DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
-                                        self.performSegue(withIdentifier: "backHome_Payment", sender: nil)
-                                    })
-                                
+                                //----------
+                                refPayments.child(now).setValue(postOrders) { (err, resp) in
+                                    guard err == nil else {
+                                      
+
+                                        self.animationView.stop()
+                                        self.animationView.alpha = 0
+
+                                        self.cardNumber.alpha = 1
+                                        self.cvv.alpha = 1
+                                        self.expiryYear.alpha = 1
+                                        self.expiryMonth.alpha = 1
+                                        self.payNow.alpha = 1
+
+                                        self.paymentHeader.alpha = 1
+                                        self.cardNoHeader.alpha = 1
+                                        self.cvvHeader.alpha = 1
+                                        self.expiryYearHeader.alpha = 1
+                                        self.expiryMonthHeader.alpha = 1
+                                        self.backButton.alpha = 1
+
+                                        return
+                                    }
+                                    print("No errors while posting, :")
+                                    //go to home page
+
+                                    self.animationView.stop()
+                                    self.animationView.alpha = 0
+
+                                    self.cardNumber.alpha = 1
+                                    self.cvv.alpha = 1
+                                    self.expiryYear.alpha = 1
+                                    self.expiryMonth.alpha = 1
+                                    self.payNow.alpha = 1
+
+                                    self.paymentHeader.alpha = 1
+                                    self.cardNoHeader.alpha = 1
+                                    self.cvvHeader.alpha = 1
+                                    self.expiryYearHeader.alpha = 1
+                                    self.expiryMonthHeader.alpha = 1
+                                    self.backButton.alpha = 1
+
+
+                                    
+                                    let refUser = Database.database().reference().child("users").child(userId!)
+                                    refUser.child("nextOfKinName").setValue("\(self.nextOfKinName)")
+                                    refUser.child("occupation").setValue("\(self.occupation)")
+                                    refUser.child("nextOfKinPhoneNo").setValue("\(self.nextOfKinPhoneNo)")
+                                    refUser.child("payment_date").setValue(now)
+                                    
+                                    self.setUpNotificationsForRenewal(endDate: endDate, planType: self.duration)
+                                    self.showToast(message: "Congrats... Payment made, you will be contacted soon", seconds: 2)
+                                    
+                                    //transition account
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 2, execute: {
+                                            self.performSegue(withIdentifier: "backHome_Payment", sender: nil)
+                                        })
+                                    
+
+                                }
+
+
 
                             }
+                            
 
-
-
-                        }
+                        })
                         
-
+                        
+                        
+                        
+                        
+                        
                     })
-
-
+                    
                 })
 
 
@@ -496,11 +547,13 @@ class PaymentViewController: UIViewController {
         let date = Date()
         let calendar = Calendar.current
         let dateformat = DateFormatter()
-        dateformat.dateFormat = "MM/dd/yy"
+        dateformat.dateFormat = "MM/dd/yy HH:mm:ss"
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        
         if self.duration == "daily"{
             
             //75% notification
-            let firstNotificationDate = calendar.date(byAdding: .hour, value: 6, to: date)
+            let firstNotificationDate = calendar.date(byAdding: .hour, value: 18, to: date)
             
             let notificationDate = dateformat.string(from: firstNotificationDate!)
             let localDate = dateformat.date(from: notificationDate)
@@ -509,6 +562,7 @@ class PaymentViewController: UIViewController {
             let day = String(NSCalendar.current.component(.day, from: localDate!))
             let hour = String(NSCalendar.current.component(.hour, from: localDate!))
             let minute = String(NSCalendar.current.component(.minute, from: localDate!))
+            
             
             scheduleLocalNotification(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute:  Int(minute)!, percentageUsed: "75%", plan:"daily")
             
@@ -527,7 +581,7 @@ class PaymentViewController: UIViewController {
             scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"daily")
             
             //25% notification
-            let thirdNotificationDate = calendar.date(byAdding: .hour, value: 18, to: date)
+            let thirdNotificationDate = calendar.date(byAdding: .hour, value: 6, to: date)
             
             let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
             let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
@@ -543,7 +597,7 @@ class PaymentViewController: UIViewController {
             
         }else if self.duration == "weekly"{
             //75% notification
-            let firstNotificationDate = calendar.date(byAdding: .day, value: 1, to: date)
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 5, to: date)
             
             let notificationDate = dateformat.string(from: firstNotificationDate!)
             let localDate = dateformat.date(from: notificationDate)
@@ -570,7 +624,7 @@ class PaymentViewController: UIViewController {
             scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"weekly")
             
             //25% notification
-            let thirdNotificationDate = calendar.date(byAdding: .day, value: 5, to: date)
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 1, to: date)
             
             let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
             let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
@@ -586,7 +640,7 @@ class PaymentViewController: UIViewController {
         }else if self.duration == "monthly"{
             
             //75% notification
-            let firstNotificationDate = calendar.date(byAdding: .day, value: 23, to: date)
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 8, to: date)
             
             let notificationDate = dateformat.string(from: firstNotificationDate!)
             let localDate = dateformat.date(from: notificationDate)
@@ -613,7 +667,7 @@ class PaymentViewController: UIViewController {
             scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"monthly")
             
             //25% notification
-            let thirdNotificationDate = calendar.date(byAdding: .day, value: 8, to: date)
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 23, to: date)
             
             let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
             let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
@@ -628,7 +682,7 @@ class PaymentViewController: UIViewController {
         }else if self.duration == "yearly"{
             
             //75% notification
-            let firstNotificationDate = calendar.date(byAdding: .day, value: 273, to: date)
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 91, to: date)
             
             let notificationDate = dateformat.string(from: firstNotificationDate!)
             let localDate = dateformat.date(from: notificationDate)
@@ -655,7 +709,7 @@ class PaymentViewController: UIViewController {
             scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"yearly")
             
             //25% notification
-            let thirdNotificationDate = calendar.date(byAdding: .day, value: 91, to: date)
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 273, to: date)
             
             let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
             let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
@@ -667,6 +721,54 @@ class PaymentViewController: UIViewController {
             let thirdminute = String(NSCalendar.current.component(.minute, from: thirdlocalDate!))
             
             scheduleLocalNotification(year: Int(thirdyear)!, month: Int(thirdmonth)!, day: Int(thirdday)!, hour: Int(thirdhour)!, minute:  Int(thirdminute)!, percentageUsed: "25%", plan:"yearly")
+            
+        }else if self.duration == "Top Up"{
+            
+            
+            //75% notification
+            let lastHalf = Int((endDate * 25) / 100)
+            let firstNotificationDate = calendar.date(byAdding: .day, value: lastHalf, to: date)
+            
+            let notificationDate = dateformat.string(from: firstNotificationDate!)
+            let localDate = dateformat.date(from: notificationDate)
+            let year = String(NSCalendar.current.component(.year, from: localDate!))
+            let month = String(NSCalendar.current.component(.month, from: localDate!))
+            let day = String(NSCalendar.current.component(.day, from: localDate!))
+            let hour = String(NSCalendar.current.component(.hour, from: localDate!))
+            let minute = String(NSCalendar.current.component(.minute, from: localDate!))
+            
+            scheduleLocalNotification(year: Int(year)!, month: Int(month)!, day: Int(day)!, hour: Int(hour)!, minute:  Int(minute)!, percentageUsed: "75%", plan:"yearly")
+            
+            //50% notification
+            let secondHalf = Int((endDate * 50) / 100)
+            let secondNotificationDate = calendar.date(byAdding: .day, value: secondHalf, to: date)
+            
+            let secondnotificationDate = dateformat.string(from: secondNotificationDate!)
+            let secondlocalDate = dateformat.date(from: secondnotificationDate)
+            
+            let secondyear = String(NSCalendar.current.component(.year, from: secondlocalDate!))
+            let secondmonth = String(NSCalendar.current.component(.month, from: secondlocalDate!))
+            let secondday = String(NSCalendar.current.component(.day, from: secondlocalDate!))
+            let secondhour = String(NSCalendar.current.component(.hour, from: secondlocalDate!))
+            let secondminute = String(NSCalendar.current.component(.minute, from: secondlocalDate!))
+            
+            scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"yearly")
+            
+            //25% notification
+            let thirdHalf = Int((endDate * 75) / 100)
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: thirdHalf, to: date)
+            
+            let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
+            let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
+            
+            let thirdyear = String(NSCalendar.current.component(.year, from: thirdlocalDate!))
+            let thirdmonth = String(NSCalendar.current.component(.month, from: thirdlocalDate!))
+            let thirdday = String(NSCalendar.current.component(.day, from: thirdlocalDate!))
+            let thirdhour = String(NSCalendar.current.component(.hour, from: thirdlocalDate!))
+            let thirdminute = String(NSCalendar.current.component(.minute, from: thirdlocalDate!))
+            
+            scheduleLocalNotification(year: Int(thirdyear)!, month: Int(thirdmonth)!, day: Int(thirdday)!, hour: Int(thirdhour)!, minute:  Int(thirdminute)!, percentageUsed: "25%", plan:"yearly")
+        
         }
         
         
@@ -680,8 +782,8 @@ class PaymentViewController: UIViewController {
 
         let notification = UILocalNotification()
         notification.fireDate = yourFireDate
-        notification.alertBody = "Hello \(self.fullName), you have used up \(percentageUsed) of your \(plan) plan, you can renew your subscription now, so the room doesn't go available"
-        notification.alertTitle = "TOMES: You have used up \(percentageUsed) of your \(plan) plan"
+        notification.alertBody = "Hello \(self.fullName), you have used up \(percentageUsed)% of your \(plan) plan, you can renew your subscription now, so the room doesn't go available"
+        notification.alertTitle = "TOMES: You have used up \(percentageUsed)% of your \(plan) plan"
         //notification.alertAction = "be awesome!"
         notification.soundName = UILocalNotificationDefaultSoundName
         //notification.userInfo = ["CustomField1": "w00t"]

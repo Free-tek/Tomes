@@ -43,12 +43,122 @@ class ApartmentListViewModelController {
                                 let itemPrice = json["result"][i]["price"].int
                                 let itemTitle = json["result"][i]["title"].string
                                 let itemLocation = json["result"][i]["location"].string
-                                let itemAvailability = json["result"][i]["Availability"].string
-                                let itemKey = "\(i)"
-
+                                var itemAvailability : String!
+                                itemAvailability = json["result"][i]["Availability"].string
+                                let currentOccupantId = json["result"][i]["currentOccupant"].string
+                                let bookedTill = json["result"][i]["bookedTill"].string
+                                let bookingDuration = json["result"][i]["bookingDuration"].string
+                             
                                 
-                                let itemGotten = ApartmentListModel(itemImage: itemImage!, itemPrice: itemPrice!, itemTitle: itemTitle!, itemLocation: itemLocation!, itemAvailability: itemAvailability!, itemKey: itemKey)
+                                if itemAvailability != nil && itemAvailability as! String == "false" && currentOccupantId != nil && currentOccupantId as! String == userID{
+                                    itemAvailability = "true"
+                                }else if itemAvailability != nil && itemAvailability! == "false" && bookedTill != nil && bookingDuration != nil{
+                                    let bookedTill = json["result"][i]["bookedTill"].string!
+                                    let bookingDuration = json["result"][i]["bookingDuration"].string!
+                                    
+                                    var endDate = 0
+                                    if bookingDuration == "daily"{
+                                        endDate = 1
+                                    }else if bookingDuration == "weekly"{
+                                        endDate = 7
+                                    }else if bookingDuration == "monthly"{
+                                        endDate = 30
+                                    }else if bookingDuration == "yearly"{
+                                        endDate = 365
+                                    }
+                                    
+                                    if endDate != 0{
+                                        
+                                        let dateFormatter = DateFormatter()
+                                        dateFormatter.dateFormat = "MM/dd/yy"
+                                        let date = dateFormatter.date(from: bookedTill)
+                                        let startDate = Date()
+                                        let components = Calendar.current.dateComponents([.day], from: date!, to: startDate)
 
+                                        if bookingDuration == "daily" {
+                                            
+                                            if 1 - components.day! <= 0 {
+                                                itemAvailability = "true"
+                                            }else{
+                                                let hourComponents = Calendar.current.dateComponents([.hour], from: date!, to: startDate)
+                                                if hourComponents.hour! <= 18{
+                                                    itemAvailability = "true"
+                                                }
+                                            }
+                                            
+
+                                        } else if bookingDuration == "weekly" {
+
+                                            if 7 - components.day! <= 0 {
+                                                itemAvailability = "true"
+                                            }else{
+                                                if 7 - components.day! <= 1{
+                                                    itemAvailability = "true"
+                                                }
+                                            }
+
+                                        } else if bookingDuration == "monthly" {
+                                            if 30 - components.day! <= 0 {
+                                                itemAvailability = "true"
+                                            }else{
+                                                if 30 - components.day! <= 8 {
+                                                    itemAvailability = "true"
+                                                }
+                                            }
+
+                                        } else if bookingDuration == "yearly" {
+                                            
+                                            if 365 - components.day! <= 0 {
+                                                itemAvailability = "true"
+                                            } else{
+                                                if 365 - components.day! <= 91 {
+                                                    itemAvailability = "true"
+                                                }
+                                            }
+
+                                        }
+                                        
+                                    }
+                                    if bookingDuration == "Top Up"{
+                                        
+                                        let bookedTill = json["result"][i]["bookedTill"].string
+                                        let totalDays = json["result"][i]["totalDays"].int
+                                        
+                                        if bookedTill != nil && totalDays != nil{
+                                            
+                                            let dateformat = DateFormatter()
+                                            dateformat.dateFormat = "MM/dd/yy"
+                                            let startDate = dateformat.date(from: bookedTill!)
+                                            
+                                            let today = Date()
+                                            if today > startDate! || today == startDate! {
+                                                itemAvailability = "true"
+                                            }else{
+                                                let daysLeftComponents = Calendar.current.dateComponents([.day], from: today, to: startDate!)
+                                                
+                                                if Int((totalDays! * 25) / 100) >= Int(daysLeftComponents.day!){
+                                                    itemAvailability = "true"
+                                                }else{
+                                                    itemAvailability = "false"
+                                                }
+                                                
+                                            }
+                                            
+                                        }else{
+                                            itemAvailability = "true"
+                                            
+                                        }
+                                        
+                                        
+                                        
+                                        
+                                    }
+                                }
+                                
+                               
+                                
+                                let itemKey = "\(i)"
+                                let itemGotten = ApartmentListModel(itemImage: itemImage!, itemPrice: itemPrice!, itemTitle: itemTitle!, itemLocation: itemLocation!, itemAvailability: itemAvailability!, itemKey: itemKey)
                                 apartmentListModel.append(itemGotten)
 
                             }
@@ -83,7 +193,10 @@ class ApartmentListViewModelController {
                 if !success {
                     completion(false)
                 }else{
-                    self.viewModels =  self.viewModels.filter({($0?.itemTitle!.lowercased())!.prefix(searchItem1.count) == searchItem1.lowercased()})
+                    //self.viewModels =  self.viewModels.filter({($0?.itemTitle!.lowercased())!.prefix(searchItem1.count) == searchItem1.lowercased()})
+                    
+                    
+                    self.viewModels =  self.viewModels.filter({($0?.itemLocation!.lowercased())!.prefix(searchItem1.count) == searchItem1.lowercased()})
                     completion(true)
                 }
             })

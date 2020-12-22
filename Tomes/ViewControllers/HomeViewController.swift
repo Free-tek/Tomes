@@ -34,8 +34,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
     @IBOutlet weak var noResultIcon: UIImageView!
     @IBOutlet weak var noResultLabel: UILabel!
 
-    
     @IBOutlet weak var helpFindApartment: UIButton!
+    @IBOutlet weak var helpFindApartmentLabel: UILabel!
     @IBOutlet weak var ratingView: UIView!
     @IBOutlet weak var cancelRatingView: UIButton!
     @IBOutlet weak var serviceLabel: UILabel!
@@ -378,6 +378,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         let viewController = storyboard.instantiateViewController(withIdentifier: "apartmentDetailsPage") as! ApartmentDetailsViewController
 
         viewController.key = String(indexPath.item + 1)
+        viewController._apartmentAvailability = (model?.itemAvailability)!
 
         viewController.view.window?.rootViewController = viewController
         viewController.view.window?.makeKeyAndVisible()
@@ -417,6 +418,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         ApartmentListTableView.alpha = 1
         header1.alpha = 1
         header2.alpha = 1
+        helpFindApartment.alpha = 1
+        helpFindApartmentLabel.alpha = 1
     }
 
 
@@ -427,6 +430,8 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
         ApartmentListTableView.alpha = 0
         header1.alpha = 0
         header2.alpha = 0
+        helpFindApartment.alpha = 0
+        helpFindApartmentLabel.alpha = 0
         filterView.alpha = 1
 
     }

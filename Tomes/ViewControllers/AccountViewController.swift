@@ -102,12 +102,15 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
         refList = Database.database().reference().child("users").child(userID!);
 
 
-        refList.observe(.value, with: {
+        refList.observeSingleEvent(of: .value, with: {
             (snapshot) in
 
             let data = snapshot.value as? [String: Any]
             let firstName = (data?["firstname"]) as! String
             let paymentDate = (data?["payment_date"])
+            let bookedTill = (data?["bookedTill"])
+            let totalDays = (data?["totalDays"])
+           
 
             let duration = (data?["duration"])
 
@@ -165,7 +168,53 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
                         self.daysLeft.text = "\(30 - components.day!) days left"
                     }
 
-                }
+                } else if duration as! String == "yearly" {
+                    
+                    if 365 - components.day! <= 0 {
+                        self.daysLeftView.isHidden = true
+
+                    } else if 365 - components.day! == 1 {
+                        self.daysLeft.text = "1 day left"
+
+                    } else {
+                        self.daysLeft.text = "\(365 - components.day!) days left"
+                    }
+
+               } else if duration as! String == "Top Up"{
+                
+                    if bookedTill != nil && totalDays != nil{
+                        
+                        let dateformat = DateFormatter()
+                        dateformat.dateFormat = "MM/dd/yy"
+                        let startDate = dateformat.date(from: bookedTill as! String)
+                        
+                        let today = Date()
+                        if today > startDate! || today == startDate! {
+                            self.daysLeftView.isHidden = true
+                        }else{
+                            let daysLeftComponents = Calendar.current.dateComponents([.day], from: today, to: startDate!)
+                            
+                            if Int(daysLeftComponents.day!) == 1 {
+                                self.daysLeft.text = "1 day left"
+
+                            } else {
+                                self.daysLeft.text = "\(Int(daysLeftComponents.day!)) days left"
+                            }
+                            
+                        }
+                        
+                    }else{
+                        self.daysLeftView.isHidden = true
+                        
+                    }
+                
+                
+               }
+                
+                
+                
+                
+            
 
 
             }
@@ -233,7 +282,6 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
     @objc func payNowFunc(_ sender: UIButton) {
 
-        print("i am entering with this key \(key)")
         let storyboard = UIStoryboard(name: "Main", bundle: Bundle.main)
         let viewController = storyboard.instantiateViewController(withIdentifier: "apartmentDetailsPage") as! ApartmentDetailsViewController
 

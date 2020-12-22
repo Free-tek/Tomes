@@ -19,9 +19,7 @@ class ApartmentDetailsViewModelController {
     func fetchApartments(_ key: String, completion: @escaping (_ success: Bool) -> ()) {
 
         var apartmentDetailsModel: [ApartmentDetailsModel?] = []
-
         let Url = String(format: Constants.Endpoints.getApartmentImage)
-        
         let userID = Auth.auth().currentUser?.uid
 
         let parameters: [String: Any] = [
@@ -44,10 +42,7 @@ class ApartmentDetailsViewModelController {
 
                             for i in 1...apartmentImageList!.count - 1 {
                                 let itemImage = apartmentImageList![i].string
-
-
                                 let itemGotten = ApartmentDetailsModel(itemImage: itemImage!, itemKey: i)
-
                                 apartmentDetailsModel.append(itemGotten)
                             }
 
@@ -69,7 +64,6 @@ class ApartmentDetailsViewModelController {
 
                 } catch let error as NSError {
                     //TODO: error occurred
-                    
                     completion(false)
                 }
 

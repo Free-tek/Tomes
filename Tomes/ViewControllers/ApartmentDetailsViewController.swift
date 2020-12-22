@@ -9,6 +9,7 @@
 import UIKit
 import AutoScrollCollectionView
 import FirebaseAuth
+import FirebaseDatabase
 import Alamofire
 import SwiftyJSON
 import Lottie
@@ -45,6 +46,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
     var _apartmentLocation = ""
     var _apartmentAvailability = ""
     var _apartmentPrices = ""
+    var canUserRenew: Bool!
 
     let animationView = AnimationView();
     
@@ -72,6 +74,12 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                     }
                 }
             })
+        }
+        
+        if canUserBookApartment() == false{
+            _apartmentAvailability == "false"
+        }else{
+            _apartmentAvailability == "true"
         }
         
     }
@@ -154,6 +162,32 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
         apartmentImageCollectionView.collectionViewLayout = flowLayout
 
     }
+    
+    func canUserBookApartment() -> Bool{
+        
+        var result = false
+        let userID = Auth.auth().currentUser?.uid
+        var refList: DatabaseReference!
+        refList = Database.database().reference().child("apartments").child(key);
+        refList.observeSingleEvent(of: .value, with: {
+            (snapshot) in
+
+            let data = snapshot.value as? [String: Any]
+            let currentOccupantId = (data?["currentOccupant"])
+            let availability = (data?["Availability"])
+            
+            
+            if availability != nil && availability as! String == "false" && currentOccupantId != nil && currentOccupantId as! String == userID{
+                result = true
+            }
+            
+        })
+
+        
+        return false
+        
+        
+    }
 
     func setUpApartmentFeatures() {
         var apartmentListModel = [ApartmentListModel?]()
@@ -191,7 +225,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
                             self._apartmentPrices = json["result"][0]["apartment_prices"].string!
                             self._price = json["result"][0]["price"].int!
                             self._apartmentLocation = json["result"][0]["location"].string!
-                            self._apartmentAvailability = json["result"][0]["Availability"].string!
+                            //self._apartmentAvailability = json["result"][0]["Availability"].string!
                            
                             
 
@@ -305,7 +339,7 @@ class ApartmentDetailsViewController: UIViewController, UICollectionViewDelegate
 
     @IBAction func bookNowFunc(_ sender: Any) {
         
-        if _apartmentAvailability == "false"{
+        if _apartmentAvailability != "true"{
             showToast(message: "Ooops... this apartment is no longer available", seconds: 1.3)
         
         }else{
