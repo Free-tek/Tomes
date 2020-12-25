@@ -1,18 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Comfortaa-Bold.ttf">
-            <string>Comfortaa-Bold</string>
+        <array key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
         </array>
-        <array key="Comfortaa-Regular.ttf">
-            <string>Comfortaa-Regular</string>
+        <array key="Montserrat-Bold.ttf">
+            <string>Montserrat-Bold</string>
         </array>
     </customFonts>
     <objects>
@@ -34,81 +35,98 @@
                                     <constraint firstAttribute="width" constant="205" id="XZ9-Kc-n0p"/>
                                     <constraint firstAttribute="height" constant="22" id="qCr-aK-ICI"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa-Bold" family="Comfortaa" pointSize="19"/>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="19"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Basic Rent" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gQd-pa-piu">
-                                <rect key="frame" x="18" y="63" width="70.5" height="15"/>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
-                                <color key="textColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="18" y="63" width="75" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="75" id="JgM-ew-qbh"/>
+                                    <constraint firstAttribute="height" constant="15" id="Ptb-Za-zGd"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <color key="textColor" systemColor="systemGray6Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yBe-Ga-PIZ">
-                                <rect key="frame" x="18" y="99" width="40" height="15"/>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
-                                <color key="textColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="18" y="96" width="75" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="MdS-Go-7cY"/>
+                                    <constraint firstAttribute="width" constant="75" id="MxX-i1-BXt"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <color key="textColor" systemColor="systemGray6Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Location" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Jwp-WL-6Ce">
-                                <rect key="frame" x="18" y="135" width="60.5" height="15"/>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
-                                <color key="textColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <rect key="frame" x="18" y="133" width="75" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="0x7-X2-6tG"/>
+                                    <constraint firstAttribute="width" constant="75" id="xQi-an-u2a"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <color key="textColor" systemColor="systemGray6Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Paid Up To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-fv-Rpg">
-                                <rect key="frame" x="18" y="171" width="72.5" height="15"/>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
-                                <color key="textColor" systemColor="systemGray6Color" red="0.94901960780000005" green="0.94901960780000005" blue="0.96862745100000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="749" text="Paid Up To" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Bmp-fv-Rpg">
+                                <rect key="frame" x="18" y="170" width="75" height="16"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="16" id="fe7-PI-8UT"/>
+                                    <constraint firstAttribute="width" constant="75" id="mO5-fc-3a5"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
+                                <color key="textColor" systemColor="systemGray6Color"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="N400,000" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2c2-C6-r7p">
-                                <rect key="frame" x="103" y="63" width="120" height="15"/>
+                                <rect key="frame" x="100.5" y="63" width="100" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="eFm-Dp-aYG"/>
-                                    <constraint firstAttribute="width" constant="120" id="yOX-7z-Prl"/>
+                                    <constraint firstAttribute="width" constant="100" id="yOX-7z-Prl"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd Aug 19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUK-P2-qzy">
-                                <rect key="frame" x="103" y="99" width="120" height="15"/>
+                                <rect key="frame" x="100.5" y="99" width="100" height="15"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="120" id="3mv-am-nqk"/>
+                                    <constraint firstAttribute="width" constant="100" id="3mv-am-nqk"/>
                                     <constraint firstAttribute="height" constant="15" id="xJh-Fx-dxy"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd Aug 19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yzS-YR-p70">
-                                <rect key="frame" x="103.5" y="135" width="119" height="15"/>
+                                <rect key="frame" x="100.5" y="135" width="100" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="H95-4i-pRj"/>
-                                    <constraint firstAttribute="width" constant="119" id="PfV-vG-moW"/>
+                                    <constraint firstAttribute="width" constant="100" id="PfV-vG-moW"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="23rd Aug 19" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tkV-RR-bqu">
-                                <rect key="frame" x="103" y="171" width="120" height="15"/>
+                                <rect key="frame" x="100.5" y="171" width="100" height="15"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="15" id="HhG-Pn-LKL"/>
-                                    <constraint firstAttribute="width" constant="120" id="mBz-TB-vhg"/>
+                                    <constraint firstAttribute="width" constant="100" id="mBz-TB-vhg"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" name="Comfortaa-Regular" family="Comfortaa" pointSize="13"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="13"/>
                                 <color key="textColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-a2-Kdg">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="S3P-a2-Kdg">
                                 <rect key="frame" x="50" y="213" width="131" height="40"/>
                                 <color key="backgroundColor" red="0.28792673349999998" green="0.33431243900000002" blue="0.37072822449999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Gh7-sr-NMT"/>
                                     <constraint firstAttribute="width" constant="131" id="tqt-cW-7Ov"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" name="Montserrat-Bold" family="Montserrat" pointSize="17"/>
                                 <state key="normal" title="Book">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -116,40 +134,40 @@
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="yBe-Ga-PIZ" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="2ve-RK-tu1"/>
                             <constraint firstAttribute="height" constant="261" id="4KB-aq-HUm"/>
                             <constraint firstAttribute="bottom" secondItem="S3P-a2-Kdg" secondAttribute="bottom" constant="8" id="5Tw-eG-pHS"/>
                             <constraint firstItem="yzS-YR-p70" firstAttribute="top" secondItem="eUK-P2-qzy" secondAttribute="bottom" constant="21" id="7Ut-7Y-Znz"/>
-                            <constraint firstItem="eUK-P2-qzy" firstAttribute="leading" secondItem="yBe-Ga-PIZ" secondAttribute="trailing" constant="45" id="8IR-ns-t6v"/>
+                            <constraint firstItem="yBe-Ga-PIZ" firstAttribute="top" secondItem="gQd-pa-piu" secondAttribute="bottom" constant="18" id="8LU-qw-Nas"/>
+                            <constraint firstItem="tkV-RR-bqu" firstAttribute="leading" secondItem="Bmp-fv-Rpg" secondAttribute="trailing" constant="7.5" id="Bbv-jL-DZC"/>
                             <constraint firstAttribute="width" constant="231" id="D01-n5-m68"/>
                             <constraint firstItem="2c2-C6-r7p" firstAttribute="top" secondItem="MiC-cj-5Cs" secondAttribute="bottom" constant="22" id="DeM-RG-mVZ"/>
                             <constraint firstItem="S3P-a2-Kdg" firstAttribute="centerX" secondItem="NRG-B9-ABB" secondAttribute="centerX" id="HUe-dO-LOO"/>
                             <constraint firstItem="MiC-cj-5Cs" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="KZ6-rq-7Kb"/>
-                            <constraint firstItem="2c2-C6-r7p" firstAttribute="leading" secondItem="gQd-pa-piu" secondAttribute="trailing" constant="14.5" id="Nno-DT-sdS"/>
-                            <constraint firstItem="gQd-pa-piu" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="OfU-mX-CFd"/>
-                            <constraint firstItem="Bmp-fv-Rpg" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="Uop-m5-zD2"/>
-                            <constraint firstItem="Bmp-fv-Rpg" firstAttribute="top" secondItem="Jwp-WL-6Ce" secondAttribute="bottom" constant="21" id="XKW-6q-vZM"/>
-                            <constraint firstItem="yzS-YR-p70" firstAttribute="leading" secondItem="Jwp-WL-6Ce" secondAttribute="trailing" constant="25" id="cCZ-qm-2Bk"/>
-                            <constraint firstItem="gQd-pa-piu" firstAttribute="top" secondItem="MiC-cj-5Cs" secondAttribute="bottom" constant="22" id="eLI-50-zW8"/>
-                            <constraint firstItem="S3P-a2-Kdg" firstAttribute="top" secondItem="Bmp-fv-Rpg" secondAttribute="bottom" constant="27" id="ffa-fx-SOk"/>
-                            <constraint firstItem="yBe-Ga-PIZ" firstAttribute="top" secondItem="gQd-pa-piu" secondAttribute="bottom" constant="21" id="fmd-PS-Tk5"/>
+                            <constraint firstItem="2c2-C6-r7p" firstAttribute="leading" secondItem="gQd-pa-piu" secondAttribute="trailing" constant="7.5" id="NQB-kE-Q8o"/>
+                            <constraint firstItem="gQd-pa-piu" firstAttribute="top" secondItem="MiC-cj-5Cs" secondAttribute="bottom" constant="22" id="XKM-Wq-t4P"/>
+                            <constraint firstItem="Jwp-WL-6Ce" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="Zn8-i4-hdy"/>
+                            <constraint firstItem="S3P-a2-Kdg" firstAttribute="top" secondItem="Bmp-fv-Rpg" secondAttribute="bottom" constant="27" id="b0K-vu-jj6"/>
+                            <constraint firstItem="yzS-YR-p70" firstAttribute="leading" secondItem="Jwp-WL-6Ce" secondAttribute="trailing" constant="7.5" id="fVc-hH-Lhb"/>
                             <constraint firstItem="tkV-RR-bqu" firstAttribute="top" secondItem="yzS-YR-p70" secondAttribute="bottom" constant="21" id="h7W-M8-GkW"/>
-                            <constraint firstItem="tkV-RR-bqu" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="103" id="hYu-RC-HwR"/>
-                            <constraint firstItem="Jwp-WL-6Ce" firstAttribute="top" secondItem="yBe-Ga-PIZ" secondAttribute="bottom" constant="21" id="oJy-mJ-Jc2"/>
                             <constraint firstItem="eUK-P2-qzy" firstAttribute="top" secondItem="2c2-C6-r7p" secondAttribute="bottom" constant="21" id="pel-k6-wBN"/>
-                            <constraint firstItem="Jwp-WL-6Ce" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="vuK-Xf-zRs"/>
+                            <constraint firstItem="Bmp-fv-Rpg" firstAttribute="top" secondItem="Jwp-WL-6Ce" secondAttribute="bottom" constant="21" id="qYC-Wr-qzM"/>
+                            <constraint firstItem="eUK-P2-qzy" firstAttribute="leading" secondItem="yBe-Ga-PIZ" secondAttribute="trailing" constant="7.5" id="s67-hT-cyi"/>
+                            <constraint firstItem="gQd-pa-piu" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="t8w-FO-8kU"/>
+                            <constraint firstItem="Bmp-fv-Rpg" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="tJN-gI-zHb"/>
+                            <constraint firstItem="Jwp-WL-6Ce" firstAttribute="top" secondItem="yBe-Ga-PIZ" secondAttribute="bottom" constant="21" id="tnU-v3-RxV"/>
                             <constraint firstItem="MiC-cj-5Cs" firstAttribute="top" secondItem="NRG-B9-ABB" secondAttribute="top" constant="19" id="wk2-5O-6Jb"/>
+                            <constraint firstItem="yBe-Ga-PIZ" firstAttribute="leading" secondItem="NRG-B9-ABB" secondAttribute="leading" constant="18" id="yR3-uH-rh7"/>
                         </constraints>
                     </view>
                 </subviews>
             </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="NRG-B9-ABB" secondAttribute="bottom" id="H3p-tC-SRq"/>
                 <constraint firstAttribute="trailing" secondItem="NRG-B9-ABB" secondAttribute="trailing" id="b0S-Cc-yhL"/>
                 <constraint firstItem="NRG-B9-ABB" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="bXA-KE-Gd4"/>
                 <constraint firstItem="NRG-B9-ABB" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="xkx-vy-AJw"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <connections>
                 <outlet property="background" destination="NRG-B9-ABB" id="I02-Pg-EbL"/>
                 <outlet property="locationOfApartment" destination="yzS-YR-p70" id="pVy-ST-UhS"/>
@@ -163,4 +181,9 @@
             <point key="canvasLocation" x="138.40579710144928" y="140.95982142857142"/>
         </collectionViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemGray6Color">
+            <color red="0.94901960784313721" green="0.94901960784313721" blue="0.96862745098039216" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
 </document>

@@ -253,11 +253,11 @@ class PaymentViewController: UIViewController {
                     let futureDate = Calendar.current.date(byAdding: dateComponent, to: date)
 
                     let dateformat = DateFormatter()
-                    dateformat.dateFormat = "MM/dd/yy"
+                    dateformat.dateFormat = "MM/dd/yy HH:mm:ss"
                     let paidUpTo = dateformat.string(from: futureDate!)
 
                     let df = DateFormatter()
-                    df.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                    df.dateFormat = "MM/dd/yy HH:mm:ss"
                     let now = df.string(from: Date())
                     
                     

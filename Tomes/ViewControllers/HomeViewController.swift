@@ -251,7 +251,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
             let startDate = Date()
             
             let _dateFormatter = DateFormatter()
-            _dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            _dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
             
             
             if duration == nil || paymentDate == nil{
@@ -269,7 +269,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                 if lastRating == nil{
                     
                     let df = DateFormatter()
-                    df.dateFormat = "yyyy-MM-dd"
+                    df.dateFormat = "MM/dd/yy HH:mm:ss"
                     let dateString = df.string(from: Date())
                     
                     ref.child("last_rating").setValue(dateString)
@@ -288,7 +288,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                     
                     
                     let dateFormatter = DateFormatter()
-                    dateFormatter.dateFormat = "yyyy-MM-dd"
+                    dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
                     self.lastRatingDate = dateFormatter.date(from: lastRating as! String)
                     
                     let components = Calendar.current.dateComponents([.day], from: startDate, to: self.lastRatingDate!)
@@ -299,7 +299,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
                         if components.day! <= -7{
                             
                             let df = DateFormatter()
-                            df.dateFormat = "yyyy-MM-dd"
+                            df.dateFormat = "MM/dd/yy HH:mm:ss"
                             let dateString = df.string(from: startDate)
                             
                             ref.child("last_rating").setValue(dateString)
@@ -311,7 +311,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
 
                         }else {
                             let df = DateFormatter()
-                            df.dateFormat = "yyyy-MM-dd"
+                            df.dateFormat = "MM/dd/yy HH:mm:ss"
                             let dateString = df.string(from: startDate)
                             
                             ref.child("last_rating").setValue(dateString)

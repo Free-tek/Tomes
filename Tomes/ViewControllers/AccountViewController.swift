@@ -123,7 +123,7 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
 
                 self.daysLeftView.isHidden = false
                 let dateFormatter = DateFormatter()
-                dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+                dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
                 let date = dateFormatter.date(from: paymentDate as! String)
 
                 let startDate = Date()
@@ -136,13 +136,23 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
                     
                     if 1 - components.day! <= 0 {
                         self.daysLeftView.isHidden = true
-
-                    } else if 1 - components.day! == 1 {
-                        self.daysLeft.text = "1 day left"
-
-                    } else {
-                        self.daysLeft.text = "\(1 - components.day!) days left"
+                    }else{
+                        if bookedTill != nil{
+                            let date = dateFormatter.date(from: bookedTill as! String)
+                            let components = Calendar.current.dateComponents([.hour], from: startDate, to: date!)
+                            self.daysLeft.text = "\(components.hour!) hours left"
+                        }else{
+                            self.daysLeftView.isHidden = true
+                        }
+                        
                     }
+//                    } else if 1 - components.day! == 1 {
+//
+//                        self.daysLeft.text = "1 day left"
+//
+//                    } else {
+//                        self.daysLeft.text = "\(1 - components.day!) days left"
+//                    }
 
                 } else if duration as! String == "weekly" {
 
@@ -185,7 +195,7 @@ class AccountViewController: UIViewController, UICollectionViewDelegate, UIColle
                     if bookedTill != nil && totalDays != nil{
                         
                         let dateformat = DateFormatter()
-                        dateformat.dateFormat = "MM/dd/yy"
+                        dateformat.dateFormat = "MM/dd/yy HH:mm:ss"
                         let startDate = dateformat.date(from: bookedTill as! String)
                         
                         let today = Date()

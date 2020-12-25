@@ -36,6 +36,10 @@
 	<true/>
 	<key>UIAppFonts</key>
 	<array>
+		<string>Lato-Regular.ttf</string>
+		<string>Lato-Bold.ttf</string>
+		<string>Montserrat-Regular.ttf</string>
+		<string>Montserrat-Bold.ttf</string>
 		<string>Comfortaa-Regular.ttf</string>
 		<string>Comfortaa-Light.ttf</string>
 		<string>Comfortaa-Bold.ttf</string>
