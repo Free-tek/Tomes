@@ -69,74 +69,46 @@ class ApartmentListViewModelController {
                                     
                                     if endDate != 0{
                                         
+                                        print("availability check here 1")
                                         let dateFormatter = DateFormatter()
                                         dateFormatter.dateFormat = "MM/dd/yy HH:mm:ss"
                                         let date = dateFormatter.date(from: bookedTill)
                                         let startDate = Date()
-                                        let components = Calendar.current.dateComponents([.day], from: date!, to: startDate)
+                                        let components = Calendar.current.dateComponents([.day], from: startDate, to: date!)
 
                                         if bookingDuration == "daily" {
                                             
                                             
-                                            let hourComponents = Calendar.current.dateComponents([.hour], from: date!, to: startDate)
-                                            if hourComponents.hour! >= 18{
+                                            
+                                            let hourComponents = Calendar.current.dateComponents([.hour], from:  startDate, to: date!)
+                                            print("availability check here 2 \(hourComponents.hour) ::: date \(date!)  ::: start \(startDate)")
+                                            
+                                            if hourComponents.hour! <= 6{
+                                                print("availability check here 3")
                                                 itemAvailability = "true"
                                             }else{
+                                                print("availability check here 4")
                                                 itemAvailability = "false"
                                             }
                                             
-//                                            if 1 - components.day! <= 0 {
-//                                                itemAvailability = "true"
-//                                            }else{
-//                                                let hourComponents = Calendar.current.dateComponents([.hour], from: date!, to: startDate)
-//                                                if hourComponents.hour! <= 18{
-//                                                    itemAvailability = "true"
-//                                                }
-//                                            }
-                                            
-
                                         } else if bookingDuration == "weekly" {
 
-                                            if components.day! >= 6{
+                                            if components.day! <= 1{
                                                 itemAvailability = "true"
                                             }
-                                            
-                                            
-//                                            if 7 - components.day! <= 0 {
-//                                                itemAvailability = "true"
-//                                            }else{
-//                                                if 7 - components.day! <= 1{
-//                                                    itemAvailability = "true"
-//                                                }
-//                                            }
 
                                         } else if bookingDuration == "monthly" {
                                             
-                                            if components.day! >= 23{
+                                            if components.day! <= 8{
                                                 itemAvailability = "true"
                                             }
-//                                            if 30 - components.day! <= 0 {
-//                                                itemAvailability = "true"
-//                                            }else{
-//                                                if 30 - components.day! <= 8 {
-//                                                    itemAvailability = "true"
-//                                                }
-//                                            }
 
                                         } else if bookingDuration == "yearly" {
                                             
-                                            if components.day! >= 274{
+                                            if components.day! <= 92{
                                                 itemAvailability = "true"
                                             }
                                             
-//                                            if 365 - components.day! <= 0 {
-//                                                itemAvailability = "true"
-//                                            } else{
-//                                                if 365 - components.day! <= 91 {
-//                                                    itemAvailability = "true"
-//                                                }
-//                                            }
-
                                         }
                                         
                                     }
@@ -156,16 +128,9 @@ class ApartmentListViewModelController {
                                                 itemAvailability = "true"
                                             }else{
                                                 let daysLeftComponents = Calendar.current.dateComponents([.day], from: today, to: startDate!)
-                                                if Int(daysLeftComponents.day!) >= Int(Double(totalDays!) * 0.75){
+                                                if Int(daysLeftComponents.day!) <= Int(Double(totalDays!) * 0.25){
                                                     itemAvailability = "true"
                                                 }
-                                                
-//                                                if Int((totalDays! * 25) / 100) >= Int(daysLeftComponents.day!){
-//                                                    itemAvailability = "true"
-//                                                }else{
-//                                                    itemAvailability = "false"
-//                                                }
-                                                
                                             }
                                             
                                         }else{

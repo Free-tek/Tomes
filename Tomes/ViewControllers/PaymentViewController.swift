@@ -640,7 +640,7 @@ class PaymentViewController: UIViewController {
         }else if self.duration == "monthly"{
             
             //75% notification
-            let firstNotificationDate = calendar.date(byAdding: .day, value: 8, to: date)
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 23, to: date)
             
             let notificationDate = dateformat.string(from: firstNotificationDate!)
             let localDate = dateformat.date(from: notificationDate)
@@ -667,7 +667,7 @@ class PaymentViewController: UIViewController {
             scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"monthly")
             
             //25% notification
-            let thirdNotificationDate = calendar.date(byAdding: .day, value: 23, to: date)
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 8, to: date)
             
             let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
             let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
@@ -682,7 +682,7 @@ class PaymentViewController: UIViewController {
         }else if self.duration == "yearly"{
             
             //75% notification
-            let firstNotificationDate = calendar.date(byAdding: .day, value: 91, to: date)
+            let firstNotificationDate = calendar.date(byAdding: .day, value: 273, to: date)
             
             let notificationDate = dateformat.string(from: firstNotificationDate!)
             let localDate = dateformat.date(from: notificationDate)
@@ -709,7 +709,7 @@ class PaymentViewController: UIViewController {
             scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"yearly")
             
             //25% notification
-            let thirdNotificationDate = calendar.date(byAdding: .day, value: 273, to: date)
+            let thirdNotificationDate = calendar.date(byAdding: .day, value: 91, to: date)
             
             let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
             let thirdlocalDate = dateformat.date(from: thirdnotificationDate)
@@ -726,7 +726,7 @@ class PaymentViewController: UIViewController {
             
             
             //75% notification
-            let lastHalf = Int((endDate * 25) / 100)
+            let lastHalf = Int((endDate * 75) / 100)
             let firstNotificationDate = calendar.date(byAdding: .day, value: lastHalf, to: date)
             
             let notificationDate = dateformat.string(from: firstNotificationDate!)
@@ -755,7 +755,7 @@ class PaymentViewController: UIViewController {
             scheduleLocalNotification(year: Int(secondyear)!, month: Int(secondmonth)!, day: Int(secondday)!, hour: Int(secondhour)!, minute:  Int(secondminute)!, percentageUsed: "50%", plan:"yearly")
             
             //25% notification
-            let thirdHalf = Int((endDate * 75) / 100)
+            let thirdHalf = Int((endDate * 25) / 100)
             let thirdNotificationDate = calendar.date(byAdding: .day, value: thirdHalf, to: date)
             
             let thirdnotificationDate = dateformat.string(from: thirdNotificationDate!)
